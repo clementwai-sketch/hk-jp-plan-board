@@ -4,23 +4,24 @@ Free static site for the desk React HTML dashboard.
 
 **Live:** https://clementwai-sketch.github.io/hk-jp-plan-board/
 
+<<<<<<< Updated upstream
 Current board: JP midday 8 Sep 2026 (lunch). Morning HK+JP: `archive/hk-jp-2026-09-08-morning.html`.
+=======
+- HK+JP homepage: `index.html` — JP midday 8 Sep 2026 (lunch). Morning: `archive/hk-jp-2026-09-08-morning.html`
+- US: [`us.html`](https://clementwai-sketch.github.io/hk-jp-plan-board/us.html) — Tue 8 Sep 2026 PRE_MARKET. Archive: `archive/us-2026-09-08.html`
+>>>>>>> Stashed changes
 
 ## What this is
 
-One standalone HTML file (`index.html`). React + Tailwind load from CDN. No server, no API keys, no build step.
+Standalone HTML. React + Tailwind from CDN. No server, no API keys, no build step.
 
 Not investment advice. Holdings / Portfolio Watch, share counts, and account IDs are not in this public copy.
 
 ## Update the board
 
-Replace `index.html` with the latest `HK_JP_Trading_Plan_React_YYYY-MM-DD.html` after stripping:
+Replace `index.html` with the latest HK+JP React board after stripping Portfolio / MTM / qty / CBBC / local paths. Do **not** overwrite `index.html` with a US board — US goes to `us.html` with the same strip.
 
-- Portfolio tab / `portfolio` rows / MTM / open P&L / qty / CBBC Dist-to-Kill
-- “IN BOOK” / “held in book”
-- local paths, share counts, paper NAV, account ids, CBBC codes
-
-Then push `main`. GitHub Pages rebuilds in about a minute. Do not overwrite `index.html` with a US board.
+Then push `main`. GitHub Pages rebuilds in about a minute.
 
 ## Pages
 
