@@ -4,12 +4,8 @@ Free static site for the desk React HTML dashboard.
 
 **Live:** https://clementwai-sketch.github.io/hk-jp-plan-board/
 
-<<<<<<< Updated upstream
-Current board: JP midday 8 Sep 2026 (lunch). Morning HK+JP: `archive/hk-jp-2026-09-08-morning.html`.
-=======
 - HK+JP homepage: `index.html` — JP midday 8 Sep 2026 (lunch). Morning: `archive/hk-jp-2026-09-08-morning.html`
-- US: [`us.html`](https://clementwai-sketch.github.io/hk-jp-plan-board/us.html) — Tue 8 Sep 2026 PRE_MARKET. Archive: `archive/us-2026-09-08.html`
->>>>>>> Stashed changes
+- US: [us.html](https://clementwai-sketch.github.io/hk-jp-plan-board/us.html) — Tue 8 Sep 2026 PRE_MARKET. Archive: `archive/us-2026-09-08.html`
 
 ## What this is
 
