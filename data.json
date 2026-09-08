@@ -1,0 +1,1274 @@
+{
+  "date": "2026-09-08",
+  "generated": "2026-09-08 19:55 HKT",
+  "asof": "2026-09-08 19:51 HKT",
+  "opend_ts": "2026-09-08 19:51 HKT",
+  "opend_connected": true,
+  "title": "HK · JP · US",
+  "session_hk": "CLOSED",
+  "session_jp": "CLOSED",
+  "session_us": "PRE_MARKET_BEGIN",
+  "hk_regime": "MIXED (scan CAUTION) · peg 7.84 · VHSI 17.53 Normal",
+  "jp_regime": "UNFAVORABLE · VI ~33 ELEVATED · USD/JPY 153.9 · close on low",
+  "jp_regime_tone": "red",
+  "us_regime": "MIXED (scan CAUTION)",
+  "us_regime_tone": "amber",
+  "verdict": "No new buys. SELL CRWD. SELL TSLA Stage 4. TRAIL 1729 Super OUT. 285A Super +200 DIV↓in trail. Dual oil+biotech inflow.",
+  "warning": "⚠️ OIL + BIOTECH LEADING WITH INFLOW. JP UNFAVORABLE. Peg 7.84. US MIXED. Spring chop.",
+  "stance": "One board · three markets. Plug data.json. No new ticket.",
+  "summary": "US SELL CRWD/TSLA · no chase MU/SNDK · JP 285A trail only · HK 1729 trail · oil+biotech IN",
+  "alert_banner": "Tue 8 Sep. HK CLOSED · JP CLOSED · US PRE_MARKET (last RTH Fri 4 Sep). Scan HK/JP 7 Sep · US 8 Sep. Bounce trap stale skip. OpenD CONNECTED.",
+  "disclaimer": "Not investment advice. Public scan/regime board. No holdings or account ids. Day% Western (green=up).",
+  "source": "HK+JP EOD 17:04 HKT + US PRE_MARKET 19:51 HKT. FRED 3 Sep. Plug: desk_board_data.json.",
+  "bank_note": "Holdings and share counts are not on this public board.",
+  "elite_note": "HK 0992 Q100 CMF~0 −6%. 1997 Red SSL UNVERIFIED. JP 8309/5831 Super OUT. US MU/SNDK Prime no chase.",
+  "snapshot_note": "HK/JP last = cash close 17:04. Scan HK/JP = 7 Sep. US last = Fri 4 Sep RTH. Super = session-to-date.",
+  "us_ovn_banner": "Fri RTH: SPY −0.39 DIV↓in · QQQ +0.18 · SMH +2.61 · MU +6.1 Super +279. PRE MU bid 1024.8.",
+  "us_ovn_tone": "amber",
+  "us_ovn_call": "285A Super +200 DIV↓in. 5801 Super OUT. 5803 Super IN Red SSL. 1729 Super OUT. Do not chase MU/SNDK PRE.",
+  "cross_market": "Yen 153 + oil/biotech dual inflow are risk cards, not buys. HK / JP / US lists never merge.",
+  "header_pills": [
+    {
+      "lab": "OpenD CONNECTED",
+      "tone": "green"
+    },
+    {
+      "lab": "HK MIXED · CLOSED",
+      "tone": "amber"
+    },
+    {
+      "lab": "JP UNFAVORABLE · CLOSED",
+      "tone": "red"
+    },
+    {
+      "lab": "US MIXED · PRE",
+      "tone": "amber"
+    },
+    {
+      "lab": "CRWD SELL",
+      "tone": "red"
+    },
+    {
+      "lab": "TSLA SELL",
+      "tone": "red"
+    },
+    {
+      "lab": "Oil+Biotech IN",
+      "tone": "red"
+    },
+    {
+      "lab": "Peg 7.84",
+      "tone": "red"
+    },
+    {
+      "lab": "10Y +8 bp",
+      "tone": "amber"
+    }
+  ],
+  "yields": [
+    {
+      "name": "US 10Y",
+      "last": "4.77%",
+      "sess": "2026-09-03",
+      "d10": 8.0,
+      "d30": 6.0,
+      "read": "both 10d Δ > 0"
+    },
+    {
+      "name": "US 30Y",
+      "last": "5.25%",
+      "sess": "2026-09-03",
+      "d10": 2.0,
+      "d30": 8.0,
+      "read": "duration headwind"
+    }
+  ],
+  "yields_line": "Duration headwind. Not 10Y SPIKE (≥10 bp). Testers half-size.",
+  "oil_biotech": [
+    {
+      "sleeve": "Oil",
+      "etf": "XLE",
+      "last": 64.06,
+      "day": -0.87,
+      "rs5": 90,
+      "rs21": 92,
+      "ma50": "ABOVE +8.0%",
+      "cmf": 0.244,
+      "super": 8.78,
+      "tag": "STRONG + inflow"
+    },
+    {
+      "sleeve": "Biotech",
+      "etf": "XBI",
+      "last": 163.81,
+      "day": -0.35,
+      "rs5": 79,
+      "rs21": 79,
+      "ma50": "ABOVE +3.6%",
+      "cmf": 0.245,
+      "super": 0.08,
+      "tag": "STRONG + inflow"
+    }
+  ],
+  "oil_biotech_warn": "⚠️ OIL + BIOTECH LEADING WITH INFLOW — not healthy risk-on. Do not chase XLE/XBI.",
+  "emerging_note": "HK 1 · JP 4 sidecar 7 Sep. US sidecar 8 Sep. Not a buy.",
+  "cup_note": "C&H HK/JP asof 7 Sep · US asof 8 Sep. Research only. Not a buy.",
+  "emerging": [
+    {
+      "rank": 1,
+      "mkt": "HK",
+      "t": "2388",
+      "name": "BOC HK 中银香港",
+      "wave": 2,
+      "to_pivot": null,
+      "ssl": "Blue",
+      "cmf": 0.2823,
+      "note": "Emerging. Not a buy."
+    },
+    {
+      "rank": 1,
+      "mkt": "JP",
+      "t": "5301",
+      "name": "Tokai Carbon",
+      "wave": 2,
+      "to_pivot": null,
+      "ssl": "Blue",
+      "cmf": 0.0622,
+      "note": "Emerging."
+    },
+    {
+      "rank": 2,
+      "mkt": "JP",
+      "t": "8015",
+      "name": "Toyota Tsusho 豊田通商",
+      "wave": 1,
+      "to_pivot": null,
+      "ssl": "Blue",
+      "cmf": 0.0563,
+      "note": "Not a buy."
+    },
+    {
+      "rank": 3,
+      "mkt": "JP",
+      "t": "8308",
+      "name": "Resona",
+      "wave": 2,
+      "to_pivot": null,
+      "ssl": "Blue",
+      "cmf": -0.0227,
+      "note": "CMF <0."
+    },
+    {
+      "rank": 4,
+      "mkt": "JP",
+      "t": "8354",
+      "name": "Fukuoka FG",
+      "wave": 2,
+      "to_pivot": null,
+      "ssl": "Blue",
+      "cmf": -0.0696,
+      "note": "CMF <0."
+    },
+    {
+      "rank": 1,
+      "t": "VLO",
+      "mkt": "US",
+      "wave": 2,
+      "ssl": "Blue",
+      "cmf": 0.33,
+      "rs": 38.1,
+      "note": "Oil. Dual warning. Not a buy.",
+      "name": "Valero",
+      "to_pivot": null
+    },
+    {
+      "rank": 2,
+      "t": "INCY",
+      "mkt": "US",
+      "wave": 2,
+      "ssl": "Blue",
+      "cmf": 0.2183,
+      "rs": 20.0,
+      "note": "Emerging. Not a buy.",
+      "name": "Incyte",
+      "to_pivot": null
+    },
+    {
+      "rank": 3,
+      "t": "HPQ",
+      "mkt": "US",
+      "wave": 2,
+      "ssl": "Blue",
+      "cmf": 0.2035,
+      "rs": 24.3,
+      "note": "Emerging.",
+      "name": "HP Inc.",
+      "to_pivot": null
+    },
+    {
+      "rank": 4,
+      "t": "MTCH",
+      "mkt": "US",
+      "wave": 2,
+      "ssl": "Blue",
+      "cmf": 0.1667,
+      "rs": 17.2,
+      "note": "Emerging.",
+      "name": "Match",
+      "to_pivot": null
+    }
+  ],
+  "cup_handle": [
+    {
+      "rank": 1,
+      "mkt": "HK",
+      "t": "1038",
+      "name": "CKI",
+      "status": "near_pivot",
+      "last": 65.85,
+      "pivot": 66.8,
+      "dist": 1.42,
+      "note": "Research only."
+    },
+    {
+      "rank": 2,
+      "mkt": "HK",
+      "t": "0267",
+      "name": "CITIC",
+      "status": "near_pivot",
+      "last": 13.6,
+      "pivot": 13.95,
+      "dist": 2.51,
+      "note": "Research only."
+    },
+    {
+      "rank": 1,
+      "mkt": "JP",
+      "t": "6301",
+      "name": "Komatsu",
+      "status": "near_pivot",
+      "last": 7576,
+      "pivot": 7636,
+      "dist": 0.79,
+      "note": "Tightest JP."
+    },
+    {
+      "rank": 2,
+      "mkt": "JP",
+      "t": "8015",
+      "name": "Toyota Tsusho",
+      "status": "near_pivot",
+      "last": 7680,
+      "pivot": 7774,
+      "dist": 1.21,
+      "note": ""
+    },
+    {
+      "rank": 1,
+      "t": "OVV",
+      "mkt": "US",
+      "status": "breakout",
+      "last": 66.7,
+      "pivot": 66.43,
+      "dist": -0.41,
+      "depth": 17.85,
+      "cup": 55,
+      "handle": 19,
+      "name": "Ovintiv",
+      "note": "Oil. Dual warning."
+    },
+    {
+      "rank": 2,
+      "t": "NVDA",
+      "mkt": "US",
+      "status": "near_pivot",
+      "last": 230.36,
+      "pivot": 230.47,
+      "dist": 0.05,
+      "depth": 19.67,
+      "cup": 72,
+      "handle": 6,
+      "name": "NVIDIA",
+      "note": "Rim. CMF −0.21."
+    },
+    {
+      "rank": 3,
+      "t": "GILD",
+      "mkt": "US",
+      "status": "near_pivot",
+      "last": 151.0,
+      "pivot": 152.55,
+      "dist": 1.02,
+      "depth": 22.39,
+      "cup": 135,
+      "handle": 7,
+      "name": "Gilead",
+      "note": "Research only."
+    }
+  ],
+  "us_ovn": [
+    {
+      "t": "SPY",
+      "last": 770.19,
+      "day": -0.39,
+      "sb": 90.4,
+      "tag": "DIV↓in",
+      "note": "Fri RTH Super +90 $M"
+    },
+    {
+      "t": "QQQ",
+      "last": 718.96,
+      "day": 0.18,
+      "sb": 28.8,
+      "tag": "ALIGNED↑",
+      "note": "thin Super"
+    },
+    {
+      "t": "DIA",
+      "last": 534.08,
+      "day": -0.53,
+      "sb": -25.8,
+      "tag": "ALIGNED↓",
+      "note": "Dow lag"
+    },
+    {
+      "t": "IWM",
+      "last": 296.01,
+      "day": 0.28,
+      "sb": -37.4,
+      "tag": "DIV↑out",
+      "note": "Super out"
+    },
+    {
+      "t": "SMH",
+      "last": 567.01,
+      "day": 2.61,
+      "sb": 16.9,
+      "tag": "ALIGNED↑",
+      "note": "memory sleeve"
+    },
+    {
+      "t": "MU",
+      "last": 1016.59,
+      "day": 6.1,
+      "sb": 279.0,
+      "tag": "ALIGNED↑",
+      "note": "285A price did not hold"
+    },
+    {
+      "t": "SNDK",
+      "last": 1740.0,
+      "day": 11.9,
+      "sb": 34.7,
+      "tag": "ALIGNED↑",
+      "note": "NAND"
+    },
+    {
+      "t": "LITE",
+      "last": 881.26,
+      "day": 4.0,
+      "sb": -0.55,
+      "tag": "DIV↑out",
+      "note": "optics"
+    },
+    {
+      "t": "COHR",
+      "last": 281.86,
+      "day": 6.6,
+      "sb": 3.1,
+      "tag": "ALIGNED↑",
+      "note": "optics"
+    },
+    {
+      "t": "GLW",
+      "last": 154.3,
+      "day": 5.68,
+      "sb": -3.4,
+      "tag": "DIV↑out",
+      "note": "5801/5803"
+    },
+    {
+      "t": "XLE",
+      "last": 64.06,
+      "day": -0.87,
+      "sb": 8.78,
+      "tag": "DIV↓in",
+      "note": "oil warning"
+    }
+  ],
+  "watch": [
+    {
+      "t": "1729",
+      "mkt": "HK",
+      "note": "NOT IN SCAN. Super OUT −0.09. TRAIL."
+    },
+    {
+      "t": "0883",
+      "mkt": "HK",
+      "note": "Super +2.47 ALIGNED↑. Hedge. No chase."
+    },
+    {
+      "t": "1088",
+      "mkt": "HK",
+      "note": "Super +0.09 Red SSL. No add."
+    },
+    {
+      "t": "285A",
+      "mkt": "JP",
+      "note": "Super +200 DIV↓in last −3.6. Trail."
+    },
+    {
+      "t": "5803",
+      "mkt": "JP",
+      "note": "Super +12 Red SSL. No add."
+    },
+    {
+      "t": "5801",
+      "mkt": "JP",
+      "note": "Super flipped OUT −4.5%. Stay out."
+    },
+    {
+      "t": "MU",
+      "mkt": "US",
+      "note": "earnings 9/22 UNCONFIRMED"
+    },
+    {
+      "t": "TSM",
+      "mkt": "US",
+      "note": "needs Super reclaim"
+    },
+    {
+      "t": "IWM",
+      "mkt": "US",
+      "note": "Spring lag tell"
+    }
+  ],
+  "indices": [
+    {
+      "name": "HSI cash",
+      "mkt": "HK",
+      "last": 25317.18,
+      "chg_pct": -0.38,
+      "note": "OpenD close"
+    },
+    {
+      "name": "HSTECH",
+      "mkt": "HK",
+      "last": 4454.85,
+      "chg_pct": -1.61,
+      "note": "OpenD close"
+    },
+    {
+      "name": "Nikkei cash",
+      "mkt": "JP",
+      "last": 65269.33,
+      "chg_pct": -1.7,
+      "note": "close = low"
+    },
+    {
+      "name": "Nikkei ETF 1321",
+      "mkt": "JP",
+      "last": 67510.0,
+      "chg_pct": -1.73,
+      "note": "closed on low"
+    },
+    {
+      "name": "SPY",
+      "mkt": "US",
+      "last": 770.19,
+      "chg_pct": -0.39,
+      "note": "Fri RTH · bid 767.88"
+    },
+    {
+      "name": "QQQ",
+      "mkt": "US",
+      "last": 718.96,
+      "chg_pct": 0.18,
+      "note": "Fri RTH"
+    },
+    {
+      "name": "DIA",
+      "mkt": "US",
+      "last": 534.08,
+      "chg_pct": -0.53,
+      "note": "Fri RTH"
+    },
+    {
+      "name": "IWM",
+      "mkt": "US",
+      "last": 296.01,
+      "chg_pct": 0.28,
+      "note": "Super −37 DIV↑out"
+    },
+    {
+      "name": "SMH",
+      "mkt": "US",
+      "last": 567.01,
+      "chg_pct": 2.61,
+      "note": "bid 572.4"
+    },
+    {
+      "name": "VIX",
+      "mkt": "US",
+      "last": 15.3,
+      "chg_pct": 5.3,
+      "note": "macro_header"
+    }
+  ],
+  "snapshot": [
+    {
+      "t": "01088",
+      "mkt": "HK",
+      "name": "Shenhua 中国神华",
+      "scan": 44.66,
+      "live": 45.62,
+      "day": 2.15,
+      "dlt": 2.15,
+      "note": "Red SSL Super +0.09. No add."
+    },
+    {
+      "t": "01729",
+      "mkt": "HK",
+      "name": "Time Intercon 天时互联",
+      "scan": null,
+      "live": 17.92,
+      "day": -3.14,
+      "dlt": null,
+      "note": "NOT IN SCAN. Super OUT. TRAIL."
+    },
+    {
+      "t": "00883",
+      "mkt": "HK",
+      "name": "CNOOC 海油",
+      "scan": 24.88,
+      "live": 25.86,
+      "day": 3.94,
+      "dlt": 3.94,
+      "note": "Super +2.47 ALIGNED↑."
+    },
+    {
+      "t": "00005",
+      "mkt": "HK",
+      "name": "HSBC 汇丰",
+      "scan": 167.6,
+      "live": 164.9,
+      "day": -1.61,
+      "dlt": -1.61,
+      "note": "Super −0.28 ALIGNED↓."
+    },
+    {
+      "t": "00992",
+      "mkt": "HK",
+      "name": "Lenovo 联想",
+      "scan": 32.36,
+      "live": 30.36,
+      "day": -6.18,
+      "dlt": -6.18,
+      "note": "Prime Q100 CMF~0. No add."
+    },
+    {
+      "t": "00981",
+      "mkt": "HK",
+      "name": "SMIC 中芯",
+      "scan": 68.3,
+      "live": 65.35,
+      "day": -4.32,
+      "dlt": -4.32,
+      "note": "Stage 4 Super −5.7."
+    },
+    {
+      "t": "285A",
+      "mkt": "JP",
+      "name": "Kioxia キオクシア",
+      "scan": 59530,
+      "live": 57410,
+      "day": -3.56,
+      "dlt": -3.56,
+      "note": "Super +200 DIV↓in. Trail."
+    },
+    {
+      "t": "5803",
+      "mkt": "JP",
+      "name": "Fujikura フジクラ",
+      "scan": 5241,
+      "live": 5083,
+      "day": -3.01,
+      "dlt": -3.01,
+      "note": "Super +12 Red SSL."
+    },
+    {
+      "t": "5801",
+      "mkt": "JP",
+      "name": "Furukawa 古河電工",
+      "scan": 3840,
+      "live": 3666,
+      "day": -4.53,
+      "dlt": -4.53,
+      "note": "Super flipped OUT."
+    },
+    {
+      "t": "5016",
+      "mkt": "JP",
+      "name": "JX Metals",
+      "scan": 3685,
+      "live": 3726,
+      "day": 1.11,
+      "dlt": 1.11,
+      "note": "Super +13 Red SSL."
+    },
+    {
+      "t": "8309",
+      "mkt": "JP",
+      "name": "SMTG 三井住友トラスト",
+      "scan": 1782,
+      "live": 1756.5,
+      "day": -1.43,
+      "dlt": -1.43,
+      "note": "Prime Super OUT."
+    },
+    {
+      "t": "MU",
+      "mkt": "US",
+      "name": "Micron",
+      "scan": 1016.59,
+      "live": 1016.59,
+      "day": 6.1,
+      "dlt": 0.0,
+      "note": "Prime Super +279 $M. PRE bid 1024.8"
+    },
+    {
+      "t": "SNDK",
+      "mkt": "US",
+      "name": "SanDisk",
+      "scan": 1740.0,
+      "live": 1740.0,
+      "day": 11.9,
+      "dlt": 0.0,
+      "note": "Prime +12%"
+    },
+    {
+      "t": "CRWD",
+      "mkt": "US",
+      "name": "CrowdStrike",
+      "scan": 213.1,
+      "live": 213.1,
+      "day": -0.87,
+      "dlt": 0.0,
+      "note": "SELL Red SSL"
+    },
+    {
+      "t": "NVDA",
+      "mkt": "US",
+      "name": "NVIDIA",
+      "scan": 230.36,
+      "live": 230.36,
+      "day": 0.84,
+      "dlt": 0.0,
+      "note": "CMF −0.21"
+    },
+    {
+      "t": "AAPL",
+      "mkt": "US",
+      "name": "Apple",
+      "scan": 319.97,
+      "live": 319.97,
+      "day": -2.51,
+      "dlt": 0.0,
+      "note": "Super −9.5"
+    },
+    {
+      "t": "TSM",
+      "mkt": "US",
+      "name": "TSMC",
+      "scan": 428.91,
+      "live": 428.91,
+      "day": 2.85,
+      "dlt": 0.0,
+      "note": "Super DIV↑out"
+    },
+    {
+      "t": "TSLA",
+      "mkt": "US",
+      "name": "Tesla",
+      "scan": 354.08,
+      "live": 354.08,
+      "day": -5.92,
+      "dlt": 0.0,
+      "note": "SELL Stage 4"
+    }
+  ],
+  "macro": {
+    "hk": [
+      [
+        "USD/HKD Peg",
+        "7.84",
+        "⚠️ >7.83 weak-side"
+      ],
+      [
+        "VHSI",
+        "17.53",
+        "Normal <20"
+      ],
+      [
+        "Southbound",
+        "Net Buy 1.28B",
+        "FRESH 7 Sep"
+      ],
+      [
+        "HSI",
+        "25317 −0.38%",
+        "OpenD close"
+      ],
+      [
+        "HSTECH",
+        "4455 −1.61%",
+        "OpenD close"
+      ]
+    ],
+    "jp": [
+      [
+        "USD/JPY",
+        "153.9",
+        "Strengthening · exporter NO"
+      ],
+      [
+        "Nikkei VI",
+        "~32.9",
+        "ELEVATED · morning 27.2"
+      ],
+      [
+        "JGB 10Y",
+        "2.91%",
+        "−5.6 bp"
+      ],
+      [
+        "Nikkei",
+        "65269 −1.70%",
+        "close = low"
+      ],
+      [
+        "1321 ETF",
+        "67510 −1.73%",
+        "closed on low"
+      ]
+    ],
+    "us": [
+      [
+        "Session",
+        "PRE_MARKET",
+        "last RTH Fri 4 Sep"
+      ],
+      [
+        "US 2Y",
+        "4.34%",
+        "Rising +15 bp / 10-obs"
+      ],
+      [
+        "2Y10Y",
+        "43 bp",
+        "Flattening / Stable"
+      ],
+      [
+        "DXY",
+        "99.18 +0.02%",
+        "sideways-soft"
+      ],
+      [
+        "HYG",
+        "79.16 −0.06%",
+        "NEUTRAL vs SPY"
+      ],
+      [
+        "VIX",
+        "15.3",
+        "bare ELEVATED"
+      ],
+      [
+        "Regime",
+        "MIXED",
+        "scan CAUTION"
+      ]
+    ]
+  },
+  "overview_hk": [
+    "HSI −0.4 HSTECH −1.6. Tech Super OUT. Energy Super IN.",
+    "1729 Super left ALIGNED↓. Trail. NOT IN SCAN.",
+    "0883 Super +2.47 +3.9. 1088 Red SSL. Stubs SELL."
+  ],
+  "overview_jp": [
+    "UNFAVORABLE. Lunch +45 → close −1130 on the low. Yen 153.",
+    "285A Super lunch +23 → EOD +200. Price −3.6 DIV↓in. Trail.",
+    "5801 Super flipped OUT. 5803 Super IN Red SSL. 9984 +5.5 Super +53."
+  ],
+  "overview_us": [
+    "Last RTH: SMH/MU/SNDK melt-up, SPY/DIA/AAPL down. PRE MU/TSM bid higher.",
+    "Oil+Biotech dual STRONG+inflow = wrong leaders. Spring chop.",
+    "SMH +2.6% but RS21 36 and MA50 below. Do not chase."
+  ],
+  "elite": [
+    {
+      "rank": 1,
+      "mkt": "HK",
+      "t": "0992",
+      "q": 100,
+      "note": "CMF ~0. Live −6%. No add.",
+      "dlt": -6.18
+    },
+    {
+      "rank": 2,
+      "mkt": "HK",
+      "t": "1997",
+      "q": 96,
+      "note": "UNVERIFIED Red SSL.",
+      "dlt": 0.32
+    },
+    {
+      "rank": 1,
+      "mkt": "JP",
+      "t": "8309",
+      "q": 96,
+      "note": "Super OUT −1.4. No add.",
+      "dlt": -1.43
+    },
+    {
+      "rank": 2,
+      "mkt": "JP",
+      "t": "5831",
+      "q": 93,
+      "note": "Super OUT −2.4. No add.",
+      "dlt": -2.44
+    },
+    {
+      "rank": 1,
+      "t": "MU",
+      "mkt": "US",
+      "q": 91,
+      "pivot": -4.64,
+      "rs": 1.2,
+      "ssl": "Blue",
+      "cmf": 0.1195,
+      "dlt": 0.0,
+      "note": "Prime. Through pivot −4.64%. No chase."
+    },
+    {
+      "rank": 2,
+      "t": "SNDK",
+      "mkt": "US",
+      "q": 90,
+      "pivot": 0.0,
+      "rs": 0.1,
+      "ssl": "Blue",
+      "cmf": 0.1624,
+      "dlt": 0.0,
+      "note": "Prime. +11.9% at pivot. No chase."
+    }
+  ],
+  "strong": [
+    {
+      "rank": 1,
+      "mkt": "HK",
+      "t": "0005",
+      "name": "HSBC 汇丰",
+      "stage": "2",
+      "ssl": "Blue",
+      "note": "CMF +0.21 Super OUT. Peg.",
+      "act": "NO ADD",
+      "tone": "amber",
+      "dlt": -1.61
+    },
+    {
+      "rank": 1,
+      "mkt": "JP",
+      "t": "5016",
+      "name": "JX Metals",
+      "stage": "1/3",
+      "ssl": "Red",
+      "note": "Super +13 +1%. Red SSL.",
+      "act": "NO ADD",
+      "tone": "red",
+      "dlt": 1.11
+    },
+    {
+      "rank": 2,
+      "mkt": "JP",
+      "t": "6857",
+      "name": "Advantest",
+      "stage": "2",
+      "ssl": "Blue",
+      "note": "Super +26 last −2 DIV↓in.",
+      "act": "NO ADD",
+      "tone": "amber"
+    },
+    {
+      "rank": 1,
+      "t": "MRNA",
+      "mkt": "US",
+      "stage": "2",
+      "ssl": "Blue",
+      "cmf": 0.316,
+      "rs": 199.9,
+      "dlt": 0.0,
+      "act": "NO BUY",
+      "tone": "amber",
+      "name": "Moderna",
+      "note": "RS 200 · 1 wave. No buy."
+    },
+    {
+      "rank": 2,
+      "t": "VLO",
+      "mkt": "US",
+      "stage": "2",
+      "ssl": "Blue",
+      "cmf": 0.33,
+      "rs": 38.1,
+      "dlt": 0.0,
+      "act": "no add",
+      "tone": "amber",
+      "name": "Valero",
+      "note": "Oil warning. No add."
+    }
+  ],
+  "actionable": [
+    {
+      "rank": 1,
+      "mkt": "HK",
+      "t": "—",
+      "act": "NO NEW",
+      "why": "MIXED + peg HIGH."
+    },
+    {
+      "rank": 2,
+      "mkt": "HK",
+      "t": "1729",
+      "act": "TRAIL",
+      "why": "Super OUT. NOT IN SCAN."
+    },
+    {
+      "rank": 3,
+      "mkt": "HK",
+      "t": "stubs",
+      "act": "SELL",
+      "why": "SELL leftover stubs."
+    },
+    {
+      "rank": 1,
+      "mkt": "JP",
+      "t": "—",
+      "act": "NO NEW",
+      "why": "UNFAVORABLE. Close on low."
+    },
+    {
+      "rank": 2,
+      "mkt": "JP",
+      "t": "285A",
+      "act": "TRAIL / no add",
+      "why": "Super +200 DIV↓in."
+    },
+    {
+      "rank": 3,
+      "mkt": "JP",
+      "t": "5803",
+      "act": "HOLD / no add",
+      "why": "Super +12 Red SSL."
+    },
+    {
+      "rank": 1,
+      "t": "CRWD",
+      "mkt": "US",
+      "act": "SELL",
+      "why": "Red SSL. SELL."
+    },
+    {
+      "rank": 2,
+      "t": "TSLA",
+      "mkt": "US",
+      "act": "SELL",
+      "why": "Stage 4 · day −5.9%"
+    },
+    {
+      "rank": 3,
+      "t": "—",
+      "mkt": "US",
+      "act": "NO NEW",
+      "why": "MIXED + dual warning + Spring chop"
+    }
+  ],
+  "focus": [
+    {
+      "rank": 1,
+      "mkt": "HK",
+      "t": "1729",
+      "note": "Trail. Super left."
+    },
+    {
+      "rank": 2,
+      "mkt": "HK",
+      "t": "0883",
+      "note": "Super +2.5. No chase."
+    },
+    {
+      "rank": 3,
+      "mkt": "JP",
+      "t": "285A",
+      "note": "Super +200. Price −3.6."
+    },
+    {
+      "rank": 4,
+      "mkt": "JP",
+      "t": "5803",
+      "note": "Super +12 Red SSL."
+    },
+    {
+      "rank": 5,
+      "mkt": "JP",
+      "t": "5801",
+      "note": "Super OUT."
+    },
+    {
+      "rank": 6,
+      "mkt": "HK",
+      "t": "stubs",
+      "note": "SELL lots."
+    },
+    {
+      "rank": 1,
+      "t": "CRWD",
+      "mkt": "US",
+      "note": "Red SSL"
+    },
+    {
+      "rank": 2,
+      "t": "TSLA",
+      "mkt": "US",
+      "note": "Stage 4"
+    },
+    {
+      "rank": 3,
+      "t": "MU",
+      "mkt": "US",
+      "note": "Prime no chase"
+    },
+    {
+      "rank": 4,
+      "t": "TSM",
+      "mkt": "US",
+      "note": "DIV↑out"
+    },
+    {
+      "rank": 5,
+      "t": "SPY",
+      "mkt": "US",
+      "note": "Spring gate"
+    },
+    {
+      "rank": 6,
+      "t": "XLE",
+      "mkt": "US",
+      "note": "dual warning"
+    }
+  ],
+  "risks": [
+    {
+      "sev": "HIGH",
+      "mkt": "HK",
+      "risk": "Peg 7.84",
+      "act": "No new size"
+    },
+    {
+      "sev": "HIGH",
+      "mkt": "JP",
+      "risk": "UNFAVORABLE close on low + yen 153",
+      "act": "No new"
+    },
+    {
+      "sev": "HIGH",
+      "mkt": "JP",
+      "risk": "285A Super IN / price OUT",
+      "act": "Trail. Not a dip-buy"
+    },
+    {
+      "sev": "HIGH",
+      "mkt": "HK",
+      "risk": "1729 Super left + stubs",
+      "act": "TRAIL 1729. SELL stubs"
+    },
+    {
+      "sev": "HIGH",
+      "mkt": "US",
+      "risk": "Oil+Biotech dual inflow",
+      "act": "Do not chase XLE/XBI"
+    },
+    {
+      "sev": "HIGH",
+      "risk": "Oil+Biotech dual STRONG+inflow",
+      "act": "Do not chase XLE/XBI",
+      "mkt": "US"
+    },
+    {
+      "sev": "HIGH",
+      "risk": "10Y+30Y 10-obs Δ both > 0",
+      "act": "Duration headwind",
+      "mkt": "US"
+    },
+    {
+      "sev": "HIGH",
+      "risk": "MIXED + thin Elite MU/SNDK",
+      "act": "No new size",
+      "mkt": "US"
+    },
+    {
+      "sev": "HIGH",
+      "risk": "CRWD Red + TSLA Stage 4",
+      "act": "SELL both",
+      "mkt": "US"
+    },
+    {
+      "sev": "MED",
+      "risk": "IWM Super −37 + Spring chop",
+      "act": "Slow down",
+      "mkt": "US"
+    }
+  ],
+  "clock": [
+    {
+      "t": "Now",
+      "task": "Tue 8 Sep 19:51 HKT · HK CLOSED · JP CLOSED · US PRE_MARKET"
+    },
+    {
+      "t": "21:30 HKT",
+      "task": "US RTH open — do not MOO MU/SNDK"
+    },
+    {
+      "t": "HK / JP",
+      "task": "No add. Trail 1729 / 285A. SELL leftover stubs."
+    },
+    {
+      "t": "Asia Wed",
+      "task": "285A no add unless Super stays IN and MU is stable"
+    }
+  ],
+  "rules": [
+    "UNFAVORABLE = half-size max. Prefer zero.",
+    "MIXED + peg = no new HK.",
+    "Super out + price down = cut not dip-buy.",
+    "Red SSL + Super IN = hold/no-add.",
+    "HK/JP stop = all whole lots.",
+    "Paper SIMULATE is not REAL.",
+    "Super out + price down = cut, not dip-buy",
+    "Bounce without Super reclaim is not a buy",
+    "US stop ≥95% of shares",
+    "MIXED = highest RS only, confirm volume",
+    "Oil+biotech dual inflow is a warning, not a buy"
+  ],
+  "avoid": [
+    "Do not buy 285A Super as a dip.",
+    "Do not chase 0883 +4.",
+    "Do not add 1729 Super OUT.",
+    "Do not buy Nikkei close on the low.",
+    "Do not chase XLE/XBI.",
+    "XLE/XOP/OIH/XBI/OVV/FANG — dual warning, not buys",
+    "Do not chase MU/SNDK PRE",
+    "Do not add NVDA CMF −0.21 or TSM Super out",
+    "Do not treat SMH +2.6 as RS leadership"
+  ],
+  "half_size": "MIXED → selective highest RS. Confirm volume. Today: no new buy.",
+  "spring_skip": false,
+  "spring_answer": "Agree chop + IWM lag + slow down. Disagree: SELL CRWD; no buy GEV/XLE; no chase MU.",
+  "spring_detail": "Oil hedge already on (VLO). TSM Super DIV↑out. GEV Strong Red Stage 1/3.",
+  "spring": [
+    {
+      "aspect": "Macro",
+      "summary": "Chop until SPX trendline break. IWM lag. 2Y+10Y up. Smaller size.",
+      "view": "Agree",
+      "agree": "Y"
+    },
+    {
+      "aspect": "Sectors",
+      "summary": "Oil hedge. AI hardware bounce, base not done. TSM tell.",
+      "view": "Oil=hedge not chase",
+      "agree": "partial"
+    },
+    {
+      "aspect": "Risk",
+      "summary": "3–5d setups fade. Fake breaks both ways.",
+      "view": "Agree. Elite thin.",
+      "agree": "Y"
+    },
+    {
+      "aspect": "Book",
+      "summary": "Spring: trail oil, don't short.",
+      "view": "SELL CRWD/TSLA. No MU chase.",
+      "agree": "N"
+    }
+  ],
+  "sectors": [
+    {
+      "rank": 1,
+      "etf": "GDX",
+      "sector": "Gold miners",
+      "rs": 100,
+      "cmf": 0.13,
+      "ma50": "ABOVE",
+      "note": "defensive metals"
+    },
+    {
+      "rank": 2,
+      "etf": "XOP",
+      "sector": "Oil E&P",
+      "rs": 95,
+      "cmf": 0.248,
+      "ma50": "ABOVE",
+      "note": "oil warning"
+    },
+    {
+      "rank": 3,
+      "etf": "XLE",
+      "sector": "Energy",
+      "rs": 92,
+      "cmf": 0.244,
+      "ma50": "ABOVE",
+      "note": "dual warning"
+    },
+    {
+      "rank": 4,
+      "etf": "OIH",
+      "sector": "Oil services",
+      "rs": 87,
+      "cmf": 0.161,
+      "ma50": "ABOVE",
+      "note": "agrees XLE"
+    },
+    {
+      "rank": 5,
+      "etf": "XBI",
+      "sector": "Biotech",
+      "rs": 79,
+      "cmf": 0.245,
+      "ma50": "ABOVE",
+      "note": "dual warning"
+    },
+    {
+      "rank": 6,
+      "etf": "XLK",
+      "sector": "Tech",
+      "rs": 56,
+      "cmf": -0.039,
+      "ma50": "ABOVE",
+      "note": "lag"
+    }
+  ],
+  "sectors_lag": [
+    {
+      "etf": "SMH",
+      "rs": 36,
+      "note": "price +2.6 vs RS21 36"
+    },
+    {
+      "etf": "IWM",
+      "rs": 38,
+      "note": "Super −37 DIV↑out"
+    }
+  ],
+  "sector_takeaway": "Energy/biotech/gold lead RS21. SMH RS21 36 vs price +2.6% = melt-up not RS leadership.",
+  "earnings_note": "MU 2026-09-22–23 UNCONFIRMED · EARNINGS RISK."
+}

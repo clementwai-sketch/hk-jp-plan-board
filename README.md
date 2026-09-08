@@ -1,23 +1,33 @@
-# HK + JP plan board
+# HK · JP · US desk board
 
-Free static site for the desk React HTML dashboard.
+One public site. Chips **HK · JP · US · All** (hash `#HK` `#JP` `#US` `#ALL`).
 
 **Live:** https://clementwai-sketch.github.io/hk-jp-plan-board/
 
-- HK+JP homepage: `index.html` — JP midday 8 Sep 2026 (lunch). Morning: `archive/hk-jp-2026-09-08-morning.html`
-- US: [us.html](https://clementwai-sketch.github.io/hk-jp-plan-board/us.html) — Tue 8 Sep 2026 PRE_MARKET. Archive: `archive/us-2026-09-08.html`
+Latest plug: **Tue 8 Sep 2026** — HK+JP EOD + US PRE_MARKET. JSX is frozen; only `window.__DATA__` / `data.json` changes.
+
+- Home: `index.html`
+- US deep-link: [us.html](https://clementwai-sketch.github.io/hk-jp-plan-board/us.html) → `#US`
+- Payload: `data.json`
+- Prior boards: `archive/`
 
 ## What this is
 
 Standalone HTML. React + Tailwind from CDN. No server, no API keys, no build step.
 
-Not investment advice. Holdings / Portfolio Watch, share counts, and account IDs are not in this public copy.
+Not investment advice. Holdings / Portfolio Watch, share counts, and account IDs are not in this public copy. HK, JP, and US stay in separate lists.
 
-## Update the board
+## Plug next session (desk)
 
-Replace `index.html` with the latest HK+JP React board after stripping Portfolio / MTM / qty / CBBC / local paths. Do **not** overwrite `index.html` with a US board — US goes to `us.html` with the same strip.
+Edit `data.json` (or `vcp-scanner/Dashboard/desk_board_data.json`), then:
 
-Then push `main`. GitHub Pages rebuilds in about a minute.
+```bash
+python3 scripts/plug_desk_board.py \
+  --data Dashboard/desk_board_data.json \
+  --out Dashboard/Desk_Board_React_YYYY-MM-DD.html
+```
+
+Copy the plugged HTML over `index.html` and push `main`. Do not put Portfolio / qty / cost / CBBC / `IN BOOK` / `/Users/` paths in the JSON.
 
 ## Pages
 
