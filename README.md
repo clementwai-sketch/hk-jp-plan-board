@@ -8,11 +8,17 @@ Free static site for the desk React HTML dashboard.
 
 One standalone HTML file (`index.html`). React + Tailwind load from CDN. No server, no API keys, no build step.
 
-Not investment advice. Share counts and account IDs are not in this public copy.
+Not investment advice. Holdings / Portfolio Watch, share counts, and account IDs are not in this public copy.
 
 ## Update the board
 
-Replace `index.html` with the latest `HK_JP_Trading_Plan_React_YYYY-MM-DD.html` (strip local paths / qty / paper acc first), then push `main`. GitHub Pages rebuilds in about a minute.
+Replace `index.html` with the latest `HK_JP_Trading_Plan_React_YYYY-MM-DD.html` after stripping:
+
+- Portfolio tab / `portfolio` rows / MTM / open P&L / qty / CBBC Dist-to-Kill
+- “IN BOOK” / “held in book”
+- local paths, share counts, paper NAV, account ids, CBBC codes
+
+Then push `main`. GitHub Pages rebuilds in about a minute. Do not overwrite `index.html` with a US board.
 
 ## Pages
 
