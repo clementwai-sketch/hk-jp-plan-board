@@ -4,6 +4,8 @@ Free static site for the desk React HTML dashboard.
 
 **Live:** https://clementwai-sketch.github.io/hk-jp-plan-board/
 
+Current board: JP midday 8 Sep 2026 (lunch). Morning HK+JP: `archive/hk-jp-2026-09-08-morning.html`.
+
 ## What this is
 
 One standalone HTML file (`index.html`). React + Tailwind load from CDN. No server, no API keys, no build step.
