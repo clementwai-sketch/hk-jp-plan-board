@@ -4,7 +4,7 @@ One public site. Chips **HK · JP · US · All** (hash `#HK` `#JP` `#US` `#ALL`)
 
 **Live:** https://clementwai-sketch.github.io/hk-jp-plan-board/
 
-Latest plug: **Thu 10 Sep 2026** — HK+JP morning (US overnight). JSX is frozen; only `window.__DATA__` / `data.json` changes.
+Latest plug: **Thu 10 Sep 2026** — US evening (HK/JP morning kept). JSX is frozen; only `window.__DATA__` / `data.json` changes.
 
 - Home: `index.html`
 - US deep-link: [us.html](https://clementwai-sketch.github.io/hk-jp-plan-board/us.html) → `#US`
