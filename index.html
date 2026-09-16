@@ -46,6 +46,10 @@ tr:hover td{background:rgba(30,41,59,.4)}
 .hi-elite{box-shadow:inset 0 0 0 1px #166534}
 .mkt-label{display:flex;align-items:center;gap:.45rem;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:#7dd3fc;font-weight:700;padding:.15rem .15rem .35rem}
 .mkt-count{font-size:.65rem;font-weight:600;color:#64748b;letter-spacing:0}
+.flow-grid{display:grid;grid-template-columns:1fr;gap:.75rem}
+@media(min-width:900px){.flow-grid{grid-template-columns:1fr 1fr}}
+.flow-card{background:linear-gradient(180deg,#0f172a,#0b1220);border:1px solid #1e2937;border-radius:1rem;padding:.65rem .4rem .35rem}
+.flow-title{font-size:.72rem;color:#cbd5e1;font-weight:600;padding:0 .55rem .3rem}
 @media(max-width:640px){table{min-width:520px}h1{font-size:1.35rem!important}}
 </style>
 </head>
@@ -55,9 +59,9 @@ tr:hover td{background:rgba(30,41,59,.4)}
 <script>
 window.__DATA__ = {
   "date": "2026-09-16",
-  "generated": "2026-09-16 12:10 HKT",
-  "asof": "2026-09-16 12:10 HKT",
-  "opend_ts": "2026-09-16 12:10 HKT",
+  "generated": "2026-09-16 12:33 HKT",
+  "asof": "2026-09-16 12:33 HKT",
+  "opend_ts": "2026-09-16 12:33 HKT",
   "opend_connected": true,
   "title": "HK · JP",
   "session_hk": "REST",
@@ -72,9 +76,9 @@ window.__DATA__ = {
   "warning": "⚠️ US MAJOR INDICES ALL DOWN — HK/JP LIKELY OPEN LOWER · ⚠️ 10Y SPIKE — reduce growth / tech / testers · ⚠️ OIL LEADING WITH INFLOW — geopolitics / sticky-inflation tell. Watch 10Y/30Y. Not a buy-XLE signal.",
   "stance": "HK MIXED · JP UNFAVORABLE. Public board — no book.",
   "summary": "⚠️ US MAJOR INDICES ALL DOWN — HK/JP LIKELY OPEN LOWER · ⚠️ 10Y SPIKE — reduce growth / tech / testers · ⚠️ OIL LEADING WITH INFLOW — geopolitics / sticky-inflation tell. Watch 10Y/30Y. Not a buy-XLE signal.",
-  "alert_banner": "2026-09-16 12:10 HKT. HK REST · JP AFTERNOON · US AFTER_HOURS_END. OpenD CONNECTED. Scan Scan_Package_Grok_HK_2026-09-15.csv / Scan_Package_Grok_JP_2026-09-15.csv.",
+  "alert_banner": "2026-09-16 12:33 HKT. HK REST · JP AFTERNOON · US AFTER_HOURS_END. OpenD CONNECTED. Scan Scan_Package_Grok_HK_2026-09-15.csv / Scan_Package_Grok_JP_2026-09-15.csv.",
   "disclaimer": "Not investment advice. Public scan/regime board. No holdings or account ids. Day% Western (green=up).",
-  "source": "pack 2026-09-16 12:10 HKT. FRED 2026-09-14. Public strip. No holdings.",
+  "source": "pack 2026-09-16 12:33 HKT. FRED 2026-09-14. Public strip. No holdings.",
   "bank_note": "Holdings are not on this public board.",
   "cbbc_note": "",
   "elite_note": "HK prime90 1. JP prime75 0.",
@@ -241,15 +245,15 @@ window.__DATA__ = {
     {
       "name": "HHI mini",
       "mkt": "HK",
-      "last": 8208.0,
-      "chg_pct": -0.05,
+      "last": 8205.0,
+      "chg_pct": -0.09,
       "note": "not cash scale"
     },
     {
       "name": "HTI fut",
       "mkt": "HK",
-      "last": 4333.0,
-      "chg_pct": 0.77,
+      "last": 4334.0,
+      "chg_pct": 0.79,
       "note": ""
     },
     {
@@ -357,9 +361,9 @@ window.__DATA__ = {
       "mkt": "JP",
       "name": "KIOXIA HOLDINGS CORPORATION",
       "scan": 51750.0,
-      "live": 50180.0,
-      "day": -3.03,
-      "dlt": 3.03,
+      "live": 50040.0,
+      "day": -3.3,
+      "dlt": 3.3,
       "note": "Red Super -150.49"
     },
     {
@@ -367,9 +371,9 @@ window.__DATA__ = {
       "mkt": "JP",
       "name": "JX ADVANCED METALS CORPORATION",
       "scan": 3654.0,
-      "live": 3644.0,
-      "day": -0.27,
-      "dlt": 0.27,
+      "live": 3632.0,
+      "day": -0.6,
+      "dlt": 0.6,
       "note": "Red Super -3.08"
     },
     {
@@ -377,9 +381,9 @@ window.__DATA__ = {
       "mkt": "JP",
       "name": "FURUKAWA ELECTRIC CO",
       "scan": 3719.0,
-      "live": 3787.0,
-      "day": 1.83,
-      "dlt": 1.83,
+      "live": 3774.0,
+      "day": 1.48,
+      "dlt": 1.48,
       "note": "Red Super 0.00"
     },
     {
@@ -387,9 +391,9 @@ window.__DATA__ = {
       "mkt": "JP",
       "name": "FUJIKURA",
       "scan": 4744.0,
-      "live": 4847.0,
-      "day": 2.17,
-      "dlt": 2.17,
+      "live": 4826.0,
+      "day": 1.73,
+      "dlt": 1.73,
       "note": "Red Super -7.75"
     },
     {
@@ -397,9 +401,9 @@ window.__DATA__ = {
       "mkt": "JP",
       "name": "SUMITOMO MITSUI TRUST GP INC",
       "scan": 1773.0,
-      "live": 1789.5,
-      "day": 0.93,
-      "dlt": 0.93,
+      "live": 1788.5,
+      "day": 0.87,
+      "dlt": 0.87,
       "note": "Blue Super 1.14"
     },
     {
@@ -407,9 +411,9 @@ window.__DATA__ = {
       "mkt": "JP",
       "name": "TOYOTA TSUSHO CORP",
       "scan": 7329.0,
-      "live": 7412.0,
-      "day": 1.13,
-      "dlt": 1.13,
+      "live": 7393.0,
+      "day": 0.87,
+      "dlt": 0.87,
       "note": "Red Super 2.27"
     }
   ],
@@ -855,7 +859,165 @@ window.__DATA__ = {
     "pct": 0,
     "open_vol": 0,
     "note": ""
-  }
+  },
+  "flow_cores": [
+    {
+      "t": "01088",
+      "mkt": "HK",
+      "super": 0.05,
+      "day": -0.92
+    },
+    {
+      "t": "01729",
+      "mkt": "HK",
+      "super": 0.02,
+      "day": 6.53
+    },
+    {
+      "t": "00883",
+      "mkt": "HK",
+      "super": -0.99,
+      "day": -0.98
+    },
+    {
+      "t": "00388",
+      "mkt": "HK",
+      "super": -0.07,
+      "day": 0.66
+    },
+    {
+      "t": "00700",
+      "mkt": "HK",
+      "super": -0.45,
+      "day": -0.91
+    },
+    {
+      "t": "01347",
+      "mkt": "HK",
+      "super": 1.92,
+      "day": 7.19
+    },
+    {
+      "t": "00005",
+      "mkt": "HK",
+      "super": 0.0,
+      "day": 0.56
+    },
+    {
+      "t": "00981",
+      "mkt": "HK",
+      "super": 0.96,
+      "day": 5.02
+    },
+    {
+      "t": "01888",
+      "mkt": "HK",
+      "super": 0.17,
+      "day": 1.68
+    },
+    {
+      "t": "00019",
+      "mkt": "HK",
+      "super": null,
+      "day": 0.5
+    },
+    {
+      "t": "00992",
+      "mkt": "HK",
+      "super": 1.09,
+      "day": 7.05
+    },
+    {
+      "t": "02388",
+      "mkt": "HK",
+      "super": null,
+      "day": 0.2
+    },
+    {
+      "t": "01997",
+      "mkt": "HK",
+      "super": null,
+      "day": -0.13
+    },
+    {
+      "t": "02319",
+      "mkt": "HK",
+      "super": null,
+      "day": null
+    },
+    {
+      "t": "285A",
+      "mkt": "JP",
+      "super": -150.49,
+      "day": -3.3
+    },
+    {
+      "t": "5016",
+      "mkt": "JP",
+      "super": -3.08,
+      "day": -0.6
+    },
+    {
+      "t": "5801",
+      "mkt": "JP",
+      "super": 0.0,
+      "day": 1.48
+    },
+    {
+      "t": "5803",
+      "mkt": "JP",
+      "super": -7.75,
+      "day": 1.73
+    },
+    {
+      "t": "8309",
+      "mkt": "JP",
+      "super": 1.14,
+      "day": 0.87
+    },
+    {
+      "t": "8015",
+      "mkt": "JP",
+      "super": 2.27,
+      "day": 0.87
+    },
+    {
+      "t": "8001",
+      "mkt": "JP",
+      "super": null,
+      "day": 0.41
+    },
+    {
+      "t": "9101",
+      "mkt": "JP",
+      "super": null,
+      "day": 1.91
+    },
+    {
+      "t": "4502",
+      "mkt": "JP",
+      "super": null,
+      "day": -0.32
+    },
+    {
+      "t": "6857",
+      "mkt": "JP",
+      "super": null,
+      "day": 0.93
+    },
+    {
+      "t": "8411",
+      "mkt": "JP",
+      "super": null,
+      "day": 0.4
+    },
+    {
+      "t": "5831",
+      "mkt": "JP",
+      "super": 0.64,
+      "day": -0.28
+    }
+  ]
 };
 </script>
 <!-- END_DATA -->
@@ -941,6 +1103,74 @@ function MktSplit({mkt, rows, render, empty, extra, keys}) {
           </div>
         );
       })}
+    </div>
+  );
+}
+
+function asiaFill(v) {
+  if (v > 0) return '#f87171';
+  if (v < 0) return '#4ade80';
+  return '#64748b';
+}
+
+function FlowBarChart({rows, field, title, unit, sortAbs, fmt}) {
+  const data = (rows || []).filter((r) => r && Number.isFinite(+r[field]));
+  if (!data.length) {
+    return (
+      <div className="flow-card">
+        <div className="flow-title">{title}</div>
+        <p className="text-xs text-slate-500 px-2 pb-2">No {field}.</p>
+      </div>
+    );
+  }
+  const sorted = data.slice().sort((a, b) => (
+    sortAbs ? (Math.abs(+b[field]) - Math.abs(+a[field])) : (+b[field] - +a[field])
+  ));
+  const maxAbs = Math.max(0.01, ...sorted.map((r) => Math.abs(+r[field])));
+  const W = 480;
+  const labelW = 52;
+  const rightPad = 62;
+  const barH = 22;
+  const top = 6;
+  const plotW = W - labelW - rightPad;
+  const H = top + sorted.length * barH + 22;
+  const xOf = (v) => labelW + ((v + maxAbs) / (2 * maxAbs)) * plotW;
+  const zero = xOf(0);
+  const lab = (t) => {
+    const s = String(t == null ? '' : t);
+    return /^\d{5}$/.test(s) ? s.slice(1) : s;
+  };
+  return (
+    <div className="flow-card">
+      <div className="flow-title">{title}</div>
+      <svg viewBox={'0 0 ' + W + ' ' + H} width="100%" height={H} role="img" aria-label={title}>
+        <line x1={zero} y1={top} x2={zero} y2={top + sorted.length * barH} stroke="#334155" strokeWidth="1"/>
+        {sorted.map((r, i) => {
+          const v = +r[field];
+          const y = top + i * barH + 4;
+          const x = xOf(v);
+          const xBar = Math.min(x, zero);
+          const w = Math.max(1, Math.abs(x - zero));
+          let labelX = v >= 0 ? x + 4 : x - 4;
+          let anchor = v >= 0 ? 'start' : 'end';
+          if (v < 0 && labelX < labelW + 2) {
+            labelX = xBar + 6;
+            anchor = 'start';
+          }
+          if (v >= 0 && labelX > W - 10) {
+            labelX = x - 4;
+            anchor = 'end';
+          }
+          return (
+            <g key={(r.t || i) + '-' + field}>
+              <text x={labelW - 8} y={y + 11} textAnchor="end" fill="#94a3b8" fontSize="11" fontFamily="Inter,system-ui,sans-serif">{lab(r.t)}</text>
+              <rect x={xBar} y={y} width={w} height={14} rx="3" fill={asiaFill(v)}/>
+              <text x={labelX} y={y + 11} textAnchor={anchor} fill="#e2e8f0" fontSize="10" fontFamily="Inter,system-ui,sans-serif">{fmt(v)}</text>
+            </g>
+          );
+        })}
+        <text x={zero} y={H - 6} textAnchor="middle" fill="#64748b" fontSize="10">0</text>
+      </svg>
     </div>
   );
 }
@@ -1163,6 +1393,39 @@ function App() {
               </div>
             </div>
             <p className="text-xs text-amber-200/90 p-2">{D.us_ovn_call}</p>
+          </Section>
+          <Section title="Core Super / Day%" icon="fa-chart-bar">
+            <p className="text-xs text-slate-500 mb-2">Bars are Asia tape: red = IN / up · green = OUT / down. Super in 亿. HK and JP never mix. Table Day% below stays Western (green=up).</p>
+            {mkt === 'US' ? (
+              <div className="card p-3 text-xs text-slate-500">US Super is on the overnight card ($M), not 亿 cores.</div>
+            ) : (
+              <MktSplit
+                mkt={mkt}
+                rows={D.flow_cores || []}
+                keys={mkt === 'ALL' ? ['HK', 'JP'] : [mkt]}
+                empty={(k) => <div className="card p-3 text-xs text-slate-500">No {k} core flow.</div>}
+                render={(part, k) => (
+                  <div className="flow-grid">
+                    <FlowBarChart
+                      rows={part}
+                      field="super"
+                      title={k + ' cores Super 亿 · red=IN · green=OUT'}
+                      unit="亿"
+                      sortAbs={true}
+                      fmt={(v) => (v >= 0 ? '+' : '') + Number(v).toFixed(2)}
+                    />
+                    <FlowBarChart
+                      rows={part}
+                      field="day"
+                      title={k + ' cores Day% · red=up · green=down'}
+                      unit="%"
+                      sortAbs={false}
+                      fmt={(v) => (v >= 0 ? '+' : '') + Number(v).toFixed(2) + '%'}
+                    />
+                  </div>
+                )}
+              />
+            )}
           </Section>
           <Section title="Mid-day snapshot" icon="fa-satellite-dish">
             <div className="card p-3 mb-2 flex flex-wrap items-center justify-between gap-2">
