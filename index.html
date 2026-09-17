@@ -58,54 +58,59 @@ tr:hover td{background:rgba(30,41,59,.4)}
 <!-- START_DATA -->
 <script>
 window.__DATA__ = {
-  "date": "2026-09-17",
-  "generated": "2026-09-17 18:36 HKT",
-  "asof": "2026-09-17 18:36 HKT",
-  "opend_ts": "2026-09-17 18:36 HKT",
+  "date": "2026-09-18",
+  "weekday": "Friday",
+  "generated": "2026-09-18 07:51 HKT",
+  "asof": "2026-09-18 07:51 HKT",
+  "opend_ts": "2026-09-18 07:51 HKT",
   "opend_connected": true,
-  "title": "HK · JP · US",
+  "title": "HK · JP",
   "session_hk": "CLOSED",
-  "session_jp": "CLOSED",
-  "session_us": "PRE_MARKET_BEGIN",
+  "session_jp": "WAITING_OPEN",
+  "session_us": "AFTER_HOURS_BEGIN",
   "hk_regime": "UNFAVORABLE",
   "jp_regime": "UNFAVORABLE",
   "jp_regime_tone": "red",
-  "us_regime": "MIXED",
+  "us_regime": "overnight gate",
   "us_regime_tone": "amber",
-  "verdict": "MIXED. No new US entries. 10Y SPIKE. Cash if bounce fails.",
+  "verdict": "285A: hold/no-add off overnight. See local Portfolio_Review.",
   "warning": "⚠️ 10Y SPIKE — reduce growth / tech / testers · Oil/Biotech quiet (or price without flow) — no dual warning.",
   "stance": "HK UNFAVORABLE · JP UNFAVORABLE. Public board — no book.",
   "summary": "⚠️ 10Y SPIKE — reduce growth / tech / testers · Oil/Biotech quiet (or price without flow) — no dual warning.",
-  "alert_banner": "2026-09-17 18:36 HKT. HK CLOSED · JP CLOSED · US PRE_MARKET_BEGIN. OpenD CONNECTED. Scan Scan_Package_Grok_HK_2026-09-17.csv / Scan_Package_Grok_JP_2026-09-17.csv.",
+  "alert_banner": "2026-09-18 07:51 HKT. HK CLOSED · JP WAITING_OPEN · US AFTER_HOURS_BEGIN. OpenD CONNECTED. Scan Scan_Package_Grok_HK_2026-09-17.csv / Scan_Package_Grok_JP_2026-09-17.csv.",
   "disclaimer": "Not investment advice. Public scan/regime board. No holdings or account ids. Day% Western (green=up).",
-  "source": "pack 2026-09-17 18:36 HKT. FRED 2026-09-15. Public strip. No holdings.",
+  "source": "pack 2026-09-18 07:51 HKT. FRED 2026-09-16. Public strip. No holdings.",
   "bank_note": "Holdings are not on this public board.",
   "cbbc_note": "",
-  "elite_note": "HK prime90 1. JP prime75 0. US Prime 0.",
+  "elite_note": "HK prime90 1. JP prime75 0.",
   "snapshot_note": "Live = OpenD snap. Scan = Grok core. Public board has no qty/cost.",
-  "us_ovn_banner": "US majors not all down. QQQ/SMH green, SPY/DIA/IWM red.",
+  "us_ovn_banner": "US majors not all down.",
   "us_ovn_tone": "amber",
-  "us_ovn_call": "285A Red SSL cut. Optics up — 5801/5803 no-add.",
+  "us_ovn_call": "285A: hold/no-add off overnight. See local Portfolio_Review.",
   "cross_market": "HK / JP lists never merge. Book is local-only.",
   "yields_line": "⚠️ 10Y SPIKE — reduce growth / tech / testers Duration headwind (10Y and 30Y 10d Δ both > 0).",
   "oil_biotech_warn": "Oil/Biotech quiet (or price without flow) — no dual warning.",
-  "emerging_note": "HK 1 · JP 2. Not a buy. US 5. Not a buy.",
-  "cup_note": "C&H asof 2026-09-17. Research only. Not a buy.",
-  "spring_skip": false,
-  "spring_answer": "Partial. Software yes. Healthcare flow no. Do not buy AMD SMTC BE.",
-  "spring_detail": "MIXED half-size. Cash if bounce fails.",
+  "emerging_note": "HK 1 · JP 2. Not a buy.",
+  "cup_note": "C&H cup_handle_hits_2026-09-17.csv. Research only. Not a buy.",
+  "spring_skip": true,
+  "spring_answer": "",
+  "spring_detail": "",
   "mtm_note": "Public board has no MTM.",
   "mtm_net": "—",
   "smm_open_pl": "—",
   "smm_open_note": "",
   "vol5d_note": "",
   "auction_note": "",
-  "half_size": "SELECTIVE ENTRIES ONLY — HIGHEST RS NAMES ONLY. CONFIRM VOLUME BEFORE ENTRY.",
-  "sector_takeaway": "IGV RS21 92 software. XLV CMF dist. SMH RS21 28 no chase.",
+  "half_size": "UNFAVORABLE → half-size.",
+  "sector_takeaway": "",
   "header_pills": [
     {
       "lab": "OpenD CONNECTED",
       "tone": "green"
+    },
+    {
+      "lab": "Friday · no new longs",
+      "tone": "amber"
     },
     {
       "lab": "HK UNFAVORABLE",
@@ -116,25 +121,25 @@ window.__DATA__ = {
       "tone": "red"
     },
     {
-      "lab": "US MIXED",
+      "lab": "US mixed",
       "tone": "amber"
     }
   ],
   "yields": [
     {
       "name": "US 10Y",
-      "last": "5.00%",
-      "sess": "2026-09-15",
-      "d10": 25.0,
-      "d30": 30.0,
+      "last": "5.01%",
+      "sess": "2026-09-16",
+      "d10": 22.0,
+      "d30": 38.0,
       "read": "SPIKE"
     },
     {
       "name": "US 30Y",
-      "last": "5.36%",
-      "sess": "2026-09-15",
-      "d10": 11.0,
-      "d30": 13.0,
+      "last": "5.35%",
+      "sess": "2026-09-16",
+      "d10": 8.0,
+      "d30": 17.0,
       "read": ""
     }
   ],
@@ -142,129 +147,88 @@ window.__DATA__ = {
     {
       "sleeve": "Oil",
       "etf": "XLE",
-      "last": 64.03,
-      "day": -2.88,
+      "last": 64.48,
+      "day": 0.7,
       "rs5": 54.0,
       "rs21": 90.0,
       "ma50": "ABOVE +5.1%",
       "cmf": -0.117,
-      "super": -72.97,
+      "super": -2.76,
       "tag": "STRONG"
     },
     {
       "sleeve": "Biotech",
       "etf": "XBI",
-      "last": 154.18,
-      "day": 0.1,
+      "last": 158.25,
+      "day": 2.64,
       "rs5": 28.0,
       "rs21": 64.0,
       "ma50": "BELOW -2.2%",
       "cmf": 0.021,
-      "super": -10.81,
+      "super": -3.05,
       "tag": "IN"
     }
   ],
-  "spring": [
-    {
-      "aspect": "Macro View",
-      "summary": "FOMC hike priced. Bounce 1-3d or stay cash.",
-      "view": "10Y +25bp SPIKE. SPY still below 10d 763."
-    },
-    {
-      "aspect": "Sector Calls",
-      "summary": "Software + healthcare; AMD SMTC BE.",
-      "view": "IGV RS21 92 yes. XLV CMF dist. AMD/BE not high-RS."
-    },
-    {
-      "aspect": "Key Risk Flags",
-      "summary": "Weak bounce + fake breakouts. SOXX triangle.",
-      "view": "Agree. Zero Prime. SMH RS21 28 vs cluster Red."
-    },
-    {
-      "aspect": "Agree / Disagree",
-      "summary": "Partial: bounce-or-cash, software, SMTC RS.",
-      "view": "Disagree healthcare flow and AMD/BE high-RS. Do not buy."
-    }
-  ],
+  "spring": [],
   "sectors": [
     {
       "rank": 1,
-      "etf": "ARKG",
-      "sector": "Genomics",
-      "rs": 100.0,
-      "cmf": 0.242,
-      "ma50": "ABOVE",
-      "note": "WATCH MRNA. Not a buy.",
-      "mkt": "US"
-    },
-    {
-      "rank": 2,
-      "etf": "IGV",
-      "sector": "Internet Software",
-      "rs": 92.0,
-      "cmf": 0.013,
-      "ma50": "ABOVE",
-      "note": "Software RS. Watch FTNT.",
-      "mkt": "US"
-    },
-    {
-      "rank": 3,
       "etf": "XLE",
       "sector": "Energy",
       "rs": 90.0,
       "cmf": -0.117,
       "ma50": "ABOVE",
-      "note": "DISTRIBUTION. No chase.",
+      "note": "not a buy",
       "mkt": "US"
     },
     {
-      "rank": 4,
-      "etf": "XLV",
-      "sector": "Healthcare",
-      "rs": 82.0,
-      "cmf": -0.195,
-      "ma50": "ABOVE",
-      "note": "CMF dist. Not Spring buy.",
-      "mkt": "US"
-    },
-    {
-      "rank": 5,
-      "etf": "XLK",
-      "sector": "Technology",
-      "rs": 62.0,
-      "cmf": 0.009,
-      "ma50": "ABOVE",
-      "note": "FALLING. Selective only.",
-      "mkt": "US"
-    },
-    {
-      "rank": 6,
-      "etf": "SMH",
-      "sector": "Semiconductors",
-      "rs": 28.0,
-      "cmf": -0.018,
-      "ma50": "BELOW",
-      "note": "RS21 28. Cluster Red. Wait.",
-      "mkt": "US"
-    },
-    {
-      "rank": 7,
-      "etf": "XLF",
-      "sector": "Financials",
-      "rs": 67.0,
-      "cmf": -0.189,
-      "ma50": "BELOW",
-      "note": "DISTRIBUTION. No buy.",
-      "mkt": "US"
-    },
-    {
-      "rank": 8,
+      "rank": 2,
       "etf": "XBI",
       "sector": "Biotech",
       "rs": 64.0,
       "cmf": 0.021,
       "ma50": "BELOW",
-      "note": "Not XLV healthcare.",
+      "note": "not a buy",
+      "mkt": "US"
+    },
+    {
+      "rank": 3,
+      "etf": "OIH",
+      "sector": "Oil Services",
+      "rs": 38.0,
+      "cmf": -0.124,
+      "ma50": "BELOW",
+      "note": "",
+      "mkt": "US"
+    },
+    {
+      "rank": 4,
+      "etf": "XOP",
+      "sector": "Oil & Gas E&P",
+      "rs": 97.0,
+      "cmf": -0.104,
+      "ma50": "ABOVE",
+      "note": "",
+      "mkt": "US"
+    },
+    {
+      "rank": 5,
+      "etf": "SMH",
+      "sector": "Semiconductors",
+      "rs": 28.0,
+      "cmf": -0.018,
+      "ma50": "BELOW",
+      "note": "",
+      "mkt": "US"
+    },
+    {
+      "rank": 6,
+      "etf": "XLV",
+      "sector": "Healthcare",
+      "rs": 82.0,
+      "cmf": -0.195,
+      "ma50": "ABOVE",
+      "note": "",
       "mkt": "US"
     }
   ],
@@ -286,43 +250,43 @@ window.__DATA__ = {
     {
       "name": "HHI mini",
       "mkt": "HK",
-      "last": 8166.0,
-      "chg_pct": -0.01,
+      "last": 8188.0,
+      "chg_pct": 0.26,
       "note": "not cash scale"
     },
     {
       "name": "HTI fut",
       "mkt": "HK",
-      "last": 4308.0,
-      "chg_pct": -0.05,
+      "last": 4322.0,
+      "chg_pct": 0.28,
       "note": ""
     },
     {
       "name": "SPY",
       "mkt": "US",
-      "last": 754.05,
-      "chg_pct": -0.44,
+      "last": 762.6,
+      "chg_pct": 1.13,
       "note": ""
     },
     {
       "name": "QQQ",
       "mkt": "US",
-      "last": 704.72,
-      "chg_pct": 0.03,
+      "last": 716.92,
+      "chg_pct": 1.73,
       "note": ""
     },
     {
       "name": "DIA",
       "mkt": "US",
-      "last": 515.22,
-      "chg_pct": -1.15,
+      "last": 518.35,
+      "chg_pct": 0.61,
       "note": ""
     },
     {
       "name": "SMH",
       "mkt": "US",
-      "last": 545.56,
-      "chg_pct": 0.64,
+      "last": 560.61,
+      "chg_pct": 2.76,
       "note": ""
     }
   ],
@@ -403,9 +367,9 @@ window.__DATA__ = {
       "name": "KIOXIA HOLDINGS CORPORATION",
       "scan": 49880.0,
       "live": 49880.0,
-      "day": -1.77,
+      "day": 0.0,
       "dlt": 0.0,
-      "note": "Red Super -298.70"
+      "note": "Red Super -298.70 prev"
     },
     {
       "t": "5016",
@@ -413,9 +377,9 @@ window.__DATA__ = {
       "name": "JX ADVANCED METALS CORPORATION",
       "scan": 3500.0,
       "live": 3500.0,
-      "day": -4.16,
+      "day": 0.0,
       "dlt": 0.0,
-      "note": "Red Super -22.09"
+      "note": "Red Super -22.09 prev"
     },
     {
       "t": "5801",
@@ -423,9 +387,9 @@ window.__DATA__ = {
       "name": "FURUKAWA ELECTRIC CO",
       "scan": 3763.0,
       "live": 3763.0,
-      "day": -1.29,
+      "day": 0.0,
       "dlt": 0.0,
-      "note": "Red Super -39.31"
+      "note": "Red Super -39.31 prev"
     },
     {
       "t": "5803",
@@ -433,9 +397,9 @@ window.__DATA__ = {
       "name": "FUJIKURA",
       "scan": 4867.0,
       "live": 4867.0,
-      "day": 0.58,
+      "day": 0.0,
       "dlt": 0.0,
-      "note": "Strong Red Super -47.38"
+      "note": "Strong Red Super -47.38 prev"
     },
     {
       "t": "8309",
@@ -443,9 +407,9 @@ window.__DATA__ = {
       "name": "SUMITOMO MITSUI TRUST GP INC",
       "scan": 1789.5,
       "live": 1789.5,
-      "day": 0.76,
+      "day": 0.0,
       "dlt": 0.0,
-      "note": "Blue Super -0.21"
+      "note": "Blue Super -0.21 prev"
     },
     {
       "t": "8015",
@@ -453,9 +417,9 @@ window.__DATA__ = {
       "name": "TOYOTA TSUSHO CORP",
       "scan": 7535.0,
       "live": 7535.0,
-      "day": 2.02,
+      "day": 0.0,
       "dlt": 0.0,
-      "note": "Red Super 1.29"
+      "note": "Red Super 1.29 prev"
     }
   ],
   "flow_cores": [
@@ -547,101 +511,99 @@ window.__DATA__ = {
       "t": "285A",
       "mkt": "JP",
       "super": -298.7,
-      "day": -1.77
+      "day": 0.0
     },
     {
       "t": "5016",
       "mkt": "JP",
       "super": -22.09,
-      "day": -4.16
+      "day": 0.0
     },
     {
       "t": "5801",
       "mkt": "JP",
       "super": -39.31,
-      "day": -1.29
+      "day": 0.0
     },
     {
       "t": "5803",
       "mkt": "JP",
       "super": -47.38,
-      "day": 0.58
+      "day": 0.0
     },
     {
       "t": "8309",
       "mkt": "JP",
       "super": -0.21,
-      "day": 0.76
+      "day": 0.0
     },
     {
       "t": "8015",
       "mkt": "JP",
       "super": 1.29,
-      "day": 2.02
+      "day": 0.0
     },
     {
       "t": "8001",
       "mkt": "JP",
       "super": null,
-      "day": 2.05
+      "day": 0.0
     },
     {
       "t": "9101",
       "mkt": "JP",
       "super": null,
-      "day": 2.6
+      "day": 0.0
     },
     {
       "t": "4502",
       "mkt": "JP",
       "super": null,
-      "day": 1.69
+      "day": 0.0
     },
     {
       "t": "6857",
       "mkt": "JP",
       "super": null,
-      "day": -1.5
+      "day": 0.0
     },
     {
       "t": "8411",
       "mkt": "JP",
       "super": null,
-      "day": -0.2
+      "day": 0.0
     },
     {
       "t": "5831",
       "mkt": "JP",
       "super": 0.43,
-      "day": 0.34
+      "day": 0.0
     }
   ],
   "overview_hk": [
-    "Regime UNFAVORABLE. Peg 7.8442."
+    "Regime UNFAVORABLE. Peg 7.8459."
   ],
   "overview_jp": [
-    "Regime UNFAVORABLE. VI 30.68. USD/JPY 156.096."
+    "Regime UNFAVORABLE. VI 28.44. USD/JPY 156.075."
   ],
   "overview_us": [
-    "SPY 754.05 -0.44% below 10d 763. QQQ 704.72 +0.03% below 10d 712.",
-    "27.6% above MA40. 0 new 52w highs. Scan flag UNFAVORABLE. MIXED.",
-    "Post-FOMC: XLE/XLF dragged. SMH +0.64% vs NVDA TSM MU Red. VIX elevated."
+    "US majors not all down."
   ],
   "macro": {
     "hk": [
       [
         "USD/HKD",
-        "7.8442",
-        "⚠️ WATCH (mild pressure, monitor only)"
+        "7.8459",
+        "⚠️ ELEVATED (approaching weak-side convertibility undertaking)"
       ],
       [
         "VHSI",
-        "19.27",
+        "19.26",
         ""
       ],
       [
         "Southbound",
-        "Net Buy of HKD 2.10B",
+        "Net Buy of HKD 3.36B",
         ""
       ],
       [
@@ -658,71 +620,49 @@ window.__DATA__ = {
     "jp": [
       [
         "USD/JPY",
-        "156.096",
-        "NEUTRAL — static >150 exporter tailwind (USD/JPY 156.10), no fresh acceleration"
+        "156.075",
+        "NEUTRAL — static >150 exporter tailwind (USD/JPY 156.07), no fresh acceleration"
       ],
       [
         "Nikkei VI",
-        "30.68",
+        "28.44",
         ""
       ],
       [
         "Nikkei 225",
-        "63484.1 -0.01",
+        "63923.0 +0.69",
         "header"
       ],
       [
         "TOPIX fut",
-        "4061.0 +0.00",
+        "4096.5 +0.00",
         ""
       ],
       [
         "JGB 10Y",
-        "3.028",
+        "2.998",
         ""
       ]
     ],
     "us": [
       [
         "Session",
-        "PRE_MARKET_BEGIN",
+        "AFTER_HOURS_BEGIN",
         ""
       ],
       [
         "VIX",
-        "17.71",
+        "15.44",
         ""
       ],
       [
         "10Y",
-        "5.00% +25.0 bp",
-        "2026-09-15"
+        "5.01% +22.0 bp",
+        "2026-09-16"
       ]
     ]
   },
-  "actionable": [
-    {
-      "rank": 1,
-      "mkt": "US",
-      "t": "FTNT",
-      "act": "WATCH half-size",
-      "why": "Software Stage 2. Wait Strong SSL. Not now."
-    },
-    {
-      "rank": 2,
-      "mkt": "US",
-      "t": "AAPL",
-      "act": "WATCH half-size",
-      "why": "C&H 336. Super out. Wait volume."
-    },
-    {
-      "rank": 3,
-      "mkt": "US",
-      "t": "SMTC",
-      "act": "NO CHASE",
-      "why": "RS 75 but +11% extended. Wait coil."
-    }
-  ],
+  "actionable": [],
   "elite": [
     {
       "rank": 1,
@@ -765,61 +705,6 @@ window.__DATA__ = {
       "to_pivot": null,
       "ssl": "Strong Blue",
       "cmf": 0.0533,
-      "note": "not a buy"
-    },
-    {
-      "rank": 1,
-      "t": "MRNA",
-      "name": "Moderna, Inc.",
-      "wave": 2.0,
-      "to_pivot": null,
-      "ssl": "Strong Blue",
-      "cmf": 0.2776,
-      "mkt": "US",
-      "note": "not a buy"
-    },
-    {
-      "rank": 2,
-      "t": "VLO",
-      "name": "Valero Energy Corporation",
-      "wave": 0,
-      "to_pivot": null,
-      "ssl": "Strong Blue",
-      "cmf": 0.2112,
-      "mkt": "US",
-      "note": "not a buy"
-    },
-    {
-      "rank": 3,
-      "t": "APA",
-      "name": "APA Corporation",
-      "wave": 2.0,
-      "to_pivot": null,
-      "ssl": "Strong Blue",
-      "cmf": -0.0769,
-      "mkt": "US",
-      "note": "not a buy"
-    },
-    {
-      "rank": 4,
-      "t": "CRWD",
-      "name": "CrowdStrike Holdings, Inc.",
-      "wave": 2.0,
-      "to_pivot": null,
-      "ssl": "Blue",
-      "cmf": 0.1631,
-      "mkt": "US",
-      "note": "not a buy"
-    },
-    {
-      "rank": 5,
-      "t": "LH",
-      "name": "Labcorp Holdings Inc.",
-      "wave": 2.0,
-      "to_pivot": null,
-      "ssl": "Strong Red",
-      "cmf": 0.0358,
-      "mkt": "US",
       "note": "not a buy"
     }
   ],
@@ -933,215 +818,6 @@ window.__DATA__ = {
       "pivot": 1708.5,
       "dist": 2.08,
       "note": "research / not a buy"
-    },
-    {
-      "rank": 1,
-      "t": "RVTY",
-      "name": "Revvity, Inc.",
-      "status": "breakout",
-      "last": 145.73,
-      "pivot": 140.22,
-      "dist": -3.93,
-      "mkt": "US",
-      "note": "research / not a buy"
-    },
-    {
-      "rank": 2,
-      "t": "OVV",
-      "name": "OVV",
-      "status": "breakout",
-      "last": 66.7,
-      "pivot": 66.43,
-      "dist": -0.41,
-      "mkt": "US",
-      "note": "research / not a buy"
-    },
-    {
-      "rank": 3,
-      "t": "TMO",
-      "name": "Thermo Fisher Scientific Inc",
-      "status": "breakout",
-      "last": 648.43,
-      "pivot": 647.0,
-      "dist": -0.22,
-      "mkt": "US",
-      "note": "research / not a buy"
-    },
-    {
-      "rank": 4,
-      "t": "BHP",
-      "name": "BHP",
-      "status": "near_pivot",
-      "last": 93.63,
-      "pivot": 93.83,
-      "dist": 0.21,
-      "mkt": "US",
-      "note": "research / not a buy"
-    },
-    {
-      "rank": 5,
-      "t": "TECH",
-      "name": "Bio-Techne Corp",
-      "status": "near_pivot",
-      "last": 72.33,
-      "pivot": 72.62,
-      "dist": 0.4,
-      "mkt": "US",
-      "note": "research / not a buy"
-    },
-    {
-      "rank": 6,
-      "t": "EQNR",
-      "name": "EQNR",
-      "status": "near_pivot",
-      "last": 42.86,
-      "pivot": 42.62,
-      "dist": -0.56,
-      "mkt": "US",
-      "note": "research / not a buy"
-    },
-    {
-      "rank": 7,
-      "t": "AAPL",
-      "name": "Apple Inc.",
-      "status": "near_pivot",
-      "last": 332.41,
-      "pivot": 336.22,
-      "dist": 1.13,
-      "mkt": "US",
-      "note": "research / not a buy"
-    },
-    {
-      "rank": 8,
-      "t": "IQV",
-      "name": "IQVIA Holdings, Inc.",
-      "status": "near_pivot",
-      "last": 268.82,
-      "pivot": 272.35,
-      "dist": 1.3,
-      "mkt": "US",
-      "note": "research / not a buy"
-    },
-    {
-      "rank": 9,
-      "t": "VRSN",
-      "name": "VeriSign, Inc.",
-      "status": "near_pivot",
-      "last": 298.46,
-      "pivot": 302.98,
-      "dist": 1.49,
-      "mkt": "US",
-      "note": "research / not a buy"
-    },
-    {
-      "rank": 10,
-      "t": "WAT",
-      "name": "Waters Corporation",
-      "status": "near_pivot",
-      "last": 418.64,
-      "pivot": 426.22,
-      "dist": 1.78,
-      "mkt": "US",
-      "note": "research / not a buy"
-    },
-    {
-      "rank": 11,
-      "t": "MAGS",
-      "name": "Roundhill Magnificent Seven ETF",
-      "status": "near_pivot",
-      "last": 69.52,
-      "pivot": 70.8,
-      "dist": 1.81,
-      "mkt": "US",
-      "note": "research / not a buy"
-    },
-    {
-      "rank": 12,
-      "t": "NWS",
-      "name": "News Corporation",
-      "status": "emerging",
-      "last": 33.44,
-      "pivot": 34.06,
-      "dist": 1.82,
-      "mkt": "US",
-      "note": "research / not a buy"
-    },
-    {
-      "rank": 13,
-      "t": "WBD",
-      "name": "Warner Bros. Discovery, Inc. -",
-      "status": "emerging",
-      "last": 28.07,
-      "pivot": 28.6,
-      "dist": 1.85,
-      "mkt": "US",
-      "note": "research / not a buy"
-    },
-    {
-      "rank": 14,
-      "t": "MA",
-      "name": "Mastercard Incorporated",
-      "status": "emerging",
-      "last": 567.75,
-      "pivot": 578.9,
-      "dist": 1.93,
-      "mkt": "US",
-      "note": "research / not a buy"
-    },
-    {
-      "rank": 15,
-      "t": "GRMN",
-      "name": "Garmin Ltd.",
-      "status": "emerging",
-      "last": 276.93,
-      "pivot": 284.21,
-      "dist": 2.56,
-      "mkt": "US",
-      "note": "research / not a buy"
-    },
-    {
-      "rank": 16,
-      "t": "PFE",
-      "name": "Pfizer, Inc.",
-      "status": "emerging",
-      "last": 27.46,
-      "pivot": 28.19,
-      "dist": 2.59,
-      "mkt": "US",
-      "note": "research / not a buy"
-    },
-    {
-      "rank": 17,
-      "t": "OMC",
-      "name": "Omnicom Group Inc.",
-      "status": "emerging",
-      "last": 79.33,
-      "pivot": 81.69,
-      "dist": 2.89,
-      "mkt": "US",
-      "note": "research / not a buy"
-    },
-    {
-      "rank": 18,
-      "t": "DE",
-      "name": "Deere & Company",
-      "status": "emerging",
-      "last": 669.47,
-      "pivot": 692.69,
-      "dist": 3.35,
-      "mkt": "US",
-      "note": "research / not a buy"
-    },
-    {
-      "rank": 19,
-      "t": "ELV",
-      "name": "Elevance Health, Inc.",
-      "status": "emerging",
-      "last": 412.56,
-      "pivot": 427.17,
-      "dist": 3.42,
-      "mkt": "US",
-      "note": "research / not a buy"
     }
   ],
   "strong": [
@@ -1168,299 +844,34 @@ window.__DATA__ = {
       "tone": "amber",
       "dlt": null,
       "note": "Blue CMF 0.21"
-    },
-    {
-      "rank": 1,
-      "t": "MRNA",
-      "name": "Moderna, Inc.",
-      "stage": "Stage 2",
-      "ssl": "Strong Blue",
-      "mkt": "US",
-      "act": "WATCH",
-      "tone": "amber",
-      "dlt": null,
-      "note": "VolR 0.67. Not a buy."
-    },
-    {
-      "rank": 2,
-      "t": "VLO",
-      "name": "Valero Energy Corporation",
-      "stage": "Stage 2",
-      "ssl": "Strong Blue",
-      "mkt": "US",
-      "act": "WATCH",
-      "tone": "amber",
-      "dlt": null,
-      "note": "Oil dist. No chase."
-    },
-    {
-      "rank": 3,
-      "t": "MPC",
-      "name": "Marathon Petroleum Corporation",
-      "stage": "Stage 2",
-      "ssl": "Strong Blue",
-      "mkt": "US",
-      "act": "NO BUY",
-      "tone": "amber",
-      "dlt": null,
-      "note": "Oil dist."
-    },
-    {
-      "rank": 4,
-      "t": "HPQ",
-      "name": "HP Inc.",
-      "stage": "Stage 2",
-      "ssl": "Strong Blue",
-      "mkt": "US",
-      "act": "NO BUY",
-      "tone": "amber",
-      "dlt": null,
-      "note": "MIXED. No chase."
-    },
-    {
-      "rank": 5,
-      "t": "DELL",
-      "name": "Dell Technologies Inc.",
-      "stage": "Stage 2",
-      "ssl": "Strong Blue",
-      "mkt": "US",
-      "act": "WATCH",
-      "tone": "amber",
-      "dlt": null,
-      "note": "MIXED. No chase."
-    },
-    {
-      "rank": 6,
-      "t": "BBY",
-      "name": "Best Buy Co., Inc.",
-      "stage": "Stage 2",
-      "ssl": "Strong Blue",
-      "mkt": "US",
-      "act": "NO BUY",
-      "tone": "amber",
-      "dlt": null,
-      "note": "MIXED. No chase."
-    },
-    {
-      "rank": 7,
-      "t": "MTCH",
-      "name": "Match Group, Inc.",
-      "stage": "Stage 2",
-      "ssl": "Strong Blue",
-      "mkt": "US",
-      "act": "NO BUY",
-      "tone": "amber",
-      "dlt": null,
-      "note": "MIXED. No chase."
-    },
-    {
-      "rank": 8,
-      "t": "SABR",
-      "name": "Sabre Corporation",
-      "stage": "Stage 2",
-      "ssl": "Strong Blue",
-      "mkt": "US",
-      "act": "NO BUY",
-      "tone": "amber",
-      "dlt": null,
-      "note": "MIXED. No chase."
-    },
-    {
-      "rank": 9,
-      "t": "SWKS",
-      "name": "Skyworks Solutions, Inc.",
-      "stage": "Stage 2",
-      "ssl": "Strong Blue",
-      "mkt": "US",
-      "act": "WATCH",
-      "tone": "amber",
-      "dlt": null,
-      "note": "MIXED half-size."
-    },
-    {
-      "rank": 10,
-      "t": "HPE",
-      "name": "Hewlett Packard Enterprise Comp",
-      "stage": "Stage 2",
-      "ssl": "Strong Blue",
-      "mkt": "US",
-      "act": "NO BUY",
-      "tone": "amber",
-      "dlt": null,
-      "note": "MIXED. No chase."
-    },
-    {
-      "rank": 11,
-      "t": "DE",
-      "name": "Deere & Company",
-      "stage": "Stage 2",
-      "ssl": "Strong Blue",
-      "mkt": "US",
-      "act": "NO BUY",
-      "tone": "amber",
-      "dlt": null,
-      "note": "MIXED. No chase."
-    },
-    {
-      "rank": 12,
-      "t": "AAPL",
-      "name": "Apple Inc.",
-      "stage": "Stage 2",
-      "ssl": "Strong Blue",
-      "mkt": "US",
-      "act": "WATCH",
-      "tone": "amber",
-      "dlt": null,
-      "note": "C&H 336. Wait volume."
     }
   ],
-  "focus": [
-    {
-      "rank": 1,
-      "mkt": "US",
-      "t": "FTNT",
-      "note": "Software Stage 2. Wait Strong SSL."
-    },
-    {
-      "rank": 2,
-      "mkt": "US",
-      "t": "CRWD",
-      "note": "RS 96 but Super out."
-    },
-    {
-      "rank": 3,
-      "mkt": "US",
-      "t": "AAPL",
-      "note": "C&H 336. MIXED wait volume."
-    },
-    {
-      "rank": 4,
-      "mkt": "US",
-      "t": "SMTC",
-      "note": "High RS hardware. Not tight."
-    },
-    {
-      "rank": 5,
-      "mkt": "US",
-      "t": "AMD",
-      "note": "VCP Q66 RS 48. Not high-RS."
-    },
-    {
-      "rank": 6,
-      "mkt": "US",
-      "t": "MRNA",
-      "note": "Strong tape. Light volume. Not XLV."
-    },
-    {
-      "rank": 7,
-      "mkt": "US",
-      "t": "SMH",
-      "note": "RS21 28. Cluster Red. Wait break."
-    },
-    {
-      "rank": 8,
-      "mkt": "US",
-      "t": "IGV",
-      "note": "Software RS leadership. Confirm volume."
-    }
-  ],
-  "watch": [
-    {
-      "t": "FROG",
-      "mkt": "US",
-      "note": "Q91 unconfirmed dist. Watch only."
-    },
-    {
-      "t": "NUE",
-      "mkt": "US",
-      "note": "CMF -0.23. Avoid."
-    },
-    {
-      "t": "SNOW",
-      "mkt": "US",
-      "note": "Red SSL expanding ATR. Avoid."
-    },
-    {
-      "t": "AMD",
-      "mkt": "US",
-      "note": "Q66 RS 48. Not high-RS. Wait 526.79."
-    }
-  ],
+  "focus": [],
+  "watch": [],
   "risks": [
+    {
+      "sev": "HIGH",
+      "mkt": "US",
+      "risk": "10Y SPIKE",
+      "act": "Cut growth / testers."
+    },
     {
       "sev": "LOW",
       "mkt": "HK",
       "risk": "Bounce Trap skip (stale 2026-08-21 vs HK 2026-09-17 JP 2026-09-17)",
       "act": "Cannot screen shallow-reclaim traps."
-    },
-    {
-      "sev": "HIGH",
-      "mkt": "US",
-      "risk": "10Y SPIKE +25.0 bp / 30Y +11.0",
-      "act": "Duration headwind. Reduce growth/tech."
-    },
-    {
-      "sev": "HIGH",
-      "mkt": "US",
-      "risk": "Zero Prime VCP. 27.6% above MA40. 0 new 52w highs.",
-      "act": "Capital preservation. No new entries."
-    },
-    {
-      "sev": "MED",
-      "mkt": "US",
-      "risk": "NVDA TSM MU Red SSL vs SMH +0.64%",
-      "act": "Do not buy the SMH bounce."
-    },
-    {
-      "sev": "MED",
-      "mkt": "US",
-      "risk": "Post-FOMC bounce fail 1-3 sessions",
-      "act": "Stay cash. Weak bounce + fake breakouts = danger."
-    },
-    {
-      "sev": "MED",
-      "mkt": "US",
-      "risk": "XLV CMF -0.195 DISTRIBUTION",
-      "act": "Healthcare flow denied. XLV is not XBI."
-    },
-    {
-      "sev": "MED",
-      "mkt": "US",
-      "risk": "VIX 17.71 above 20d 15.75. MIXED.",
-      "act": "Half-size. Confirm volume. Bounce-trap file missing."
     }
   ],
-  "clock": [
-    {
-      "t": "SPY",
-      "task": "Reclaim 10d 763 or stay cash"
-    },
-    {
-      "t": "FTNT",
-      "task": "Wait Strong SSL + volume"
-    },
-    {
-      "t": "AAPL",
-      "task": "Volume through 336.22"
-    },
-    {
-      "t": "SMTC",
-      "task": "Wait tight coil after spike"
-    }
-  ],
+  "clock": [],
   "avoid": [
+    "New longs: Thursday only — today Friday no BUY/ADD",
     "Do not chase XLE/XBI",
-    "Emerging and C&H are not buys",
-    "Do not chase SMTC +11%",
-    "Do not treat AMD/BE as high-RS",
-    "Do not buy XLV (CMF dist)",
-    "Do not buy the SMH bounce"
+    "Emerging and C&H are not buys"
   ],
   "rules": [
+    "New longs: Thursday only — today Friday no BUY/ADD",
     "Public board has no holdings",
-    "HK/JP stops = whole lots",
-    "US MIXED: highest RS only, confirm volume",
-    "US stops = 95% of shares"
+    "HK/JP stops = whole lots"
   ],
   "portfolio": [],
   "cbbc": [],
@@ -1470,80 +881,80 @@ window.__DATA__ = {
   "us_ovn": [
     {
       "t": "SPY",
-      "last": 754.05,
-      "day": -0.44,
-      "sb": 7.19,
-      "tag": "DIV↓in",
+      "last": 762.6,
+      "day": 1.13,
+      "sb": 167.36,
+      "tag": "ALIGNED↑",
       "note": "SPY MA —",
       "mkt": "US"
     },
     {
       "t": "QQQ",
-      "last": 704.72,
-      "day": 0.03,
-      "sb": 29.11,
-      "tag": "ALIGNED↑",
+      "last": 716.92,
+      "day": 1.73,
+      "sb": -218.94,
+      "tag": "DIV↑out",
       "note": "QQQ MA —",
       "mkt": "US"
     },
     {
       "t": "DIA",
-      "last": 515.22,
-      "day": -1.15,
-      "sb": -12.51,
-      "tag": "ALIGNED↓",
+      "last": 518.35,
+      "day": 0.61,
+      "sb": 13.98,
+      "tag": "ALIGNED↑",
       "note": "DIA MA —",
       "mkt": "US"
     },
     {
       "t": "IWM",
-      "last": 283.92,
-      "day": -0.43,
-      "sb": -93.6,
-      "tag": "ALIGNED↓",
+      "last": 285.43,
+      "day": 0.53,
+      "sb": 40.58,
+      "tag": "ALIGNED↑",
       "note": "IWM MA —",
       "mkt": "US"
     },
     {
       "t": "SMH",
-      "last": 545.56,
-      "day": 0.64,
-      "sb": 45.14,
+      "last": 560.61,
+      "day": 2.76,
+      "sb": 35.03,
       "tag": "ALIGNED↑",
       "note": "SMH MA —",
       "mkt": "US"
     },
     {
       "t": "MU",
-      "last": 926.55,
-      "day": -0.11,
-      "sb": 13.09,
-      "tag": "DIV↓in",
+      "last": 977.5,
+      "day": 5.5,
+      "sb": -31.32,
+      "tag": "DIV↑out",
       "note": "285A",
       "mkt": "US"
     },
     {
       "t": "SNDK",
-      "last": 1519.97,
-      "day": -0.71,
-      "sb": -8.51,
-      "tag": "ALIGNED↓",
+      "last": 1614.39,
+      "day": 6.21,
+      "sb": 61.9,
+      "tag": "ALIGNED↑",
       "note": "open-bias",
       "mkt": "US"
     },
     {
       "t": "LITE",
-      "last": 919.4,
-      "day": 9.59,
-      "sb": -7.95,
-      "tag": "DIV↑out",
+      "last": 893.61,
+      "day": -2.81,
+      "sb": 4.86,
+      "tag": "DIV↓in",
       "note": "5801/5803",
       "mkt": "US"
     },
     {
       "t": "LYTE",
-      "last": 25.08,
-      "day": 6.36,
+      "last": 25.22,
+      "day": 0.56,
       "sb": 0.0,
       "tag": "—",
       "note": "open-bias",
@@ -1551,18 +962,18 @@ window.__DATA__ = {
     },
     {
       "t": "COHR",
-      "last": 289.93,
-      "day": 6.92,
-      "sb": 10.13,
+      "last": 295.98,
+      "day": 2.09,
+      "sb": 9.08,
       "tag": "ALIGNED↑",
       "note": "5801/5803",
       "mkt": "US"
     },
     {
       "t": "GLW",
-      "last": 144.16,
-      "day": 0.41,
-      "sb": -6.59,
+      "last": 147.8,
+      "day": 2.52,
+      "sb": -8.66,
       "tag": "DIV↑out",
       "note": "5801/5803",
       "mkt": "US"
@@ -1805,7 +1216,7 @@ function App() {
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div>
             <p className="text-xs font-semibold text-violet-400 tracking-wide uppercase mb-1">Desk board · HK {D.session_hk} · JP {D.session_jp} · US {D.session_us}</p>
-            <h1 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight">{D.title} · {D.date}</h1>
+            <h1 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight">{D.title} · {(D.weekday || '')}{(D.weekday || '') && ' · '}{D.date}</h1>
             <p className="text-sm text-slate-400 mt-1">Plan {D.generated} · OpenD <span className="text-slate-200">{D.opend_ts}</span></p>
           </div>
           <div className="flex flex-wrap gap-2">
