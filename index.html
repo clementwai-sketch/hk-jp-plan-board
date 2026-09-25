@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,viewport-fit=cover"/>
 <meta name="theme-color" content="#020617"/>
-<title>HK · JP · US desk board</title>
+<title>JP · HK · US desk board</title>
 <!-- Frozen JSX. Plug numbers with:
      python3 scripts/plug_desk_board.py --data Dashboard/desk_board_data.json --out Dashboard/Desk_Board_React_YYYY-MM-DD.html
      Hash: #HK #JP #US #ALL. Do not mix markets in one tbody. Public: no Portfolio. -->
@@ -16,14 +16,14 @@
 body{font-family:Inter,system-ui,sans-serif;background:#020617;color:#e2e8f0;margin:0}
 .font-display{font-family:'Space Grotesk',Inter,system-ui,sans-serif}
 .card{background:linear-gradient(180deg,#0f172a,#0b1220);border:1px solid #1e2937;border-radius:1rem;box-shadow:0 10px 30px rgba(0,0,0,.35)}
-.pill{display:inline-flex;align-items:center;gap:.25rem;padding:.15rem .5rem;border-radius:9999px;font-size:.7rem;font-weight:600;white-space:nowrap}
+.pill{display:inline-flex;align-items:center;gap:.25rem;padding:.1rem .35rem;border-radius:2px;font-size:.7rem;font-weight:600;white-space:nowrap}
 .pill-g{background:#052e16;color:#86efac;border:1px solid #166534}
 .pill-y{background:#451a03;color:#fcd34d;border:1px solid #92400e}
 .pill-o{background:#7c2d12;color:#fdba74;border:1px solid #c2410c}
 .pill-r{background:#450a0a;color:#fca5a5;border:1px solid #7f1d1d}
 .pill-b{background:#0c1929;color:#93c5fd;border:1px solid #1e3a5f}
 .pill-s{background:#1e2937;color:#cbd5e1;border:1px solid #334155}
-.nav-chip{padding:.35rem .75rem;border-radius:9999px;font-size:.75rem;font-weight:600;background:#0f172a;border:1px solid #1e2937;color:#94a3b8;cursor:pointer}
+.nav-chip{padding:.35rem .75rem;border-radius:2px;font-size:.75rem;font-weight:600;background:#0f172a;border:1px solid #1e2937;color:#94a3b8;cursor:pointer}
 .nav-chip:hover,.nav-chip.active{border-color:#38bdf8;color:#e0f2fe;background:#0c4a6e33}
 .scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
 table{border-collapse:collapse;width:100%;min-width:640px}
@@ -50,7 +50,16 @@ tr:hover td{background:rgba(30,41,59,.4)}
 @media(min-width:900px){.flow-grid{grid-template-columns:1fr 1fr}}
 .flow-card{background:linear-gradient(180deg,#0f172a,#0b1220);border:1px solid #1e2937;border-radius:1rem;padding:.65rem .4rem .35rem}
 .flow-title{font-size:.72rem;color:#cbd5e1;font-weight:600;padding:0 .55rem .3rem}
-@media(max-width:640px){table{min-width:520px}h1{font-size:1.35rem!important}}
+@media(max-width:640px){h1{font-size:1.35rem!important}}
+@media(max-width:719px){
+  .cover-hide{display:none}
+  table{min-width:0}
+  td,th{font-size:16px!important}
+}
+@media(max-width:720px){
+  .section-nav{position:fixed;top:auto;bottom:0;left:0;right:0;margin:0;padding:.5rem .75rem calc(.5rem + env(safe-area-inset-bottom));background:#020617;border-top:1px solid #1e2937;z-index:30}
+  .board-wrap{padding-bottom:4.5rem}
+}
 </style>
 </head>
 <body class="min-h-screen antialiased">
@@ -60,64 +69,56 @@ tr:hover td{background:rgba(30,41,59,.4)}
 window.__DATA__ = {
   "date": "2026-09-25",
   "weekday": "Friday",
-  "generated": "2026-09-25 07:45 HKT",
-  "asof": "2026-09-25 07:45 HKT",
-  "opend_ts": "2026-09-25 07:45 HKT",
+  "generated": "2026-09-25 21:00 HKT",
+  "asof": "2026-09-25 21:00 HKT",
+  "opend_ts": "2026-09-25 21:00 HKT",
   "opend_connected": true,
-  "title": "HK · JP",
+  "title": "JP · HK · US",
   "session_hk": "CLOSED",
-  "session_jp": "WAITING_OPEN",
-  "session_us": "AFTER_HOURS_BEGIN",
+  "session_jp": "CLOSED",
+  "session_us": "PRE_MARKET_BEGIN",
   "hk_regime": "MIXED",
   "jp_regime": "MIXED",
   "jp_regime_tone": "amber",
-  "us_regime": "overnight gate",
-  "us_regime_tone": "red",
-  "verdict": "285A: hold/no-add off overnight. See local Portfolio_Review.",
+  "us_regime": "MIXED",
+  "us_regime_tone": "amber",
+  "verdict": "MIXED stands. 10Y spike and oil inflow. One half-size breakout.",
   "warning": "⚠️ US MAJOR INDICES ALL DOWN — HK/JP LIKELY OPEN LOWER · ⚠️ 10Y SPIKE — reduce growth / tech / testers · ⚠️ OIL LEADING WITH INFLOW — geopolitics / sticky-inflation tell. Watch 10Y/30Y. Not a buy-XLE signal.",
   "stance": "HK MIXED · JP MIXED. Public board — no book.",
   "summary": "⚠️ US MAJOR INDICES ALL DOWN — HK/JP LIKELY OPEN LOWER · ⚠️ 10Y SPIKE — reduce growth / tech / testers · ⚠️ OIL LEADING WITH INFLOW — geopolitics / sticky-inflation tell. Watch 10Y/30Y. Not a buy-XLE signal.",
-  "alert_banner": "2026-09-25 07:45 HKT. HK CLOSED · JP WAITING_OPEN · US AFTER_HOURS_BEGIN. OpenD CONNECTED. Scan Scan_Package_Grok_HK_2026-09-24.csv / Scan_Package_Grok_JP_2026-09-24.csv.",
+  "alert_banner": "2026-09-25 21:00 HKT. HK CLOSED · JP CLOSED · US PRE_MARKET_BEGIN. OpenD CONNECTED. Top 3 plugged.",
   "disclaimer": "Not investment advice. Public scan/regime board. No holdings or account ids. Day% Western (green=up).",
-  "source": "pack 2026-09-25 07:45 HKT. FRED 2026-09-23. Public strip. No holdings.",
+  "source": "pack 2026-09-25 21:00 HKT. FRED 2026-09-23. Public strip. No holdings.",
   "bank_note": "Holdings are not on this public board.",
   "cbbc_note": "",
-  "elite_note": "HK prime90 1. JP prime75 0.",
+  "elite_note": "HK prime90 1. JP prime75 1. US Prime 0.",
   "snapshot_note": "Live = OpenD snap. Scan = Grok core. Public board has no qty/cost.",
   "us_ovn_banner": "⚠️ US MAJOR INDICES ALL DOWN — HK/JP LIKELY OPEN LOWER",
   "us_ovn_tone": "red",
-  "us_ovn_call": "285A: hold/no-add off overnight. See local Portfolio_Review.",
+  "us_ovn_call": "285A no-add. MU +0.81% is not a cut. SNDK conflict, do not",
   "cross_market": "HK / JP lists never merge. Book is local-only.",
   "yields_line": "⚠️ 10Y SPIKE — reduce growth / tech / testers Duration headwind (10Y and 30Y 10d Δ both > 0).",
   "oil_biotech_warn": "⚠️ OIL LEADING WITH INFLOW — geopolitics / sticky-inflation tell. Watch 10Y/30Y. Not a buy-XLE signal.",
-  "emerging_note": "HK 2 · JP 1. Not a buy.",
-  "cup_note": "C&H cup_handle_hits_2026-09-24.csv. Research only. Not a buy.",
-  "spring_skip": true,
-  "spring_answer": "",
-  "spring_detail": "",
+  "emerging_note": "Research list — not entries. US 8.",
+  "cup_note": "Research list — not entries.",
+  "spring_skip": false,
+  "spring_answer": "Pullbacks reveal which names funds are buying.",
+  "spring_detail": "Only TWLO, half size. Do not chase leaders.",
   "mtm_note": "Public board has no MTM.",
   "mtm_net": "—",
   "smm_open_pl": "—",
   "smm_open_note": "",
   "vol5d_note": "",
   "auction_note": "",
-  "half_size": "MIXED → selective, highest RS only.",
+  "half_size": "SELECTIVE ENTRIES ONLY — HIGHEST RS NAMES ONLY. CONFIRM VOLUME BEFORE ENTRY.",
   "sector_takeaway": "",
   "header_pills": [
     {
-      "lab": "OpenD CONNECTED",
-      "tone": "green"
-    },
-    {
-      "lab": "Friday · no new longs",
+      "lab": "JP MIXED",
       "tone": "amber"
     },
     {
       "lab": "HK MIXED",
-      "tone": "amber"
-    },
-    {
-      "lab": "JP MIXED",
       "tone": "amber"
     },
     {
@@ -149,10 +150,10 @@ window.__DATA__ = {
       "etf": "XLE",
       "last": 62.6,
       "day": 0.37,
-      "rs5": 21.0,
-      "rs21": 79.0,
-      "ma50": "ABOVE +1.8%",
-      "cmf": -0.05,
+      "rs5": 36.0,
+      "rs21": 85.0,
+      "ma50": "ABOVE +1.9%",
+      "cmf": -0.101,
       "super": 5.29,
       "tag": "STRONG + IN"
     },
@@ -161,74 +162,115 @@ window.__DATA__ = {
       "etf": "XBI",
       "last": 156.05,
       "day": 0.55,
-      "rs5": 67.0,
-      "rs21": 44.0,
-      "ma50": "BELOW -1.5%",
-      "cmf": -0.116,
+      "rs5": 77.0,
+      "rs21": 56.0,
+      "ma50": "BELOW -1.0%",
+      "cmf": -0.097,
       "super": -13.96,
-      "tag": "quiet"
+      "tag": "STRONG"
     }
   ],
-  "spring": [],
+  "spring": [
+    {
+      "aspect": "Macro View",
+      "summary": "QQQ held the trend, gap, and 20MA.",
+      "view": "Majors all down. Breadth 27.9%. 10Y spike."
+    },
+    {
+      "aspect": "Sector Calls",
+      "summary": "He flags PLTR, PANW, MU, AMD, INTC, MRNA, TSM.",
+      "view": "PLTR Stage 1/3. MU RS 26. TSM DIV out."
+    },
+    {
+      "aspect": "Key Risk Flags",
+      "summary": "Breadth is secondary if leaders keep holding.",
+      "view": "Zero new highs. Only 27.9% above MA40."
+    },
+    {
+      "aspect": "Agree / Disagree",
+      "summary": "Pullbacks reveal which names funds are buying.",
+      "view": "Only TWLO, half size. Do not chase leaders."
+    }
+  ],
   "sectors": [
     {
       "rank": 1,
-      "etf": "XLE",
-      "sector": "Energy",
-      "rs": 79.0,
-      "cmf": -0.05,
+      "etf": "ARKG",
+      "sector": "Genomics",
+      "rs": 100.0,
+      "cmf": 0.12,
       "ma50": "ABOVE",
-      "note": "not a buy",
+      "note": "—",
       "mkt": "US"
     },
     {
       "rank": 2,
-      "etf": "XBI",
-      "sector": "Biotech",
-      "rs": 44.0,
-      "cmf": -0.116,
-      "ma50": "BELOW",
-      "note": "not a buy",
+      "etf": "IGV",
+      "sector": "Internet Software",
+      "rs": 90.0,
+      "cmf": 0.044,
+      "ma50": "ABOVE",
+      "note": "—",
       "mkt": "US"
     },
     {
       "rank": 3,
-      "etf": "OIH",
-      "sector": "Oil Services",
-      "rs": 64.0,
-      "cmf": -0.088,
-      "ma50": "BELOW",
-      "note": "",
+      "etf": "XLE",
+      "sector": "Energy",
+      "rs": 85.0,
+      "cmf": -0.101,
+      "ma50": "ABOVE",
+      "note": "⚠️ DISTRIBUTION",
       "mkt": "US"
     },
     {
       "rank": 4,
-      "etf": "XOP",
-      "sector": "Oil & Gas E&P",
-      "rs": 72.0,
-      "cmf": -0.139,
+      "etf": "XLV",
+      "sector": "Healthcare",
+      "rs": 69.0,
+      "cmf": -0.269,
       "ma50": "ABOVE",
-      "note": "",
+      "note": "⚠️ DISTRIBUTION",
       "mkt": "US"
     },
     {
       "rank": 5,
-      "etf": "SMH",
-      "sector": "Semiconductors",
-      "rs": 100.0,
-      "cmf": 0.177,
+      "etf": "XLK",
+      "sector": "Technology",
+      "rs": 95.0,
+      "cmf": 0.226,
       "ma50": "ABOVE",
-      "note": "",
+      "note": "★ ACCUMULATION",
       "mkt": "US"
     },
     {
       "rank": 6,
-      "etf": "XLV",
-      "sector": "Healthcare",
-      "rs": 77.0,
-      "cmf": -0.25,
+      "etf": "SMH",
+      "sector": "Semiconductors",
+      "rs": 97.0,
+      "cmf": 0.194,
       "ma50": "ABOVE",
-      "note": "",
+      "note": "—",
+      "mkt": "US"
+    },
+    {
+      "rank": 7,
+      "etf": "XLF",
+      "sector": "Financials",
+      "rs": 49.0,
+      "cmf": -0.26,
+      "ma50": "BELOW",
+      "note": "⚠️ DISTRIBUTION",
+      "mkt": "US"
+    },
+    {
+      "rank": 8,
+      "etf": "XBI",
+      "sector": "Biotech",
+      "rs": 56.0,
+      "cmf": -0.097,
+      "ma50": "BELOW",
+      "note": "—",
       "mkt": "US"
     }
   ],
@@ -236,29 +278,29 @@ window.__DATA__ = {
     {
       "name": "HSI cash",
       "mkt": "HK",
-      "last": 24761.13,
-      "chg_pct": -0.29,
+      "last": 24510.09,
+      "chg_pct": -1.01,
       "note": "OpenD"
     },
     {
       "name": "HSTECH cash",
       "mkt": "HK",
-      "last": 4361.13,
-      "chg_pct": -0.41,
+      "last": 4311.78,
+      "chg_pct": -1.13,
       "note": "OpenD"
     },
     {
       "name": "HHI mini",
       "mkt": "HK",
-      "last": 8218.0,
-      "chg_pct": -0.3,
+      "last": 8167.0,
+      "chg_pct": 0.01,
       "note": "not cash scale"
     },
     {
       "name": "HTI fut",
       "mkt": "HK",
-      "last": 4335.0,
-      "chg_pct": -0.37,
+      "last": 4316.0,
+      "chg_pct": 0.02,
       "note": ""
     },
     {
@@ -295,51 +337,51 @@ window.__DATA__ = {
       "t": "01088",
       "mkt": "HK",
       "name": "CHINA SHENHUA",
-      "scan": 44.66,
-      "live": 44.66,
-      "day": -0.04,
+      "scan": 43.76,
+      "live": 43.76,
+      "day": -2.02,
       "dlt": 0.0,
-      "note": "Strong Red Super 0.15"
+      "note": "Strong Red Super 0.02"
     },
     {
       "t": "01729",
       "mkt": "HK",
       "name": "1729.HK",
       "scan": null,
-      "live": 17.58,
-      "day": -3.83,
+      "live": 17.32,
+      "day": -1.48,
       "dlt": null,
-      "note": "NOT IN SCAN.  Super -0.05"
+      "note": "NOT IN SCAN.  Super 0.00"
     },
     {
       "t": "00883",
       "mkt": "HK",
       "name": "CNOOC",
-      "scan": 23.84,
-      "live": 23.84,
-      "day": 2.14,
+      "scan": 23.4,
+      "live": 23.4,
+      "day": -1.85,
       "dlt": 0.0,
-      "note": "Strong Red Super 0.24"
+      "note": "Strong Red Super 0.20"
     },
     {
       "t": "00388",
       "mkt": "HK",
       "name": "HKEX",
-      "scan": 393.4,
-      "live": 393.4,
-      "day": -0.61,
+      "scan": 388.4,
+      "live": 388.4,
+      "day": -1.27,
       "dlt": 0.0,
-      "note": "Blue Super 0.22"
+      "note": "Red Super 0.12"
     },
     {
       "t": "00700",
       "mkt": "HK",
       "name": "TENCENT",
-      "scan": 438.4,
-      "live": 438.4,
-      "day": -0.59,
+      "scan": 436.6,
+      "live": 436.6,
+      "day": -0.41,
       "dlt": 0.0,
-      "note": "Blue Super -1.16"
+      "note": "Blue Super -0.60"
     },
     {
       "t": "01347",
@@ -347,159 +389,159 @@ window.__DATA__ = {
       "name": "HUA HONG GRACE",
       "scan": 110.4,
       "live": 110.4,
-      "day": -3.33,
+      "day": 0.0,
       "dlt": 0.0,
-      "note": "Red Super -0.13"
+      "note": "Red Super -0.07"
     },
     {
       "t": "00005",
       "mkt": "HK",
       "name": "HSBC HOLDINGS",
-      "scan": 156.9,
-      "live": 156.9,
-      "day": -1.63,
+      "scan": 157.6,
+      "live": 157.6,
+      "day": 0.45,
       "dlt": 0.0,
-      "note": "Strong Red Super -1.88"
+      "note": "Strong Red Super 0.21"
     },
     {
       "t": "285A",
       "mkt": "JP",
       "name": "KIOXIA HOLDINGS CORPORATION",
-      "scan": 54580.0,
-      "live": 54580.0,
-      "day": 0.0,
+      "scan": 55780.0,
+      "live": 55780.0,
+      "day": 2.2,
       "dlt": 0.0,
-      "note": "Blue Super 721.11 prev"
+      "note": "Blue Super 146.67"
     },
     {
       "t": "5016",
       "mkt": "JP",
       "name": "JX ADVANCED METALS CORPORATION",
-      "scan": 3570.0,
-      "live": 3570.0,
-      "day": 0.0,
+      "scan": 3555.0,
+      "live": 3555.0,
+      "day": -0.42,
       "dlt": 0.0,
-      "note": "Strong Red Super -2.75 prev"
+      "note": "Strong Red Super -6.07"
     },
     {
       "t": "5801",
       "mkt": "JP",
       "name": "FURUKAWA ELECTRIC CO",
-      "scan": 3807.0,
-      "live": 3807.0,
-      "day": 0.0,
+      "scan": 3826.0,
+      "live": 3826.0,
+      "day": 0.5,
       "dlt": 0.0,
-      "note": "Strong Red Super 2.55 prev"
+      "note": "Strong Red Super 3.67"
     },
     {
       "t": "5803",
       "mkt": "JP",
       "name": "FUJIKURA",
-      "scan": 4911.0,
-      "live": 4911.0,
-      "day": 0.0,
+      "scan": 4986.0,
+      "live": 4986.0,
+      "day": 1.53,
       "dlt": 0.0,
-      "note": "Strong Red Super -58.84 prev"
+      "note": "Strong Red Super 9.22"
     },
     {
       "t": "8309",
       "mkt": "JP",
       "name": "SUMITOMO MITSUI TRUST GP INC",
-      "scan": 1760.0,
-      "live": 1760.0,
-      "day": 0.0,
+      "scan": 1801.5,
+      "live": 1801.5,
+      "day": 2.36,
       "dlt": 0.0,
-      "note": "Strong Blue Super 0.46 prev"
+      "note": "Strong Blue Super -1.77"
     },
     {
       "t": "8015",
       "mkt": "JP",
       "name": "TOYOTA TSUSHO CORP",
-      "scan": 7361.0,
-      "live": 7361.0,
-      "day": 0.0,
+      "scan": 7449.0,
+      "live": 7449.0,
+      "day": 1.2,
       "dlt": 0.0,
-      "note": "Strong Red Super 1.03 prev"
+      "note": "Strong Red Super 0.00"
     }
   ],
   "flow_cores": [
     {
       "t": "01088",
       "mkt": "HK",
-      "super": 0.15,
-      "day": -0.04
+      "super": 0.02,
+      "day": -2.02
     },
     {
       "t": "01729",
       "mkt": "HK",
-      "super": -0.05,
-      "day": -3.83
+      "super": 0.0,
+      "day": -1.48
     },
     {
       "t": "00883",
       "mkt": "HK",
-      "super": 0.24,
-      "day": 2.14
+      "super": 0.2,
+      "day": -1.85
     },
     {
       "t": "00388",
       "mkt": "HK",
-      "super": 0.22,
-      "day": -0.61
+      "super": 0.12,
+      "day": -1.27
     },
     {
       "t": "00700",
       "mkt": "HK",
-      "super": -1.16,
-      "day": -0.59
+      "super": -0.6,
+      "day": -0.41
     },
     {
       "t": "01347",
       "mkt": "HK",
-      "super": -0.13,
-      "day": -3.33
+      "super": -0.07,
+      "day": 0.0
     },
     {
       "t": "00005",
       "mkt": "HK",
-      "super": -1.88,
-      "day": -1.63
+      "super": 0.21,
+      "day": 0.45
     },
     {
       "t": "00981",
       "mkt": "HK",
-      "super": -0.25,
-      "day": 0.0
+      "super": 0.27,
+      "day": -0.71
     },
     {
       "t": "01888",
       "mkt": "HK",
-      "super": -0.87,
-      "day": 1.16
+      "super": -0.46,
+      "day": 0.19
     },
     {
       "t": "00019",
       "mkt": "HK",
       "super": null,
-      "day": 0.97
+      "day": -1.73
     },
     {
       "t": "00992",
       "mkt": "HK",
-      "super": -0.35,
-      "day": -2.44
+      "super": 0.0,
+      "day": 3.16
     },
     {
       "t": "02388",
       "mkt": "HK",
       "super": null,
-      "day": -0.1
+      "day": -0.2
     },
     {
       "t": "01997",
       "mkt": "HK",
       "super": null,
-      "day": -0.84
+      "day": -0.78
     },
     {
       "t": "02319",
@@ -510,74 +552,74 @@ window.__DATA__ = {
     {
       "t": "285A",
       "mkt": "JP",
-      "super": 721.11,
-      "day": 0.0
+      "super": 146.67,
+      "day": 2.2
     },
     {
       "t": "5016",
       "mkt": "JP",
-      "super": -2.75,
-      "day": 0.0
+      "super": -6.07,
+      "day": -0.42
     },
     {
       "t": "5801",
       "mkt": "JP",
-      "super": 2.55,
-      "day": 0.0
+      "super": 3.67,
+      "day": 0.5
     },
     {
       "t": "5803",
       "mkt": "JP",
-      "super": -58.84,
-      "day": 0.0
+      "super": 9.22,
+      "day": 1.53
     },
     {
       "t": "8309",
       "mkt": "JP",
-      "super": 0.46,
-      "day": 0.0
+      "super": -1.77,
+      "day": 2.36
     },
     {
       "t": "8015",
       "mkt": "JP",
-      "super": 1.03,
-      "day": 0.0
+      "super": 0.0,
+      "day": 1.2
     },
     {
       "t": "8001",
       "mkt": "JP",
       "super": null,
-      "day": 0.0
+      "day": -0.43
     },
     {
       "t": "9101",
       "mkt": "JP",
       "super": null,
-      "day": 0.0
+      "day": 1.52
     },
     {
       "t": "4502",
       "mkt": "JP",
       "super": null,
-      "day": 0.0
+      "day": 1.43
     },
     {
       "t": "6857",
       "mkt": "JP",
       "super": null,
-      "day": 0.0
+      "day": 2.84
     },
     {
       "t": "8411",
       "mkt": "JP",
       "super": null,
-      "day": 0.0
+      "day": 4.18
     },
     {
       "t": "5831",
       "mkt": "JP",
-      "super": 0.58,
-      "day": 0.0
+      "super": 0.7,
+      "day": 4.74
     }
   ],
   "overview_hk": [
@@ -587,7 +629,9 @@ window.__DATA__ = {
     "Regime MIXED. VI 24.23. USD/JPY 158.819."
   ],
   "overview_us": [
-    "⚠️ US MAJOR INDICES ALL DOWN — HK/JP LIKELY OPEN LOWER"
+    "SPY -0.08% and QQQ -0.01%. Regime MIXED.",
+    "Breadth 27.9% above MA40. New 52w highs 0.",
+    "Session PRE_MARKET_BEGIN. No invented catalyst."
   ],
   "macro": {
     "hk": [
@@ -608,12 +652,12 @@ window.__DATA__ = {
       ],
       [
         "HSI cash",
-        "24761.13 -0.29%",
+        "24510.09 -1.01%",
         "OpenD"
       ],
       [
         "HSTECH cash",
-        "4361.13 -0.41%",
+        "4311.78 -1.13%",
         "OpenD"
       ]
     ],
@@ -647,7 +691,7 @@ window.__DATA__ = {
     "us": [
       [
         "Session",
-        "AFTER_HOURS_BEGIN",
+        "PRE_MARKET_BEGIN",
         ""
       ],
       [
@@ -662,14 +706,44 @@ window.__DATA__ = {
       ]
     ]
   },
-  "actionable": [],
+  "actionable": [
+    {
+      "rank": 1,
+      "mkt": "HK",
+      "t": "0992.HK",
+      "act": "NO ADD",
+      "why": "RS 46. Majors down. No entry."
+    },
+    {
+      "rank": 2,
+      "mkt": "JP",
+      "t": "6857.T",
+      "act": "NO ADD",
+      "why": "RS 11. Majors down. No entry."
+    },
+    {
+      "rank": 1,
+      "mkt": "US",
+      "t": "TWLO",
+      "act": "Above pivot 296.37, half size",
+      "why": "Volume breakout. Mixed tape, half size."
+    }
+  ],
   "elite": [
     {
       "rank": 1,
       "mkt": "HK",
       "t": "0992.HK",
       "q": 100.0,
-      "note": "Strong Blue CMF 0.25",
+      "note": "Strong Blue CMF 0.29",
+      "dlt": null
+    },
+    {
+      "rank": 1,
+      "mkt": "JP",
+      "t": "6857.T",
+      "q": 93.0,
+      "note": "Blue CMF 0.27",
       "dlt": null
     }
   ],
@@ -681,31 +755,97 @@ window.__DATA__ = {
       "name": "CITIC",
       "wave": 2.0,
       "to_pivot": null,
-      "ssl": "Blue",
-      "cmf": 0.3911,
-      "note": "not a buy"
-    },
-    {
-      "rank": 2,
-      "mkt": "HK",
-      "t": "1038.HK",
-      "name": "CKI HOLDINGS",
-      "wave": 0,
-      "to_pivot": null,
-      "ssl": "Blue",
-      "cmf": 0.3626,
-      "note": "not a buy"
+      "ssl": "Strong Blue",
+      "cmf": 0.4418,
+      "note": "Wave 2.0 · Strong Blue · CMF 0.44"
     },
     {
       "rank": 1,
-      "mkt": "JP",
-      "t": "9107.T",
-      "name": "KAWASAKI KISEN KAISHA",
+      "t": "INTC",
+      "name": "Intel Corporation",
       "wave": 2.0,
       "to_pivot": null,
       "ssl": "Strong Blue",
-      "cmf": -0.2287,
-      "note": "not a buy"
+      "cmf": 0.2961,
+      "mkt": "US",
+      "note": ""
+    },
+    {
+      "rank": 2,
+      "t": "FTNT",
+      "name": "Fortinet, Inc.",
+      "wave": 2.0,
+      "to_pivot": null,
+      "ssl": "Strong Blue",
+      "cmf": 0.2205,
+      "mkt": "US",
+      "note": ""
+    },
+    {
+      "rank": 3,
+      "t": "MXL",
+      "name": "MaxLinear, Inc",
+      "wave": 2.0,
+      "to_pivot": null,
+      "ssl": "Strong Blue",
+      "cmf": 0.1883,
+      "mkt": "US",
+      "note": ""
+    },
+    {
+      "rank": 4,
+      "t": "SWKS",
+      "name": "Skyworks Solutions, Inc.",
+      "wave": 2.0,
+      "to_pivot": null,
+      "ssl": "Strong Blue",
+      "cmf": 0.1781,
+      "mkt": "US",
+      "note": ""
+    },
+    {
+      "rank": 5,
+      "t": "ALAB",
+      "name": "Astera Labs, Inc.",
+      "wave": 2.0,
+      "to_pivot": null,
+      "ssl": "Strong Blue",
+      "cmf": 0.1741,
+      "mkt": "US",
+      "note": ""
+    },
+    {
+      "rank": 6,
+      "t": "VTRS",
+      "name": "Viatris Inc.",
+      "wave": 2.0,
+      "to_pivot": null,
+      "ssl": "Strong Blue",
+      "cmf": 0.1032,
+      "mkt": "US",
+      "note": ""
+    },
+    {
+      "rank": 7,
+      "t": "HNGE",
+      "name": "Hinge Health, Inc.",
+      "wave": 2.0,
+      "to_pivot": null,
+      "ssl": "Strong Blue",
+      "cmf": 0.0353,
+      "mkt": "US",
+      "note": ""
+    },
+    {
+      "rank": 8,
+      "t": "DDOG",
+      "name": "Datadog, Inc.",
+      "wave": 2.0,
+      "to_pivot": null,
+      "ssl": "Strong Blue",
+      "cmf": 0.005,
+      "mkt": "US",
+      "note": ""
     }
   ],
   "cup_handle": [
@@ -715,10 +855,10 @@ window.__DATA__ = {
       "t": "1038.HK",
       "name": "CKI HOLDINGS",
       "status": "near_pivot",
-      "last": 65.7,
+      "last": 65.3,
       "pivot": 66.8,
-      "dist": 1.65,
-      "note": "research / not a buy"
+      "dist": 2.25,
+      "note": "near pivot · 2.25% to rim"
     },
     {
       "rank": 2,
@@ -726,10 +866,21 @@ window.__DATA__ = {
       "t": "3968.HK",
       "name": "CM BANK",
       "status": "near_pivot",
-      "last": 51.2,
-      "pivot": 53.55,
-      "dist": 4.39,
-      "note": "research / not a buy"
+      "last": 50.5,
+      "pivot": 52.75,
+      "dist": 4.27,
+      "note": "near pivot · 4.27% to rim"
+    },
+    {
+      "rank": 3,
+      "mkt": "HK",
+      "t": "1088.HK",
+      "name": "CHINA SHENHUA",
+      "status": "near_pivot",
+      "last": 43.76,
+      "pivot": 45.82,
+      "dist": 4.5,
+      "note": "near pivot · 4.5% to rim"
     },
     {
       "rank": 1,
@@ -737,21 +888,21 @@ window.__DATA__ = {
       "t": "5301.T",
       "name": "TOKAI CARBON CO",
       "status": "breakout",
-      "last": 2273.0,
-      "pivot": 2147.0,
-      "dist": -5.87,
-      "note": "research / not a buy"
+      "last": 2289.5,
+      "pivot": 2283.0,
+      "dist": -0.28,
+      "note": "breakout · 0.28% through"
     },
     {
       "rank": 2,
       "mkt": "JP",
-      "t": "4502.T",
-      "name": "TAKEDA PHARMACEUTICAL CO LTD",
+      "t": "7181.T",
+      "name": "JAPAN POST INSURANCE CO LTD",
       "status": "near_pivot",
-      "last": 5885.0,
-      "pivot": 6012.0,
-      "dist": 2.11,
-      "note": "research / not a buy"
+      "last": 1828.0,
+      "pivot": 1834.0,
+      "dist": 0.33,
+      "note": "near pivot · 0.33% to rim"
     },
     {
       "rank": 3,
@@ -759,65 +910,274 @@ window.__DATA__ = {
       "t": "6724.T",
       "name": "SEIKO EPSON CORP",
       "status": "near_pivot",
-      "last": 3209.0,
+      "last": 3272.0,
       "pivot": 3283.0,
-      "dist": 2.25,
-      "note": "research / not a buy"
+      "dist": 0.34,
+      "note": "near pivot · 0.34% to rim"
     },
     {
       "rank": 4,
       "mkt": "JP",
-      "t": "9434.T",
-      "name": "SOFTBANK CORP.",
+      "t": "6301.T",
+      "name": "KOMATSU",
       "status": "near_pivot",
-      "last": 246.3,
-      "pivot": 252.9,
-      "dist": 2.61,
-      "note": "research / not a buy"
+      "last": 7640.0,
+      "pivot": 7675.0,
+      "dist": 0.46,
+      "note": "near pivot · 0.46% to rim"
     },
     {
       "rank": 5,
       "mkt": "JP",
-      "t": "4523.T",
-      "name": "EISAI CO LTD",
+      "t": "4502.T",
+      "name": "TAKEDA PHARMACEUTICAL CO LTD",
       "status": "near_pivot",
-      "last": 4902.0,
-      "pivot": 5040.0,
-      "dist": 2.74,
-      "note": "research / not a buy"
+      "last": 5969.0,
+      "pivot": 6030.0,
+      "dist": 1.01,
+      "note": "near pivot · 1.01% to rim"
     },
     {
       "rank": 6,
       "mkt": "JP",
-      "t": "7181.T",
-      "name": "JAPAN POST INSURANCE CO LTD",
+      "t": "4523.T",
+      "name": "EISAI CO LTD",
       "status": "near_pivot",
-      "last": 1782.5,
-      "pivot": 1834.0,
-      "dist": 2.81,
-      "note": "research / not a buy"
+      "last": 4955.0,
+      "pivot": 5040.0,
+      "dist": 1.69,
+      "note": "near pivot · 1.69% to rim"
     },
     {
       "rank": 7,
       "mkt": "JP",
-      "t": "5019.T",
-      "name": "IDEMITSU KOSAN CO.LTD",
+      "t": "7832.T",
+      "name": "BANDAI NAMCO HOLDINGS INC",
       "status": "near_pivot",
-      "last": 1650.5,
-      "pivot": 1708.5,
-      "dist": 3.39,
-      "note": "research / not a buy"
+      "last": 5551.0,
+      "pivot": 5692.0,
+      "dist": 2.48,
+      "note": "near pivot · 2.48% to rim"
     },
     {
       "rank": 8,
       "mkt": "JP",
-      "t": "8015.T",
-      "name": "TOYOTA TSUSHO CORP",
+      "t": "5019.T",
+      "name": "IDEMITSU KOSAN CO.LTD",
       "status": "near_pivot",
-      "last": 7361.0,
-      "pivot": 7648.0,
-      "dist": 3.75,
-      "note": "research / not a buy"
+      "last": 1663.0,
+      "pivot": 1708.5,
+      "dist": 2.66,
+      "note": "near pivot · 2.66% to rim"
+    },
+    {
+      "rank": 1,
+      "t": "A",
+      "name": "Agilent Technologies, Inc.",
+      "status": "breakout",
+      "last": 172.84,
+      "pivot": 168.94,
+      "dist": -2.31,
+      "mkt": "US",
+      "note": ""
+    },
+    {
+      "rank": 2,
+      "t": "TWLO",
+      "name": "Twilio Inc.",
+      "status": "breakout",
+      "last": 299.66,
+      "pivot": 296.37,
+      "dist": -1.11,
+      "mkt": "US",
+      "note": ""
+    },
+    {
+      "rank": 3,
+      "t": "OVV",
+      "name": "OVV",
+      "status": "breakout",
+      "last": 66.7,
+      "pivot": 66.43,
+      "dist": -0.41,
+      "mkt": "US",
+      "note": ""
+    },
+    {
+      "rank": 4,
+      "t": "TECH",
+      "name": "Bio-Techne Corp",
+      "status": "near_pivot",
+      "last": 72.57,
+      "pivot": 72.64,
+      "dist": 0.1,
+      "mkt": "US",
+      "note": ""
+    },
+    {
+      "rank": 5,
+      "t": "BHP",
+      "name": "BHP",
+      "status": "near_pivot",
+      "last": 93.63,
+      "pivot": 93.83,
+      "dist": 0.21,
+      "mkt": "US",
+      "note": ""
+    },
+    {
+      "rank": 6,
+      "t": "WAT",
+      "name": "Waters Corporation",
+      "status": "near_pivot",
+      "last": 430.3,
+      "pivot": 431.78,
+      "dist": 0.34,
+      "mkt": "US",
+      "note": ""
+    },
+    {
+      "rank": 7,
+      "t": "HPE",
+      "name": "Hewlett Packard Enterprise Comp",
+      "status": "near_pivot",
+      "last": 63.52,
+      "pivot": 63.86,
+      "dist": 0.53,
+      "mkt": "US",
+      "note": ""
+    },
+    {
+      "rank": 8,
+      "t": "EQNR",
+      "name": "EQNR",
+      "status": "near_pivot",
+      "last": 42.86,
+      "pivot": 42.62,
+      "dist": -0.56,
+      "mkt": "US",
+      "note": ""
+    },
+    {
+      "rank": 9,
+      "t": "MAGS",
+      "name": "Roundhill Magnificent Seven ETF",
+      "status": "near_pivot",
+      "last": 72.51,
+      "pivot": 73.18,
+      "dist": 0.92,
+      "mkt": "US",
+      "note": ""
+    },
+    {
+      "rank": 10,
+      "t": "TMO",
+      "name": "Thermo Fisher Scientific Inc",
+      "status": "near_pivot",
+      "last": 678.39,
+      "pivot": 671.47,
+      "dist": -1.03,
+      "mkt": "US",
+      "note": ""
+    },
+    {
+      "rank": 11,
+      "t": "BIIB",
+      "name": "Biogen Inc.",
+      "status": "near_pivot",
+      "last": 226.36,
+      "pivot": 229.19,
+      "dist": 1.23,
+      "mkt": "US",
+      "note": ""
+    },
+    {
+      "rank": 12,
+      "t": "WBD",
+      "name": "Warner Bros. Discovery, Inc. -",
+      "status": "emerging",
+      "last": 30.84,
+      "pivot": 30.92,
+      "dist": 0.26,
+      "mkt": "US",
+      "note": ""
+    },
+    {
+      "rank": 13,
+      "t": "BRKR",
+      "name": "Bruker Corporation",
+      "status": "emerging",
+      "last": 64.0,
+      "pivot": 64.42,
+      "dist": 0.65,
+      "mkt": "US",
+      "note": ""
+    },
+    {
+      "rank": 14,
+      "t": "FCX",
+      "name": "Freeport-McMoRan, Inc.",
+      "status": "emerging",
+      "last": 72.08,
+      "pivot": 73.28,
+      "dist": 1.64,
+      "mkt": "US",
+      "note": ""
+    },
+    {
+      "rank": 15,
+      "t": "NVDA",
+      "name": "NVIDIA Corporation",
+      "status": "emerging",
+      "last": 224.58,
+      "pivot": 229.98,
+      "dist": 2.35,
+      "mkt": "US",
+      "note": ""
+    },
+    {
+      "rank": 16,
+      "t": "EMXC",
+      "name": "iShares MSCI Emerging Markets e",
+      "status": "emerging",
+      "last": 99.76,
+      "pivot": 102.265,
+      "dist": 2.45,
+      "mkt": "US",
+      "note": ""
+    },
+    {
+      "rank": 17,
+      "t": "FROG",
+      "name": "JFrog Ltd.",
+      "status": "emerging",
+      "last": 94.2,
+      "pivot": 96.81,
+      "dist": 2.7,
+      "mkt": "US",
+      "note": ""
+    },
+    {
+      "rank": 18,
+      "t": "TRGP",
+      "name": "Targa Resources, Inc.",
+      "status": "emerging",
+      "last": 283.15,
+      "pivot": 296.63,
+      "dist": 4.54,
+      "mkt": "US",
+      "note": ""
+    },
+    {
+      "rank": 19,
+      "t": "VRSN",
+      "name": "VeriSign, Inc.",
+      "status": "emerging",
+      "last": 291.88,
+      "pivot": 308.28,
+      "dist": 5.32,
+      "mkt": "US",
+      "note": ""
     }
   ],
   "strong": [
@@ -831,58 +1191,379 @@ window.__DATA__ = {
       "act": "WATCH",
       "tone": "amber",
       "dlt": null,
-      "note": "Strong Blue CMF 0.25"
+      "note": "Strong Blue CMF 0.29"
+    },
+    {
+      "rank": 1,
+      "t": "MRNA",
+      "name": "Moderna, Inc.",
+      "stage": "Stage 2",
+      "ssl": "Strong Blue",
+      "mkt": "US",
+      "act": "—",
+      "tone": "amber",
+      "dlt": null,
+      "note": "Neutral"
+    },
+    {
+      "rank": 2,
+      "t": "RBRK",
+      "name": "Rubrik, Inc.",
+      "stage": "Stage 2",
+      "ssl": "Strong Blue",
+      "mkt": "US",
+      "act": "—",
+      "tone": "amber",
+      "dlt": null,
+      "note": "Accumulation"
+    },
+    {
+      "rank": 3,
+      "t": "TWLO",
+      "name": "Twilio Inc.",
+      "stage": "Stage 2",
+      "ssl": "Strong Blue",
+      "mkt": "US",
+      "act": "BUY",
+      "tone": "amber",
+      "dlt": null,
+      "note": "Accumulation"
+    },
+    {
+      "rank": 4,
+      "t": "CRWD",
+      "name": "CrowdStrike Holdings, Inc.",
+      "stage": "Stage 2",
+      "ssl": "Strong Blue",
+      "mkt": "US",
+      "act": "—",
+      "tone": "amber",
+      "dlt": null,
+      "note": "Neutral"
+    },
+    {
+      "rank": 5,
+      "t": "HPE",
+      "name": "Hewlett Packard Enterprise Comp",
+      "stage": "Stage 2",
+      "ssl": "Strong Blue",
+      "mkt": "US",
+      "act": "—",
+      "tone": "amber",
+      "dlt": null,
+      "note": "Accumulation"
+    },
+    {
+      "rank": 6,
+      "t": "RVTY",
+      "name": "Revvity, Inc.",
+      "stage": "Stage 2",
+      "ssl": "Strong Blue",
+      "mkt": "US",
+      "act": "—",
+      "tone": "amber",
+      "dlt": null,
+      "note": "Neutral"
+    },
+    {
+      "rank": 7,
+      "t": "PANW",
+      "name": "Palo Alto Networks, Inc.",
+      "stage": "Stage 2",
+      "ssl": "Strong Blue",
+      "mkt": "US",
+      "act": "—",
+      "tone": "amber",
+      "dlt": null,
+      "note": "Accumulation"
+    },
+    {
+      "rank": 8,
+      "t": "TENB",
+      "name": "Tenable Holdings, Inc.",
+      "stage": "Stage 2",
+      "ssl": "Strong Blue",
+      "mkt": "US",
+      "act": "—",
+      "tone": "amber",
+      "dlt": null,
+      "note": "Neutral"
+    },
+    {
+      "rank": 9,
+      "t": "NTAP",
+      "name": "NetApp, Inc.",
+      "stage": "Stage 2",
+      "ssl": "Strong Blue",
+      "mkt": "US",
+      "act": "—",
+      "tone": "amber",
+      "dlt": null,
+      "note": "Accumulation"
+    },
+    {
+      "rank": 10,
+      "t": "DXCM",
+      "name": "DexCom, Inc.",
+      "stage": "Stage 2",
+      "ssl": "Strong Blue",
+      "mkt": "US",
+      "act": "—",
+      "tone": "amber",
+      "dlt": null,
+      "note": "Neutral"
+    },
+    {
+      "rank": 11,
+      "t": "SWKS",
+      "name": "Skyworks Solutions, Inc.",
+      "stage": "Stage 2",
+      "ssl": "Strong Blue",
+      "mkt": "US",
+      "act": "—",
+      "tone": "amber",
+      "dlt": null,
+      "note": "Accumulation"
+    },
+    {
+      "rank": 12,
+      "t": "ANET",
+      "name": "Arista Networks, Inc.",
+      "stage": "Stage 2",
+      "ssl": "Strong Blue",
+      "mkt": "US",
+      "act": "—",
+      "tone": "amber",
+      "dlt": null,
+      "note": "Accumulation"
     }
   ],
-  "focus": [],
+  "focus": [
+    {
+      "rank": 1,
+      "mkt": "HK",
+      "t": "1088.HK",
+      "note": "SELL. Red SSL."
+    },
+    {
+      "rank": 2,
+      "mkt": "HK",
+      "t": "0883.HK",
+      "note": "SELL. Stage 4."
+    },
+    {
+      "rank": 3,
+      "mkt": "HK",
+      "t": "0700.HK",
+      "note": "SELL. Stage 4."
+    },
+    {
+      "rank": 4,
+      "mkt": "HK",
+      "t": "0388.HK",
+      "note": "SELL. Stage 4."
+    },
+    {
+      "rank": 5,
+      "mkt": "HK",
+      "t": "1347.HK",
+      "note": "SELL. Stage 4."
+    },
+    {
+      "rank": 6,
+      "mkt": "HK",
+      "t": "0005.HK",
+      "note": "SELL. Red SSL."
+    },
+    {
+      "rank": 7,
+      "mkt": "HK",
+      "t": "0992.HK",
+      "note": "NO ADD. RS 46. Majors down."
+    },
+    {
+      "rank": 8,
+      "mkt": "JP",
+      "t": "6857.T",
+      "note": "NO ADD. RS 11. Not selective."
+    },
+    {
+      "rank": 1,
+      "mkt": "US",
+      "t": "TWLO",
+      "note": "Fresh breakout. VolR 1.63. Half size."
+    },
+    {
+      "rank": 2,
+      "mkt": "US",
+      "t": "RBRK",
+      "note": "RS 98 but VolR 0.48. Wait."
+    },
+    {
+      "rank": 3,
+      "mkt": "US",
+      "t": "PANW",
+      "note": "Strong Blue, RS 94. Volume light."
+    },
+    {
+      "rank": 4,
+      "mkt": "US",
+      "t": "MRNA",
+      "note": "RS 99. Up 6.98%. Do not chase."
+    },
+    {
+      "rank": 5,
+      "mkt": "US",
+      "t": "AMD",
+      "note": "ALIGNED up. CMF 0.38. No add."
+    },
+    {
+      "rank": 6,
+      "mkt": "US",
+      "t": "MU",
+      "note": "Earnings 30 Sep. RS rank 26."
+    },
+    {
+      "rank": 7,
+      "mkt": "US",
+      "t": "INTC",
+      "note": "Emerging only. RS rank 45."
+    },
+    {
+      "rank": 8,
+      "mkt": "US",
+      "t": "TSM",
+      "note": "DIV out. RS 66. Volume light."
+    }
+  ],
   "watch": [
     {
       "mkt": "HK",
-      "t": "0700.HK",
-      "note": "Bounce Trap WARNING. No new entries."
+      "t": "3042.HK",
+      "note": "Bounce opportunity. Elevates Stage 2 Blue CMF>0 only."
     },
     {
       "mkt": "HK",
-      "t": "6082.HK",
-      "note": "Bounce Trap OPPORTUNITY. Elevates Stage 2 Blue CMF>0 only."
+      "t": "3135.HK",
+      "note": "Bounce opportunity. Elevates Stage 2 Blue CMF>0 only."
+    },
+    {
+      "mkt": "JP",
+      "t": "3110.T",
+      "note": "Bounce trap WARNING. No new entries."
+    },
+    {
+      "mkt": "JP",
+      "t": "6367.T",
+      "note": "Bounce trap WARNING. No new entries."
+    },
+    {
+      "mkt": "JP",
+      "t": "7701.T",
+      "note": "Bounce trap WARNING. No new entries."
     },
     {
       "mkt": "JP",
       "t": "4704.T",
-      "note": "Bounce Trap OPPORTUNITY. Elevates Stage 2 Blue CMF>0 only."
+      "note": "Bounce opportunity. Elevates Stage 2 Blue CMF>0 only."
+    },
+    {
+      "t": "MRNA",
+      "mkt": "US",
+      "note": "WATCH_UNCONFIRMED; ATR FLAT"
+    },
+    {
+      "t": "ANET",
+      "mkt": "US",
+      "note": "WATCH_UNCONFIRMED; ATR EXPANDING; CMF 0.0023 thin"
+    },
+    {
+      "t": "GH",
+      "mkt": "US",
+      "note": "CMF -0.05; WATCH_UNCONFIRMED; ATR FLAT"
+    },
+    {
+      "t": "SNOW",
+      "mkt": "US",
+      "note": "CMF -0.3331; WATCH_UNCONFIRMED; Inst Dist; ATR FLAT"
+    },
+    {
+      "t": "NBIS",
+      "mkt": "US",
+      "note": "Q85<90; CMF -0.0762; WATCH_UNCONFIRMED; ATR EXPANDING"
+    },
+    {
+      "t": "TER",
+      "mkt": "US",
+      "note": "Q68<90; WATCH_UNCONFIRMED; ATR FLAT"
     }
   ],
   "risks": [
     {
       "sev": "HIGH",
-      "mkt": "US",
-      "risk": "SPY QQQ DIA all down",
-      "act": "HK/JP open lower. No new size."
+      "mkt": "BOTH",
+      "risk": "Bounce Trap WARNING cluster 3110.T 6367.T 7701.T",
+      "act": "No new entries on those names"
     },
     {
-      "sev": "HIGH",
-      "mkt": "US",
-      "risk": "10Y SPIKE",
-      "act": "Cut growth / testers."
+      "sev": "LOW",
+      "mkt": "BOTH",
+      "risk": "Emerging 1 names on tape",
+      "act": "Not a buy. Do not promote to Top 3"
     },
     {
-      "sev": "HIGH",
-      "mkt": "HK",
-      "risk": "Bounce Trap WARNING 0700.HK",
-      "act": "No new entries. TRIM if Red SSL or CMF<0."
+      "sev": "MED",
+      "mkt": "US",
+      "risk": "10Y +28 bps over 10 sessions",
+      "act": "reduce growth and tech size."
+    },
+    {
+      "sev": "MED",
+      "mkt": "US",
+      "risk": "Breadth 27.9% above MA40 and zero new highs",
+      "act": "selective only."
+    },
+    {
+      "sev": "MED",
+      "mkt": "US",
+      "risk": "XLE strong with inflow",
+      "act": "do not chase oil."
+    },
+    {
+      "sev": "MED",
+      "mkt": "US",
+      "risk": "MU earnings 2026-09-30 and RS rank 26",
+      "act": "no add before the print."
+    },
+    {
+      "sev": "MED",
+      "mkt": "US",
+      "risk": "SPY, QQQ, and DIA all down",
+      "act": "285A no-add, MU is not a cut."
+    },
+    {
+      "sev": "MED",
+      "mkt": "US",
+      "risk": "QQQE and CRCL are not in the scan",
+      "act": "ignore those Spring levels."
     }
   ],
-  "clock": [],
+  "clock": [
+    {
+      "t": "TWLO",
+      "task": "Above pivot 296.37, half size"
+    }
+  ],
   "avoid": [
-    "New longs: Thursday only — today Friday no BUY/ADD",
     "Do not chase XLE/XBI",
-    "Emerging and C&H are not buys",
-    "Bounce Trap WARNING: 0700.HK"
+    "Bounce Trap WARNING: 3110.T 6367.T 7701.T",
+    "Public board has no holdings"
   ],
   "rules": [
-    "New longs: Thursday only — today Friday no BUY/ADD",
     "Public board has no holdings",
-    "HK/JP stops = whole lots"
+    "HK/JP stops = whole lots",
+    "US stops = 95% of shares",
+    "US MIXED: highest RS only, confirm volume"
   ],
   "portfolio": [],
   "cbbc": [],
@@ -1007,7 +1688,8 @@ window.__DATA__ = {
     "IWM": "below MA5 -1.03%",
     "SMH": "above MA50 +6.46%"
   },
-  "spy_ma": "above MA50 +1.14%"
+  "spy_ma": "above MA50 +1.14%",
+  "thursday_long_warn": ""
 };
 </script>
 <!-- END_DATA -->
@@ -1070,9 +1752,42 @@ const rowsFor = (arr, k) => (arr || []).filter((r) => {
   return rm === k || rm === 'BOTH';
 });
 const viewMkts = (mkt, extra) => {
-  if (mkt === 'ALL') return extra || ['HK', 'JP', 'US'];
+  if (mkt === 'ALL') return extra || ['JP', 'HK', 'US'];
   return [mkt];
 };
+function researchHead(k) {
+  if (k !== 'HK' && k !== 'JP') return null;
+  return <p className="text-xs text-amber-200/90 mb-1">Research list — not entries</p>;
+}
+function pinStrip() {
+  const rank = { JP: 0, HK: 1, US: 2 };
+  const rows = [];
+  (D.cup_handle || []).forEach((r) => {
+    if (String(r.status || '') !== 'breakout') return;
+    const dist = Number(r.dist);
+    const mag = Number.isFinite(dist) ? Math.abs(dist).toFixed(2) : '';
+    rows.push({
+      mkt: String(r.mkt || 'US').toUpperCase(),
+      t: r.t || '—',
+      why: mag ? ('breakout · ' + mag + '% through') : 'breakout',
+      pri: 0,
+    });
+  });
+  (D.watch || []).forEach((r) => {
+    if (!/WARNING/i.test(String(r.note || ''))) return;
+    rows.push({
+      mkt: String(r.mkt || '').toUpperCase() || '—',
+      t: r.t || '—',
+      why: 'Bounce trap WARNING · No new entries',
+      pri: 1,
+    });
+  });
+  rows.sort((a, b) => ((rank[a.mkt] ?? 3) - (rank[b.mkt] ?? 3)) || (a.pri - b.pri));
+  if (D.thursday_long_warn || '') {
+    rows.push({ mkt: 'ALL', t: 'Thu', why: D.thursday_long_warn || '', pri: 2 });
+  }
+  return rows.slice(0, 3);
+}
 
 function MktSplit({mkt, rows, render, empty, extra, keys}) {
   const ks = keys || viewMkts(mkt);
@@ -1214,7 +1929,7 @@ function App() {
   const showHk = mkt === 'ALL' || mkt === 'HK';
   const showJp = mkt === 'ALL' || mkt === 'JP';
   const showUs = mkt === 'ALL' || mkt === 'US';
-  const macroKeys = mkt === 'ALL' ? ['hk', 'jp', 'us'] : [mkt.toLowerCase()];
+  const macroKeys = mkt === 'ALL' ? ['jp', 'hk', 'us'] : [mkt.toLowerCase()];
   const macroGrid = {1: '', 2: 'sm:grid-cols-2', 3: 'sm:grid-cols-3'}[macroKeys.length] || '';
 
   const tabs = [
@@ -1226,39 +1941,37 @@ function App() {
   const refreshLive = () => {
     setSnapTs((D.asof || '') + ' · refreshed (static pack, no live socket)');
   };
+  const pins = pinStrip();
 
   return (
-    <div className="max-w-6xl mx-auto px-3 sm:px-5 py-5 pb-16">
-      <header className="mb-5">
-        <div className="flex flex-wrap items-start justify-between gap-3">
-          <div>
-            <p className="text-xs font-semibold text-violet-400 tracking-wide uppercase mb-1">Desk board · HK {D.session_hk} · JP {D.session_jp} · US {D.session_us}</p>
-            <h1 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight">{D.title} · {(D.weekday || '')}{(D.weekday || '') && ' · '}{D.date}</h1>
-            <p className="text-sm text-slate-400 mt-1">Plan {D.generated} · OpenD <span className="text-slate-200">{D.opend_ts}</span></p>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {(D.header_pills || []).map((p, i) => (
-              <span key={i} className={`pill ${tonePill(p.tone)}`}>{p.lab}</span>
+    <div className="board-wrap max-w-6xl mx-auto px-3 sm:px-5 py-4 pb-16">
+      <header className="mb-4">
+        <p className="text-xs font-semibold text-violet-300 tracking-wide mb-1">JP 08:00 {D.session_jp || '—'} · HK 09:30 {D.session_hk || '—'} · US 21:30 {D.session_us || '—'} · HKT</p>
+        <h1 className="font-display text-xl sm:text-2xl font-bold text-white tracking-tight">{D.title} · {(D.weekday || '')}{(D.weekday || '') && ' · '}{D.date}</h1>
+        {(D.thursday_long_warn || '') ? <p className="mt-2 text-sm font-semibold text-amber-200">{D.thursday_long_warn || ''}</p> : null}
+        <p className="mt-2 text-sm text-slate-200 leading-relaxed">{D.verdict}</p>
+        {pins.length ? (
+          <ul className="mt-3 space-y-1">
+            {pins.map((p, i) => (
+              <li key={p.mkt + p.t + i} className="text-base text-slate-100">
+                <span className="text-violet-300">{p.mkt}</span>{' '}
+                <span className="code">{p.t}</span>
+                <span className="text-slate-300"> — {p.why}</span>
+              </li>
             ))}
-          </div>
-        </div>
-        <div className="card p-3 mt-3 border-rose-900/50 bg-rose-950/20">
-          <p className="text-sm text-rose-200 font-semibold"><i className="fa-solid fa-triangle-exclamation mr-2"/>{D.warning}</p>
-        </div>
-        <p className="mt-3 text-sm text-slate-300 leading-relaxed">{D.stance}</p>
-        <p className="mt-2 text-sm text-sky-200/90">{D.summary}</p>
-        <div className="mt-2 p-2 rounded-lg bg-amber-950/30 border border-amber-900/40 text-xs text-amber-100/90">{D.alert_banner}</div>
+          </ul>
+        ) : null}
       </header>
 
       <div className="flex flex-wrap gap-2 mb-3 items-center">
         <span className="text-xs text-slate-500">Market</span>
-        {[['HK','HK'],['JP','JP'],['US','US'],['ALL','All']].map(([k,l]) => (
+        {[['JP','JP'],['HK','HK'],['US','US'],['ALL','All']].map(([k,l]) => (
           <button key={k} type="button" className={`nav-chip ${mkt===k?'active':''}`} onClick={() => { setMkt(k); try { history.replaceState(null,'','#'+k); } catch(_){} }}>{l}</button>
         ))}
         <span className="text-[11px] text-slate-500">HK / JP / US stay in separate lists. Plug data.json — JSX stays frozen.</span>
       </div>
 
-      <nav className="flex flex-wrap gap-2 mb-4 sticky top-0 z-10 py-2 bg-[#020617]/95">
+      <nav className="section-nav flex flex-wrap gap-2 mb-4 sticky top-0 z-10 py-2 bg-[#020617]/95">
         {tabs.map(([id, lab]) => (
           <button key={id} type="button" className={`nav-chip ${tab===id?'active':''}`} onClick={() => setTab(id)}>{lab}</button>
         ))}
@@ -1269,15 +1982,15 @@ function App() {
           <Section title="US 10Y / 30Y Treasury" icon="fa-chart-line">
             <div className="card overflow-hidden">
               <div className="scroll-x"><table>
-                <thead><tr><th></th><th className="num">Last</th><th>Session</th><th className="num">10d Δ</th><th className="num">30d Δ</th><th>Read</th></tr></thead>
+                <thead><tr><th></th><th className="num">Last</th><th className="cover-hide">Session</th><th className="num">10d Δ</th><th className="num cover-hide">30d Δ</th><th>Read</th></tr></thead>
                 <tbody>
                   {(D.yields || []).map((y) => (
                     <tr key={y.name}>
                       <td className="code">{y.name}</td>
                       <td className="num">{y.last}</td>
-                      <td className="text-xs text-slate-400">{y.sess}</td>
+                      <td className="text-xs text-slate-400 cover-hide">{y.sess}</td>
                       <td className={`num ${cls(y.d10)}`}>{(y.d10>=0?'+':'') + Number(y.d10).toFixed(1)} bps</td>
-                      <td className={`num ${cls(y.d30)}`}>{(y.d30>=0?'+':'') + Number(y.d30).toFixed(1)} bps</td>
+                      <td className={`num ${cls(y.d30)} cover-hide`}>{(y.d30>=0?'+':'') + Number(y.d30).toFixed(1)} bps</td>
                       <td className="text-xs text-slate-400">{y.read}</td>
                     </tr>
                   ))}
@@ -1290,19 +2003,19 @@ function App() {
             <div className="card p-3 mb-2 border-rose-900/50 bg-rose-950/20 text-sm text-rose-100 font-semibold">{D.oil_biotech_warn}</div>
             <div className="card overflow-hidden">
               <div className="scroll-x"><table>
-                <thead><tr><th>Sleeve</th><th>ETF</th><th className="num">Last</th><th className="num">Day%</th><th className="num">RS5</th><th className="num">RS21</th><th>vs MA50</th><th className="num">CMF</th><th className="num">Super $M</th><th>Tag</th></tr></thead>
+                <thead><tr><th className="cover-hide">Sleeve</th><th>ETF</th><th className="num cover-hide">Last</th><th className="num">Day%</th><th className="num cover-hide">RS5</th><th className="num cover-hide">RS21</th><th className="cover-hide">vs MA50</th><th className="num cover-hide">CMF</th><th className="num cover-hide">Super $M</th><th>Tag</th></tr></thead>
                 <tbody>
                   {(D.oil_biotech || []).map((r) => (
                     <tr key={r.etf}>
-                      <td>{r.sleeve}</td>
+                      <td className="cover-hide">{r.sleeve}</td>
                       <td className="code">{r.etf}</td>
-                      <td className="num">{num(r.last)}</td>
+                      <td className="num cover-hide">{num(r.last)}</td>
                       <td className={`num ${cls(r.day)}`}>{pct(r.day)}</td>
-                      <td className="num">{r.rs5}</td>
-                      <td className="num">{r.rs21}</td>
-                      <td className="text-xs">{r.ma50}</td>
-                      <td className={`num ${cls(r.cmf)}`}>{r.cmf != null ? Number(r.cmf).toFixed(3) : '—'}</td>
-                      <td className={`num ${cls(r.super)}`}>{r.super != null ? ((r.super>=0?'+':'')+Number(r.super).toFixed(1)) : '—'}</td>
+                      <td className="num cover-hide">{r.rs5}</td>
+                      <td className="num cover-hide">{r.rs21}</td>
+                      <td className="text-xs cover-hide">{r.ma50}</td>
+                      <td className={`num ${cls(r.cmf)} cover-hide`}>{r.cmf != null ? Number(r.cmf).toFixed(3) : '—'}</td>
+                      <td className={`num ${cls(r.super)} cover-hide`}>{r.super != null ? ((r.super>=0?'+':'')+Number(r.super).toFixed(1)) : '—'}</td>
                       <td className="text-xs">{r.tag}</td>
                     </tr>
                   ))}
@@ -1338,17 +2051,17 @@ function App() {
               <p className="text-xs text-slate-500 mb-2">{D.sector_takeaway}</p>
               <div className="card overflow-hidden">
                 <div className="scroll-x"><table>
-                  <thead><tr><th>#</th><th>ETF</th><th>Sector</th><th className="num">RS21</th><th className="num">CMF</th><th>MA50</th><th>Note</th></tr></thead>
+                  <thead><tr><th className="cover-hide">#</th><th>ETF</th><th className="cover-hide">Sector</th><th className="num">RS21</th><th className="num">CMF</th><th className="cover-hide">MA50</th><th className="cover-hide">Note</th></tr></thead>
                   <tbody>
                     {(D.sectors || []).map((s) => (
                       <tr key={s.etf}>
-                        <td>{s.rank}</td>
+                        <td className="cover-hide">{s.rank}</td>
                         <td className="code">{s.etf}</td>
-                        <td className="text-xs">{s.sector}</td>
+                        <td className="text-xs cover-hide">{s.sector}</td>
                         <td className="num">{s.rs}</td>
                         <td className={`num ${cls(s.cmf)}`}>{s.cmf != null ? Number(s.cmf).toFixed(3) : '—'}</td>
-                        <td className="text-xs">{s.ma50}</td>
-                        <td className="text-xs text-slate-400">{s.note}</td>
+                        <td className="text-xs cover-hide">{s.ma50}</td>
+                        <td className="text-xs text-slate-400 cover-hide">{s.note}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -1363,19 +2076,19 @@ function App() {
                 <table>
                   <thead>
                     <tr>
-                      <th>US</th><th className="num">Last</th><th className="num">vs prior</th>
-                      <th className="num">Super+Big $M</th><th>Tag</th><th>JP/HK implication</th>
+                      <th>US</th><th className="num cover-hide">Last</th><th className="num">vs prior</th>
+                      <th className="num cover-hide">Super+Big $M</th><th>Tag</th><th className="cover-hide">JP/HK implication</th>
                     </tr>
                   </thead>
                   <tbody>
                     {(D.us_ovn || []).map((r) => (
                       <tr key={r.t} className={Math.abs(r.day||0)>3?'hi-red':''}>
                         <td className="code">{r.t}</td>
-                        <td className="num">{num(r.last)}</td>
+                        <td className="num cover-hide">{num(r.last)}</td>
                         <td className={`num ${cls(r.day)}`}>{pct(r.day)}</td>
-                        <td className={`num ${cls(r.sb)}`}>{r.sb != null ? ((r.sb>=0?'+':'')+Number(r.sb).toFixed(1)) : '—'}</td>
+                        <td className={`num ${cls(r.sb)} cover-hide`}>{r.sb != null ? ((r.sb>=0?'+':'')+Number(r.sb).toFixed(1)) : '—'}</td>
                         <td className="text-xs">{r.tag}</td>
-                        <td className="text-xs text-slate-400">{r.note}</td>
+                        <td className="text-xs text-slate-400 cover-hide">{r.note}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -1392,7 +2105,7 @@ function App() {
               <MktSplit
                 mkt={mkt}
                 rows={D.flow_cores || []}
-                keys={mkt === 'ALL' ? ['HK', 'JP'] : [mkt]}
+                keys={mkt === 'ALL' ? ['JP', 'HK'] : [mkt]}
                 empty={(k) => <div className="card p-3 text-xs text-slate-500">No {k} core flow.</div>}
                 render={(part, k) => (
                   <div className="flow-grid">
@@ -1431,21 +2144,21 @@ function App() {
                 <MktSplit
                   mkt={mkt}
                   rows={D.indices || []}
-                  keys={mkt === 'ALL' ? ['HK', 'JP', 'US'] : [mkt]}
+                  keys={mkt === 'ALL' ? ['JP', 'HK', 'US'] : [mkt]}
                   empty={(k) => <div className="card p-3 text-xs text-slate-500">No {k} indices.</div>}
                   render={(part) => (
                     <div className="card overflow-hidden">
                       <div className="scroll-x">
                         <table>
-                          <thead><tr><th>Index</th><th>Mkt</th><th className="num">Last</th><th className="num">Day%</th><th>Note</th></tr></thead>
+                          <thead><tr><th>Index</th><th className="cover-hide">Mkt</th><th className="num cover-hide">Last</th><th className="num">Day%</th><th className="cover-hide">Note</th></tr></thead>
                           <tbody>
                             {part.map((r) => (
                               <tr key={r.name}>
                                 <td className="code">{r.name}</td>
-                                <td className="text-xs text-slate-500">{r.mkt}</td>
-                                <td className="num">{num(r.last, 2)}</td>
+                                <td className="text-xs text-slate-500 cover-hide">{r.mkt}</td>
+                                <td className="num cover-hide">{num(r.last, 2)}</td>
                                 <td className={`num ${cls(r.chg_pct)}`}>{pct(r.chg_pct)}</td>
-                                <td className="text-xs text-slate-400"><ElevText text={r.note}/></td>
+                                <td className="text-xs text-slate-400 cover-hide"><ElevText text={r.note}/></td>
                               </tr>
                             ))}
                           </tbody>
@@ -1464,20 +2177,20 @@ function App() {
                           <table>
                             <thead>
                               <tr>
-                                <th>T</th><th>Name</th><th className="num">Scan</th><th className="num">Live</th>
-                                <th className="num">Day% / mark</th><th className="num">vs Scan Δ</th><th>Note</th>
+                                <th>T</th><th className="cover-hide">Name</th><th className="num cover-hide">Scan</th><th className="num cover-hide">Live</th>
+                                <th className="num">Day% / mark</th><th className="num cover-hide">vs Scan Δ</th><th className="cover-hide">Note</th>
                               </tr>
                             </thead>
                             <tbody>
                               {part.map((r) => (
                                 <tr key={r.t} className={/285A|9903|5801|9984|5101/.test(r.t)?'hi-red':r.t==='01729'?'hi-amb':''}>
                                   <td className="code">{r.t}</td>
-                                  <td>{r.name}</td>
-                                  <td className="num">{num(r.scan)}</td>
-                                  <td className="num">{num(r.live, r.t==='53249'?3:2)}</td>
+                                  <td className="cover-hide">{r.name}</td>
+                                  <td className="num cover-hide">{num(r.scan)}</td>
+                                  <td className="num cover-hide">{num(r.live, r.t==='53249'?3:2)}</td>
                                   <td className={`num ${cls(r.day)}`}>{pct(r.day)}</td>
-                                  <td className={`num ${deltaCls(r.dlt)}`}>{pct(r.dlt)}</td>
-                                  <td className="text-xs text-slate-400"><ElevText text={r.note}/></td>
+                                  <td className={`num ${deltaCls(r.dlt)} cover-hide`}>{pct(r.dlt)}</td>
+                                  <td className="text-xs text-slate-400 cover-hide"><ElevText text={r.note}/></td>
                                 </tr>
                               ))}
                             </tbody>
@@ -1496,18 +2209,18 @@ function App() {
 
           <Section title="Regime gate" icon="fa-gauge-high">
             <div className={`grid gap-3 ${[showHk,showJp,showUs].filter(Boolean).length>1 ? 'sm:grid-cols-2 lg:grid-cols-3' : ''}`}>
-              {showHk && (
-                <div className="card p-4">
-                  <div className="text-xs uppercase text-slate-500 mb-1">HK</div>
-                  <div className="mb-2"><span className="pill pill-y">{D.hk_regime}</span> <span className="text-xs text-slate-500 ml-2">{D.session_hk}</span></div>
-                  <ul className="text-sm text-slate-300 space-y-1">{(D.overview_hk || []).map((x,i)=>(<li key={i}>· <ElevText text={x}/></li>))}</ul>
-                </div>
-              )}
               {showJp && (
                 <div className="card p-4">
                   <div className="text-xs uppercase text-slate-500 mb-1">JP</div>
                   <div className="mb-2"><span className={`pill ${tonePill(D.jp_regime_tone || "slate")}`}>{D.jp_regime}</span> <span className="text-xs text-slate-500 ml-2">{D.session_jp}</span></div>
                   <ul className="text-sm text-slate-300 space-y-1">{(D.overview_jp || []).map((x,i)=>(<li key={i}>· <ElevText text={x}/></li>))}</ul>
+                </div>
+              )}
+              {showHk && (
+                <div className="card p-4">
+                  <div className="text-xs uppercase text-slate-500 mb-1">HK</div>
+                  <div className="mb-2"><span className="pill pill-y">{D.hk_regime}</span> <span className="text-xs text-slate-500 ml-2">{D.session_hk}</span></div>
+                  <ul className="text-sm text-slate-300 space-y-1">{(D.overview_hk || []).map((x,i)=>(<li key={i}>· <ElevText text={x}/></li>))}</ul>
                 </div>
               )}
               {showUs && (
@@ -1519,7 +2232,6 @@ function App() {
                 </div>
               )}
             </div>
-            <p className="text-xs text-amber-200/90 mt-2">{D.verdict}</p>
             {(D.cross_market || "") ? (
               <div className="mt-2 text-xs text-slate-400 border border-slate-800 rounded-lg px-3 py-2">{D.cross_market}</div>
             ) : null}
@@ -1583,14 +2295,14 @@ function App() {
               render={(part) => (
                 <div className="card overflow-hidden">
                   <div className="scroll-x"><table>
-                    <thead><tr><th>#</th><th>T</th><th className="num">Q</th><th>Note</th><th className="num">vs Scan Δ</th></tr></thead>
+                    <thead><tr><th className="cover-hide">#</th><th>T</th><th className="num cover-hide">Q</th><th>Note</th><th className="num cover-hide">vs Scan Δ</th></tr></thead>
                     <tbody>{part.map((e) => (
                       <tr key={e.t} className="hi-elite">
-                        <td>{e.rank}</td>
+                        <td className="cover-hide">{e.rank}</td>
                         <td className="code">{e.t}</td>
-                        <td className="num">{e.q}</td>
+                        <td className="num cover-hide">{e.q}</td>
                         <td className="text-xs text-slate-400">{e.note}</td>
-                        <td className={`num ${deltaCls(e.dlt)}`}>{pct(e.dlt)}</td>
+                        <td className={`num ${deltaCls(e.dlt)} cover-hide`}>{pct(e.dlt)}</td>
                       </tr>
                     ))}</tbody>
                   </table></div>
@@ -1600,67 +2312,77 @@ function App() {
           </Section>
 
           <Section title="Emerging VCP (Top 8)" icon="fa-seedling">
-            <p className="text-xs text-slate-500 mb-2">{D.emerging_note}</p>
             <MktSplit
               mkt={mkt}
               rows={D.emerging || []}
               empty={(k) => (
-                <div className="card p-4 text-sm text-slate-400">
-                  <span className="pill pill-s mr-2">EMPTY</span>
-                  No Emerging VCP for {k} today.
+                <div>
+                  {researchHead(k)}
+                  <div className="card p-4 text-sm text-slate-400">
+                    <span className="pill pill-s mr-2">EMPTY</span>
+                    No Emerging VCP for {k} today.
+                  </div>
                 </div>
               )}
-              render={(part) => (
-                <div className="card overflow-hidden">
+              render={(part, k) => (
+                <div>
+                  {researchHead(k)}
+                  <div className="card overflow-hidden">
                   <div className="scroll-x"><table>
-                    <thead><tr><th>#</th><th>T</th><th>Name</th><th className="num">Wave</th><th className="num">To Pivot %</th><th>SSL</th><th className="num">CMF</th><th>Comment</th></tr></thead>
+                    <thead><tr><th className="cover-hide">#</th><th>T</th><th className="cover-hide">Name</th><th className="num cover-hide">Wave</th><th className="num cover-hide">To Pivot %</th><th>SSL</th><th className="num">CMF</th><th className="cover-hide">Comment</th></tr></thead>
                     <tbody>{part.map((e) => (
                       <tr key={e.t}>
-                        <td>{e.rank}</td>
+                        <td className="cover-hide">{e.rank}</td>
                         <td className="code">{e.t}</td>
-                        <td className="text-xs">{e.name}</td>
-                        <td className="num">{e.wave}</td>
-                        <td className="num">{e.to_pivot}</td>
+                        <td className="text-xs cover-hide">{e.name}</td>
+                        <td className="num cover-hide">{e.wave}</td>
+                        <td className="num cover-hide">{e.to_pivot}</td>
                         <td><span className={`pill ${sslPill(e.ssl)}`}>{e.ssl}</span></td>
                         <td className={`num ${cls(e.cmf)}`}>{e.cmf}</td>
-                        <td className="text-xs text-slate-400">{e.note}</td>
+                        <td className="text-xs text-slate-400 cover-hide">{e.note}</td>
                       </tr>
                     ))}</tbody>
                   </table></div>
+                  </div>
                 </div>
               )}
             />
           </Section>
 
 
-          <Section title="Cup-and-Handle (research / not a buy)" icon="fa-mug-hot">
-            <p className="text-xs text-slate-500 mb-2">{D.cup_note}</p>
+          <Section title="Cup-and-Handle" icon="fa-mug-hot">
             <MktSplit
               mkt={mkt}
               rows={D.cup_handle || []}
               empty={(k) => (
-                <div className="card p-4 text-sm text-slate-400">
-                  <span className="pill pill-s mr-2">EMPTY</span>
-                  No C&H for {k} today.
+                <div>
+                  {researchHead(k)}
+                  <div className="card p-4 text-sm text-slate-400">
+                    <span className="pill pill-s mr-2">EMPTY</span>
+                    No C&H for {k} today.
+                  </div>
                 </div>
               )}
-              render={(part) => (
-                <div className="card overflow-hidden">
+              render={(part, k) => (
+                <div>
+                  {researchHead(k)}
+                  <div className="card overflow-hidden">
                   <div className="scroll-x"><table>
-                    <thead><tr><th>#</th><th>T</th><th>Name</th><th>Status</th><th className="num">Last</th><th className="num">Pivot</th><th className="num">Dist%</th><th>Comment</th></tr></thead>
+                    <thead><tr><th className="cover-hide">#</th><th>T</th><th className="cover-hide">Name</th><th>Status</th><th className="num cover-hide">Last</th><th className="num cover-hide">Pivot</th><th className="num">Dist%</th><th className="cover-hide">Comment</th></tr></thead>
                     <tbody>{part.map((e) => (
                       <tr key={e.status + e.t}>
-                        <td>{e.rank}</td>
+                        <td className="cover-hide">{e.rank}</td>
                         <td className="code">{e.t}</td>
-                        <td className="text-xs">{e.name}</td>
+                        <td className="text-xs cover-hide">{e.name}</td>
                         <td><span className={`pill ${e.status==='breakout'?'pill-r':e.status==='near_pivot'?'pill-y':'pill-s'}`}>{e.status}</span></td>
-                        <td className="num">{num(e.last)}</td>
-                        <td className="num">{num(e.pivot)}</td>
+                        <td className="num cover-hide">{num(e.last)}</td>
+                        <td className="num cover-hide">{num(e.pivot)}</td>
                         <td className={`num ${cls(e.dist)}`}>{e.dist != null ? Number(e.dist).toFixed(2) : '—'}</td>
-                        <td className="text-xs text-slate-400">{e.note}</td>
+                        <td className="text-xs text-slate-400 cover-hide">{e.note}</td>
                       </tr>
                     ))}</tbody>
                   </table></div>
+                  </div>
                 </div>
               )}
             />
@@ -1678,22 +2400,22 @@ function App() {
                     <table>
                       <thead>
                         <tr>
-                          <th>#</th><th>Mkt</th><th>T</th><th>Name</th><th>Stage</th><th>SSL</th>
-                          <th>Action</th><th className="num">vs Scan Δ</th><th>Note</th>
+                          <th className="cover-hide">#</th><th className="cover-hide">Mkt</th><th>T</th><th className="cover-hide">Name</th><th className="cover-hide">Stage</th><th>SSL</th>
+                          <th>Action</th><th className="num cover-hide">vs Scan Δ</th><th className="cover-hide">Note</th>
                         </tr>
                       </thead>
                       <tbody>
                         {part.map((s) => (
                           <tr key={s.mkt + s.t} className={s.tone==='red'?'hi-red':s.tone==='amber'?'hi-amb':''}>
-                            <td>{s.rank}</td>
-                            <td className="text-xs text-slate-500">{s.mkt}</td>
+                            <td className="cover-hide">{s.rank}</td>
+                            <td className="text-xs text-slate-500 cover-hide">{s.mkt}</td>
                             <td className="code">{s.t}</td>
-                            <td>{s.name}</td>
-                            <td className="text-xs">{s.stage}</td>
+                            <td className="cover-hide">{s.name}</td>
+                            <td className="text-xs cover-hide">{s.stage}</td>
                             <td><span className={`pill ${sslPill(s.ssl)}`}>{s.ssl}</span></td>
                             <td><span className={`pill ${tonePill(s.tone)}`}>{s.act}</span></td>
-                            <td className={`num ${deltaCls(s.dlt)}`}>{pct(s.dlt)}</td>
-                            <td className="text-xs text-slate-400">{s.note}</td>
+                            <td className={`num ${deltaCls(s.dlt)} cover-hide`}>{pct(s.dlt)}</td>
+                            <td className="text-xs text-slate-400 cover-hide">{s.note}</td>
                           </tr>
                         ))}
                       </tbody>
