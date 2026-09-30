@@ -1,177 +1,116 @@
-<!-- built-from desk_board_shell_v2.html sha256=f54df51e116d4a45ae34330ef1ebb483688849d6feda92cfe234a7c82f04f8db -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<title>Desk board</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,viewport-fit=cover"/>
+<meta name="theme-color" content="#020617"/>
+<title>JP · HK · US desk board</title>
+<!-- Frozen JSX. Plug numbers with:
+     python3 scripts/plug_desk_board.py --data Dashboard/desk_board_data.json --out Dashboard/Desk_Board_React_YYYY-MM-DD.html
+     Hash: #HK #JP #US #ALL. Do not mix markets in one tbody. Public: no Portfolio. -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={darkMode:'class'}</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 <style>
-/* Fold layout. Folded (<560px) table rows are cards; at 560px or wider, full tables. */
-:root{
-  color-scheme:dark;
-  --bg:#0a0f16; --panel:#111823; --panel-2:#16202e; --line:#223043; --fg:#e4ebf3; --muted:#8a9ab0; --faint:#5d6c80;
-  --accent:#9d8cff; --accent-ink:#0a0f16;
-  --up:#3fbf80; --down:#ef5a5f; --warn:#e8ad2e; --flow-in:#4ca3f0; --flow-out:#ef5a5f;
-  --up-bg:rgba(63,191,128,.13); --down-bg:rgba(239,90,95,.13); --warn-bg:rgba(232,173,46,.14); --accent-bg:rgba(157,140,255,.14); --flow-bg:rgba(76,163,240,.13);
-  --f-disp:"IBM Plex Sans Condensed","Arial Narrow",system-ui,sans-serif;
-  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --f-data:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+body{font-family:Inter,system-ui,sans-serif;background:#020617;color:#e2e8f0;margin:0}
+.font-display{font-family:'Space Grotesk',Inter,system-ui,sans-serif}
+.card{background:linear-gradient(180deg,#0f172a,#0b1220);border:1px solid #1e2937;border-radius:1rem;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.pill{display:inline-flex;align-items:center;gap:.25rem;padding:.1rem .35rem;border-radius:2px;font-size:.7rem;font-weight:600;white-space:nowrap}
+.pill-g{background:#052e16;color:#86efac;border:1px solid #166534}
+.pill-y{background:#451a03;color:#fcd34d;border:1px solid #92400e}
+.pill-o{background:#7c2d12;color:#fdba74;border:1px solid #c2410c}
+.pill-r{background:#450a0a;color:#fca5a5;border:1px solid #7f1d1d}
+.pill-b{background:#0c1929;color:#93c5fd;border:1px solid #1e3a5f}
+.pill-s{background:#1e2937;color:#cbd5e1;border:1px solid #334155}
+.nav-chip{padding:.35rem .75rem;border-radius:2px;font-size:.75rem;font-weight:600;background:#0f172a;border:1px solid #1e2937;color:#94a3b8;cursor:pointer}
+.nav-chip:hover,.nav-chip.active{border-color:#38bdf8;color:#e0f2fe;background:#0c4a6e33}
+.scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;min-width:640px}
+th{text-align:left;font-size:.65rem;letter-spacing:.05em;text-transform:uppercase;color:#64748b;padding:.45rem .5rem;border-bottom:1px solid #1e2937;white-space:nowrap;position:sticky;top:0;background:#0f172a}
+td{padding:.5rem;border-bottom:1px solid #0f172a;font-size:.8125rem;vertical-align:middle}
+tr:hover td{background:rgba(30,41,59,.4)}
+.num{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.code{font-weight:700;color:#7dd3fc}
+.pos{color:#4ade80;font-weight:600}
+.neg{color:#f87171;font-weight:600}
+.flat{color:#94a3b8}
+.delta-g{color:#86efac}
+.delta-y{color:#fbbf24}
+.delta-r{color:#fca5a5}
+.act-sell{color:#fca5a5;font-weight:700}
+.act-trim{color:#fcd34d;font-weight:700}
+.act-hold{color:#86efac;font-weight:600}
+.hi-red td{background:rgba(127,29,29,.18)!important}
+.hi-amb td{background:rgba(113,63,18,.14)!important}
+.hi-elite{box-shadow:inset 0 0 0 1px #166534}
+.mkt-label{display:flex;align-items:center;gap:.45rem;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:#7dd3fc;font-weight:700;padding:.15rem .15rem .35rem}
+.mkt-count{font-size:.65rem;font-weight:600;color:#64748b;letter-spacing:0}
+.flow-grid{display:grid;grid-template-columns:1fr;gap:.75rem}
+@media(min-width:900px){.flow-grid{grid-template-columns:1fr 1fr}}
+.flow-card{background:linear-gradient(180deg,#0f172a,#0b1220);border:1px solid #1e2937;border-radius:1rem;padding:.65rem .4rem .35rem}
+.flow-title{font-size:.72rem;color:#cbd5e1;font-weight:600;padding:0 .55rem .3rem}
+@media(max-width:640px){h1{font-size:1.35rem!important}}
+@media(max-width:719px){
+  .cover-hide{display:none}
+  table{min-width:0}
+  td,th{font-size:16px!important}
 }
-@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){
-  color-scheme:light;
-  --bg:#f3f5f9; --panel:#ffffff; --panel-2:#f6f8fb; --line:#dde3ec; --fg:#111a26; --muted:#56657a; --faint:#8793a5;
-  --accent:#5b45e0; --accent-ink:#ffffff;
-  --up:#16804f; --down:#c9303a; --warn:#9a6700; --flow-in:#1f6fc0; --flow-out:#c9303a;
-  --up-bg:rgba(22,128,79,.10); --down-bg:rgba(201,48,58,.09); --warn-bg:rgba(154,103,0,.10); --accent-bg:rgba(91,69,224,.09); --flow-bg:rgba(31,111,192,.09);
-}}
-:root[data-theme="light"]{
-  color-scheme:light;
-  --bg:#f3f5f9; --panel:#ffffff; --panel-2:#f6f8fb; --line:#dde3ec; --fg:#111a26; --muted:#56657a; --faint:#8793a5;
-  --accent:#5b45e0; --accent-ink:#ffffff;
-  --up:#16804f; --down:#c9303a; --warn:#9a6700; --flow-in:#1f6fc0; --flow-out:#c9303a;
-  --up-bg:rgba(22,128,79,.10); --down-bg:rgba(201,48,58,.09); --warn-bg:rgba(154,103,0,.10); --accent-bg:rgba(91,69,224,.09); --flow-bg:rgba(31,111,192,.09);
+@media(max-width:720px){
+  .section-nav{position:fixed;top:auto;bottom:0;left:0;right:0;margin:0;padding:.5rem .75rem calc(.5rem + env(safe-area-inset-bottom));background:#020617;border-top:1px solid #1e2937;z-index:30}
+  .board-wrap{padding-bottom:4.5rem}
 }
-*{box-sizing:border-box}
-html,body{max-width:100%;overflow-x:hidden}
-body{background:var(--bg);color:var(--fg);font:14px/1.45 var(--f-body);margin:0;-webkit-font-smoothing:antialiased}
-.num,.tk,td.n{font-family:var(--f-data);font-variant-numeric:tabular-nums}
-.wrap{max-width:760px;margin:0 auto;padding-inline:14px;padding-block:0 32px;display:grid;gap:14px}
-header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:10px 8px;display:grid;gap:8px;border-bottom:1px solid var(--line);margin-inline:-14px;padding-inline:14px}
-.hrow{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
-.brand{font:700 19px/1.1 var(--f-disp);letter-spacing:.01em;margin:0}
-.brand small{font:500 13px var(--f-body);color:var(--muted);margin-left:6px}
-.asof{font:500 11px var(--f-data);color:var(--faint);white-space:nowrap}
-.tabs{display:grid;grid-template-columns:repeat(4,1fr);background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:3px;gap:3px}
-.tabs button{appearance:none;border:0;background:transparent;color:var(--muted);font:600 13px var(--f-disp);letter-spacing:.06em;padding:7px 0;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px}
-.tabs button[aria-selected="true"]{background:var(--accent);color:var(--accent-ink)}
-.tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.dot{width:7px;height:7px;border-radius:50%;display:inline-block;flex:none;background:var(--t,var(--faint))}
-.tone-red{--t:var(--down);--tb:var(--down-bg)} .tone-amber{--t:var(--warn);--tb:var(--warn-bg)} .tone-green{--t:var(--up);--tb:var(--up-bg)}
-.today{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 12px 10px;display:grid;gap:10px}
-.eyebrow{font:600 11px var(--f-disp);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0}
-.verdict{font:600 17px/1.3 var(--f-disp);margin:0;text-wrap:balance}
-.regimes{display:grid;gap:0;border-top:1px solid var(--line)}
-.rg{display:grid;grid-template-columns:34px auto 1fr;grid-template-areas:"m pill size" "m why why";column-gap:8px;row-gap:2px;align-items:center;padding-block:8px;border-bottom:1px solid var(--line)}
-.rg .m{grid-area:m;font:700 15px var(--f-disp);align-self:start;padding-top:1px}
-.pill{grid-area:pill;justify-self:start;font:600 11px var(--f-disp);letter-spacing:.07em;color:var(--t);background:var(--tb);border-radius:5px;padding:2px 7px;display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
-.rg .size{grid-area:size;justify-self:end;font:600 12px var(--f-body);color:var(--fg);text-align:right}
-.rg .why{grid-area:why;font-size:12.5px;color:var(--muted)}
-.facts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.fact{background:var(--panel-2);border-radius:8px;padding:7px 9px;min-width:0}
-.fact b{display:block;font:600 10.5px var(--f-disp);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.fact > span{font-size:12.5px;display:block}
-.fact.alert{box-shadow:inset 3px 0 0 var(--down)}
-.fact.alert span .num{color:var(--down);font-weight:600}
-section.block{display:grid;gap:8px}
-.sh{display:flex;align-items:baseline;justify-content:space-between;gap:8px;padding-inline:2px}
-.sh h2{font:700 15px var(--f-disp);letter-spacing:.02em;margin:0}
-.sh .cnt{font:500 11px var(--f-data);color:var(--faint)}
-.note{font-size:12px;color:var(--faint);margin:0;padding-inline:2px}
-.tbl{width:100%;border-collapse:collapse}
-.tbl th{font:600 10.5px var(--f-disp);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
-.tbl td{padding:8px;border-bottom:1px solid var(--line);vertical-align:top;font-size:13px}
-.tbl td.n,.tbl th.n{text-align:right}
-.tk{font-weight:600;font-size:13.5px;white-space:nowrap}
-.mk{font:600 10px var(--f-disp);letter-spacing:.08em;color:var(--faint);margin-left:5px}
-.nm{color:var(--muted);font-size:12px}
-.act{font:600 11px var(--f-disp);letter-spacing:.06em;text-transform:uppercase;border-radius:5px;padding:2px 7px;white-space:nowrap;display:inline-block;color:var(--t,var(--muted));background:var(--tb,var(--panel-2))}
-.sev{font:700 10.5px var(--f-disp);letter-spacing:.08em;color:var(--t)}
-.up{color:var(--up)} .down{color:var(--down)} .fin{color:var(--flow-in)} .fout{color:var(--flow-out)}
-.tbl td.full.risk{color:var(--fg);font-size:13px}
-.pend{color:var(--faint);font-style:italic;font-size:11.5px}
-.qbar{display:inline-block;vertical-align:middle;width:46px;height:5px;border-radius:3px;background:var(--panel-2);margin-left:6px;overflow:hidden}
-.qbar i{display:block;height:100%;background:var(--accent)}
-.box{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
-.box.scroll{overflow-x:auto}
-.more{display:grid;gap:8px}
-.more details{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 12px}
-.more summary{font:700 15px var(--f-disp);cursor:pointer}
-.more details[open] summary{margin-bottom:8px}
-.foot{font-size:12px;color:var(--faint);margin:0}
-@media (max-width:559.98px){
-  .tbl thead{display:none}
-  .tbl,.tbl tbody{display:block}
-  .tbl tr{display:grid;grid-template-columns:1fr auto;column-gap:10px;row-gap:3px;padding:10px 12px;border-bottom:1px solid var(--line)}
-  .tbl tr:last-child{border-bottom:0}
-  .tbl td{display:block;padding:0;border:0}
-  .tbl td.wide{display:none}
-  .tbl td.a{grid-column:1} .tbl td.b{grid-column:2;justify-self:end;text-align:right}
-  .tbl td.full{grid-column:1 / -1;color:var(--muted);font-size:12.5px}
-  .tbl.sev-list tr{box-shadow:inset 3px 0 0 var(--t)}
-  .facts{grid-template-columns:1fr;gap:0;border-top:1px solid var(--line);padding-top:4px}
-  .fact{background:none;border-radius:0;padding:3px 0;display:grid;grid-template-columns:78px 1fr;gap:8px;align-items:baseline}
-  .fact.alert{box-shadow:none}
-  .fact b{font-size:10px}
-  .today{gap:8px;padding:10px 12px 8px}
-  .verdict{font-size:16px}
-  .rg{padding-block:6px}
-  .rg .why{font-size:12px;line-height:1.35}
-}
-@media (min-width:560px){
-  .wrap{padding-inline:18px} header.top{margin-inline:-18px;padding-inline:18px}
-  .tbl td.b{text-align:left}
-  .tbl.sev-list td:first-child{box-shadow:inset 3px 0 0 var(--t)}
-  .facts{grid-template-columns:repeat(3,1fr)}
-  .brand{font-size:21px}
-  .only-n{display:none}
-  .regimes{grid-template-columns:repeat(3,1fr);border-top:0;gap:8px}
-  .rg{grid-template-columns:auto 1fr;grid-template-areas:"m pill" "size size" "why why";border:1px solid var(--line);border-radius:9px;padding:8px 10px;align-items:center}
-  .rg .size{justify-self:start;text-align:left}
-}
-@media (prefers-reduced-motion:no-preference){.tabs button{transition:background .15s,color .15s}}
 </style>
 </head>
-<body>
+<body class="min-h-screen antialiased">
 <div id="root"></div>
 <!-- START_DATA -->
 <script>
 window.__DATA__ = {
-  "date": "2026-09-29",
-  "weekday": "Tuesday",
-  "generated": "2026-09-29 19:28 HKT",
-  "asof": "2026-09-29 19:28 HKT",
-  "opend_ts": "2026-09-29 19:28 HKT",
+  "date": "2026-09-30",
+  "weekday": "Wednesday",
+  "generated": "2026-09-30 07:45 HKT",
+  "asof": "2026-09-30 07:45 HKT",
+  "opend_ts": "2026-09-30 07:45 HKT",
   "opend_connected": true,
-  "title": "JP · HK · US",
+  "title": "JP · HK",
   "session_hk": "CLOSED",
-  "session_jp": "CLOSED",
-  "session_us": "PRE_MARKET_BEGIN",
+  "session_jp": "WAITING_OPEN",
+  "session_us": "AFTER_HOURS_BEGIN",
   "hk_regime": "UNFAVORABLE",
   "jp_regime": "MIXED",
   "jp_regime_tone": "amber",
-  "us_regime": "MIXED",
+  "us_regime": "overnight gate",
   "us_regime_tone": "amber",
-  "verdict": "MIXED. 10Y spike. Oil inflow. Selective. No chase.",
-  "warning": "⚠️ US MAJOR INDICES ALL DOWN — HK/JP LIKELY OPEN LOWER · ⚠️ 10Y SPIKE — reduce growth / tech / testers · ⚠️ OIL LEADING WITH INFLOW — geopolitics / sticky-inflation tell. Watch 10Y/30Y. Not a buy-XLE signal.",
+  "verdict": "Pick from the candidate tables above. Do not invent tickers. Do not promote Emerging/C&H.",
+  "warning": "⚠️ 10Y SPIKE — reduce growth / tech / testers · ⚠️ OIL LEADING WITH INFLOW — geopolitics / sticky-inflation tell. Watch 10Y/30Y. Not a buy-XLE signal.",
   "stance": "HK UNFAVORABLE · JP MIXED. Public board — no book.",
-  "summary": "⚠️ US MAJOR INDICES ALL DOWN — HK/JP LIKELY OPEN LOWER · ⚠️ 10Y SPIKE — reduce growth / tech / testers · ⚠️ OIL LEADING WITH INFLOW — geopolitics / sticky-inflation tell. Watch 10Y/30Y. Not a buy-XLE signal.",
-  "alert_banner": "2026-09-29 19:28 HKT. HK CLOSED · JP CLOSED · US PRE_MARKET_BEGIN. OpenD CONNECTED. Top 3 plugged.",
+  "summary": "⚠️ 10Y SPIKE — reduce growth / tech / testers · ⚠️ OIL LEADING WITH INFLOW — geopolitics / sticky-inflation tell. Watch 10Y/30Y. Not a buy-XLE signal.",
+  "alert_banner": "2026-09-30 07:45 HKT. HK CLOSED · JP WAITING_OPEN · US AFTER_HOURS_BEGIN. OpenD CONNECTED. Top 3 plugged.",
   "disclaimer": "Not investment advice. Public scan/regime board. No holdings or account ids. Day% Western (green=up).",
-  "source": "pack 2026-09-29 19:28 HKT. FRED 2026-09-25. Public strip. No holdings.",
+  "source": "pack 2026-09-30 07:45 HKT. FRED 2026-09-28. Public strip. No holdings.",
   "bank_note": "Holdings are not on this public board.",
   "cbbc_note": "",
-  "elite_note": "HK prime90 1. JP prime75 2. US Prime 0.",
+  "elite_note": "HK prime90 1. JP prime75 2.",
   "snapshot_note": "Live = OpenD snap. Scan = Grok core. Public board has no qty/cost.",
-  "us_ovn_banner": "⚠️ US MAJOR INDICES ALL DOWN — HK/JP LIKELY OPEN LOWER",
-  "us_ovn_tone": "red",
-  "us_ovn_call": "285A CUT/no-add. MU −2.61% ALIGNED↓. Not a dip-buy.",
+  "us_ovn_banner": "US majors not all down.",
+  "us_ovn_tone": "amber",
+  "us_ovn_call": "285A HOLD no-add (MU +1.05%); 5801 no-add, mechanical SELL stands; 5803 no-add, mechanical SELL stands.",
   "cross_market": "HK / JP lists never merge. Book is local-only.",
   "yields_line": "⚠️ 10Y SPIKE — reduce growth / tech / testers Duration headwind (10Y and 30Y 10d Δ both > 0).",
   "oil_biotech_warn": "⚠️ OIL LEADING WITH INFLOW — geopolitics / sticky-inflation tell. Watch 10Y/30Y. Not a buy-XLE signal.",
-  "emerging_note": "Research list — not entries. US 4.",
+  "emerging_note": "Research list — not entries.",
   "cup_note": "Research list — not entries.",
-  "spring_skip": false,
-  "spring_answer": "Easy tape needs RSP 20MA and more highs.",
-  "spring_detail": "Agree: cash until breadth turns.",
+  "spring_skip": true,
+  "spring_answer": "",
+  "spring_detail": "",
   "mtm_note": "Public board has no MTM.",
   "mtm_net": "—",
   "smm_open_pl": "—",
   "smm_open_note": "",
   "vol5d_note": "",
   "auction_note": "",
-  "half_size": "SELECTIVE ENTRIES ONLY — HIGHEST RS NAMES ONLY. CONFIRM VOLUME BEFORE ENTRY.",
+  "half_size": "UNFAVORABLE → half-size.",
   "sector_takeaway": "",
   "header_pills": [
     {
@@ -183,25 +122,25 @@ window.__DATA__ = {
       "tone": "red"
     },
     {
-      "lab": "Majors down",
-      "tone": "red"
+      "lab": "US mixed",
+      "tone": "amber"
     }
   ],
   "yields": [
     {
       "name": "US 10Y",
-      "last": "5.17%",
-      "sess": "2026-09-25",
-      "d10": 21.0,
-      "d30": 54.0,
+      "last": "5.24%",
+      "sess": "2026-09-28",
+      "d10": 27.0,
+      "d30": 56.0,
       "read": "SPIKE"
     },
     {
       "name": "US 30Y",
-      "last": "5.49%",
-      "sess": "2026-09-25",
-      "d10": 14.0,
-      "d30": 28.0,
+      "last": "5.56%",
+      "sess": "2026-09-28",
+      "d10": 22.0,
+      "d30": 31.0,
       "read": ""
     }
   ],
@@ -209,219 +148,88 @@ window.__DATA__ = {
     {
       "sleeve": "Oil",
       "etf": "XLE",
-      "last": 62.1,
-      "day": 0.1,
+      "last": 61.54,
+      "day": -0.9,
       "rs5": 77.0,
       "rs21": 87.0,
       "ma50": "ABOVE +0.8%",
       "cmf": -0.149,
-      "super": 27.69,
+      "super": 96.68,
       "tag": "STRONG + IN"
     },
     {
       "sleeve": "Biotech",
       "etf": "XBI",
-      "last": 156.61,
-      "day": 1.02,
+      "last": 156.81,
+      "day": 0.13,
       "rs5": 69.0,
       "rs21": 36.0,
       "ma50": "BELOW -0.8%",
       "cmf": -0.036,
-      "super": 3.97,
+      "super": 0.92,
       "tag": "IN"
     }
   ],
-  "spring": [
-    {
-      "aspect": "Macro View",
-      "summary": "QQQ held trend, gap, 20MA. QQQE held 50MA.",
-      "view": "Majors all down. Wait RSP on 20MA."
-    },
-    {
-      "aspect": "Sector Calls",
-      "summary": "Software RS: PANW TWLO RBRK CRWD closed up.",
-      "view": "Need MSFT high. Two mag7 highs."
-    },
-    {
-      "aspect": "Key Risk Flags",
-      "summary": "MU after close. SNDK must hold 20MA.",
-      "view": "Breadth weak. Highs still lag lows."
-    },
-    {
-      "aspect": "Agree / Disagree",
-      "summary": "Easy tape needs RSP 20MA and more highs.",
-      "view": "Agree: cash until breadth turns."
-    }
-  ],
+  "spring": [],
   "sectors": [
     {
       "rank": 1,
-      "etf": "ARKG",
-      "sector": "Genomics",
-      "rs": 100,
-      "cmf": 0.216,
-      "ma50": "ABOVE",
-      "note": "★ ACCUMULATION",
-      "mkt": "US"
-    },
-    {
-      "rank": 2,
-      "etf": "SMH",
-      "sector": "Semiconductors",
-      "rs": 97,
-      "cmf": 0.201,
-      "ma50": "ABOVE",
-      "note": "★ ACCUMULATION",
-      "mkt": "US"
-    },
-    {
-      "rank": 3,
-      "etf": "MAGS",
-      "sector": "Mag-7",
-      "rs": 95,
-      "cmf": 0.04,
+      "etf": "XLE",
+      "sector": "Energy",
+      "rs": 87.0,
+      "cmf": -0.149,
       "ma50": "ABOVE",
       "note": "",
       "mkt": "US"
     },
     {
+      "rank": 2,
+      "etf": "XBI",
+      "sector": "Biotech",
+      "rs": 36.0,
+      "cmf": -0.036,
+      "ma50": "BELOW",
+      "note": "",
+      "mkt": "US"
+    },
+    {
+      "rank": 3,
+      "etf": "OIH",
+      "sector": "Oil Services",
+      "rs": 51.0,
+      "cmf": -0.212,
+      "ma50": "BELOW",
+      "note": "",
+      "mkt": "US"
+    },
+    {
       "rank": 4,
-      "etf": "XLK",
-      "sector": "Technology",
-      "rs": 92,
-      "cmf": 0.252,
-      "ma50": "ABOVE",
-      "note": "★ ACCUMULATION",
+      "etf": "XOP",
+      "sector": "Oil & Gas E&P",
+      "rs": 77.0,
+      "cmf": -0.197,
+      "ma50": "BELOW",
+      "note": "",
       "mkt": "US"
     },
     {
       "rank": 5,
-      "etf": "XLE",
-      "sector": "Energy",
-      "rs": 87,
-      "cmf": -0.149,
+      "etf": "SMH",
+      "sector": "Semiconductors",
+      "rs": 97.0,
+      "cmf": 0.201,
       "ma50": "ABOVE",
-      "note": "⚠️ DISTRIBUTION · RISING",
+      "note": "",
       "mkt": "US"
     },
     {
       "rank": 6,
       "etf": "XLV",
       "sector": "Healthcare",
-      "rs": 85,
+      "rs": 85.0,
       "cmf": -0.129,
       "ma50": "ABOVE",
-      "note": "⚠️ DISTRIBUTION · RISING",
-      "mkt": "US"
-    },
-    {
-      "rank": 7,
-      "etf": "XOP",
-      "sector": "Oil & Gas E&P",
-      "rs": 77,
-      "cmf": -0.197,
-      "ma50": "BELOW",
-      "note": "⚠️ DISTRIBUTION",
-      "mkt": "US"
-    },
-    {
-      "rank": 8,
-      "etf": "IGV",
-      "sector": "Internet Software",
-      "rs": 69,
-      "cmf": -0.102,
-      "ma50": "ABOVE",
-      "note": "⚠️ DISTRIBUTION · FALLING",
-      "mkt": "US"
-    },
-    {
-      "rank": 9,
-      "etf": "XLI",
-      "sector": "Industrials",
-      "rs": 59,
-      "cmf": -0.046,
-      "ma50": "BELOW",
-      "note": "RISING",
-      "mkt": "US"
-    },
-    {
-      "rank": 10,
-      "etf": "XLY",
-      "sector": "Consumer Disc.",
-      "rs": 56,
-      "cmf": -0.273,
-      "ma50": "BELOW",
-      "note": "⚠️ DISTRIBUTION · RISING",
-      "mkt": "US"
-    },
-    {
-      "rank": 11,
-      "etf": "XLF",
-      "sector": "Financials",
-      "rs": 54,
-      "cmf": -0.241,
-      "ma50": "BELOW",
-      "note": "⚠️ DISTRIBUTION · FALLING",
-      "mkt": "US"
-    },
-    {
-      "rank": 12,
-      "etf": "OIH",
-      "sector": "Oil Services",
-      "rs": 51,
-      "cmf": -0.212,
-      "ma50": "BELOW",
-      "note": "⚠️ DISTRIBUTION · RISING",
-      "mkt": "US"
-    },
-    {
-      "rank": 13,
-      "etf": "IWM",
-      "sector": "Russell 2000",
-      "rs": 49,
-      "cmf": -0.212,
-      "ma50": "BELOW",
-      "note": "⚠️ DISTRIBUTION",
-      "mkt": "US"
-    },
-    {
-      "rank": 14,
-      "etf": "XLB",
-      "sector": "Materials",
-      "rs": 38,
-      "cmf": -0.263,
-      "ma50": "BELOW",
-      "note": "⚠️ DISTRIBUTION · RISING",
-      "mkt": "US"
-    },
-    {
-      "rank": 15,
-      "etf": "XBI",
-      "sector": "Biotech",
-      "rs": 36,
-      "cmf": -0.036,
-      "ma50": "BELOW",
-      "note": "FALLING",
-      "mkt": "US"
-    },
-    {
-      "rank": 16,
-      "etf": "XLU",
-      "sector": "Utilities",
-      "rs": 28,
-      "cmf": -0.156,
-      "ma50": "BELOW",
-      "note": "⚠️ DISTRIBUTION · RISING",
-      "mkt": "US"
-    },
-    {
-      "rank": 17,
-      "etf": "GDX",
-      "sector": "Gold Miners",
-      "rs": 8,
-      "cmf": -0.044,
-      "ma50": "BELOW",
-      "note": "FALLING",
+      "note": "",
       "mkt": "US"
     }
   ],
@@ -443,43 +251,43 @@ window.__DATA__ = {
     {
       "name": "HHI mini",
       "mkt": "HK",
-      "last": 8163.0,
-      "chg_pct": 0.28,
+      "last": 8118.0,
+      "chg_pct": -0.27,
       "note": "not cash scale"
     },
     {
       "name": "HTI fut",
       "mkt": "HK",
-      "last": 4265.0,
-      "chg_pct": 0.47,
+      "last": 4225.0,
+      "chg_pct": -0.47,
       "note": ""
     },
     {
       "name": "SPY",
       "mkt": "US",
-      "last": 765.61,
-      "chg_pct": -0.74,
+      "last": 764.2,
+      "chg_pct": -0.18,
       "note": ""
     },
     {
       "name": "QQQ",
       "mkt": "US",
-      "last": 736.53,
-      "chg_pct": -1.07,
+      "last": 737.93,
+      "chg_pct": 0.19,
       "note": ""
     },
     {
       "name": "DIA",
       "mkt": "US",
-      "last": 514.02,
-      "chg_pct": -0.67,
+      "last": 512.88,
+      "chg_pct": -0.22,
       "note": ""
     },
     {
       "name": "SMH",
       "mkt": "US",
-      "last": 600.01,
-      "chg_pct": -1.08,
+      "last": 606.9,
+      "chg_pct": 1.15,
       "note": ""
     }
   ],
@@ -560,9 +368,9 @@ window.__DATA__ = {
       "name": "KIOXIA HOLDINGS CORPORATION",
       "scan": 17880.0,
       "live": 17880.0,
-      "day": 0.56,
+      "day": 0.0,
       "dlt": 0.0,
-      "note": "Strong Blue Super 12.49"
+      "note": "Strong Blue Super 12.49 prev"
     },
     {
       "t": "5016",
@@ -570,9 +378,9 @@ window.__DATA__ = {
       "name": "JX ADVANCED METALS CORPORATION",
       "scan": 3486.0,
       "live": 3486.0,
-      "day": -1.83,
+      "day": 0.0,
       "dlt": 0.0,
-      "note": "Strong Red Super -2.88"
+      "note": "Strong Red Super -2.88 prev"
     },
     {
       "t": "5801",
@@ -580,9 +388,9 @@ window.__DATA__ = {
       "name": "FURUKAWA ELECTRIC CO",
       "scan": 3684.0,
       "live": 3684.0,
-      "day": -2.67,
+      "day": 0.0,
       "dlt": 0.0,
-      "note": "Strong Red Super -3.72"
+      "note": "Strong Red Super -3.72 prev"
     },
     {
       "t": "5803",
@@ -590,9 +398,9 @@ window.__DATA__ = {
       "name": "FUJIKURA",
       "scan": 4931.0,
       "live": 4931.0,
-      "day": -0.52,
+      "day": 0.0,
       "dlt": 0.0,
-      "note": "Strong Red Super -4.41"
+      "note": "Strong Red Super -4.41 prev"
     },
     {
       "t": "8309",
@@ -600,9 +408,9 @@ window.__DATA__ = {
       "name": "SUMITOMO MITSUI TRUST GP INC",
       "scan": 1750.0,
       "live": 1750.0,
-      "day": -3.29,
+      "day": 0.0,
       "dlt": 0.0,
-      "note": "Strong Blue Super -0.88"
+      "note": "Strong Blue Super -0.88 prev"
     },
     {
       "t": "8015",
@@ -610,9 +418,9 @@ window.__DATA__ = {
       "name": "TOYOTA TSUSHO CORP",
       "scan": 7104.0,
       "live": 7104.0,
-      "day": -3.87,
+      "day": 0.0,
       "dlt": 0.0,
-      "note": "Strong Red Super 0.00"
+      "note": "Strong Red Super 0.00 prev"
     }
   ],
   "flow_cores": [
@@ -704,101 +512,99 @@ window.__DATA__ = {
       "t": "285A",
       "mkt": "JP",
       "super": 12.49,
-      "day": 0.56
+      "day": 0.0
     },
     {
       "t": "5016",
       "mkt": "JP",
       "super": -2.88,
-      "day": -1.83
+      "day": 0.0
     },
     {
       "t": "5801",
       "mkt": "JP",
       "super": -3.72,
-      "day": -2.67
+      "day": 0.0
     },
     {
       "t": "5803",
       "mkt": "JP",
       "super": -4.41,
-      "day": -0.52
+      "day": 0.0
     },
     {
       "t": "8309",
       "mkt": "JP",
       "super": -0.88,
-      "day": -3.29
+      "day": 0.0
     },
     {
       "t": "8015",
       "mkt": "JP",
       "super": 0.0,
-      "day": -3.87
+      "day": 0.0
     },
     {
       "t": "8001",
       "mkt": "JP",
       "super": null,
-      "day": -3.05
+      "day": 0.0
     },
     {
       "t": "9101",
       "mkt": "JP",
       "super": null,
-      "day": -3.08
+      "day": 0.0
     },
     {
       "t": "4502",
       "mkt": "JP",
       "super": null,
-      "day": -3.22
+      "day": 0.0
     },
     {
       "t": "6857",
       "mkt": "JP",
       "super": null,
-      "day": 0.62
+      "day": 0.0
     },
     {
       "t": "8411",
       "mkt": "JP",
       "super": null,
-      "day": -3.72
+      "day": 0.0
     },
     {
       "t": "5831",
       "mkt": "JP",
       "super": 0.74,
-      "day": -2.61
+      "day": 0.0
     }
   ],
   "overview_hk": [
-    "Regime UNFAVORABLE. Peg 7.8448."
+    "Regime UNFAVORABLE. Peg 7.8458."
   ],
   "overview_jp": [
-    "Regime MIXED. VI 20.3. USD/JPY 157.372."
+    "Regime MIXED. VI 27.51. USD/JPY 157.373."
   ],
   "overview_us": [
-    "SPY -0.74% and QQQ -1.07%. Regime MIXED.",
-    "Breadth 26.5% above MA40. New 52w highs 1.",
-    "Session PRE_MARKET_BEGIN. No invented catalyst."
+    "US majors not all down."
   ],
   "macro": {
     "hk": [
       [
         "USD/HKD",
-        "7.8448",
-        "⚠️ WATCH (mild pressure, monitor only)"
+        "7.8458",
+        "⚠️ ELEVATED (approaching weak-side convertibility undertaking)"
       ],
       [
         "VHSI",
-        "18.03",
+        "17.69",
         ""
       ],
       [
         "Southbound",
-        "Net Sell of HKD 6.55B",
+        "Net Buy of HKD 0.01B",
         ""
       ],
       [
@@ -815,45 +621,45 @@ window.__DATA__ = {
     "jp": [
       [
         "USD/JPY",
-        "157.372",
-        "NEUTRAL — static >150 exporter tailwind (USD/JPY 157.37), no fresh acceleration"
+        "157.373",
+        "YES — JPY weakening (USD/JPY 157.37 rising vs MAs), exporter tailwind building (8035.T, 6723.T, 6506.T benefit)"
       ],
       [
         "Nikkei VI",
-        "20.3",
+        "27.51",
         ""
       ],
       [
         "Nikkei 225",
-        "66364.2 +1.30",
+        "65877.62 -0.73",
         "header"
       ],
       [
         "TOPIX fut",
-        "4088.5 +0.00",
+        "4053.0 +0.00",
         ""
       ],
       [
         "JGB 10Y",
-        "3.071",
+        "3.082",
         ""
       ]
     ],
     "us": [
       [
         "Session",
-        "PRE_MARKET_BEGIN",
+        "AFTER_HOURS_BEGIN",
         ""
       ],
       [
         "VIX",
-        "16.07",
+        "16.04",
         ""
       ],
       [
         "10Y",
-        "5.17% +21.0 bp",
-        "2026-09-25"
+        "5.24% +27.0 bp",
+        "2026-09-28"
       ]
     ]
   },
@@ -862,46 +668,28 @@ window.__DATA__ = {
       "rank": 1,
       "mkt": "HK",
       "t": "0992.HK",
-      "act": "NO ADD",
-      "why": "HK UNFAVORABLE. Majors down. No entry.",
-      "conviction": "5.0",
-      "entry": "NO ADD"
+      "act": "Half-size, volume confirm",
+      "why": "Strong Blue, CMF +0.27, RS 56.5, trap LOW",
+      "conviction": "Med",
+      "entry": "Half-size, volume confirm"
     },
     {
       "rank": 2,
-      "mkt": "JP",
-      "t": "6857.T",
-      "act": "NO ADD",
-      "why": "JP MIXED. 285A CUT. No entry.",
-      "conviction": "4.5",
-      "entry": "NO ADD"
-    },
-    {
-      "rank": 1,
-      "mkt": "US",
-      "t": "CRWD",
-      "act": "Wait pause. Do not chase +2.8%",
-      "why": "Software RS. ALIGNED. One-day hold.",
-      "conviction": "6.0",
-      "entry": "Wait pause. Do not chase +2.8%"
-    },
-    {
-      "rank": 2,
-      "mkt": "US",
-      "t": "TWLO",
-      "act": "Wait pause after +4%",
-      "why": "Software RS. Strong. Not a chase.",
-      "conviction": "5.5",
-      "entry": "Wait pause after +4%"
+      "mkt": "HK",
+      "t": "2888.HK",
+      "act": "Half-size, volume confirm",
+      "why": "Prime Q96, Blue, trap LOW, RS weak",
+      "conviction": "Low",
+      "entry": "Half-size, volume confirm"
     },
     {
       "rank": 3,
-      "mkt": "US",
-      "t": "PANW",
-      "act": "Wait pause after +4.6%",
-      "why": "Software RS. Need MSFT high too.",
-      "conviction": "5.5",
-      "entry": "Wait pause after +4.6%"
+      "mkt": "JP",
+      "t": "6752.T",
+      "act": "Half-size, volume confirm",
+      "why": "Strong Blue, Prime, trap LOW, CMF thin",
+      "conviction": "Low",
+      "entry": "Half-size, volume confirm"
     }
   ],
   "elite": [
@@ -952,50 +740,6 @@ window.__DATA__ = {
       "ssl": "Strong Blue",
       "cmf": -0.0413,
       "note": "Wave 1.0 · Strong Blue · CMF -0.04"
-    },
-    {
-      "rank": 1,
-      "t": "SMTC",
-      "name": "Semtech Corporation",
-      "wave": 2.0,
-      "to_pivot": null,
-      "ssl": "Strong Blue",
-      "cmf": 0.2016,
-      "mkt": "US",
-      "note": ""
-    },
-    {
-      "rank": 2,
-      "t": "VTRS",
-      "name": "Viatris Inc.",
-      "wave": 2.0,
-      "to_pivot": null,
-      "ssl": "Strong Blue",
-      "cmf": 0.1579,
-      "mkt": "US",
-      "note": ""
-    },
-    {
-      "rank": 3,
-      "t": "BIIB",
-      "name": "Biogen Inc.",
-      "wave": 2.0,
-      "to_pivot": null,
-      "ssl": "Strong Blue",
-      "cmf": 0.0645,
-      "mkt": "US",
-      "note": ""
-    },
-    {
-      "rank": 4,
-      "t": "DDOG",
-      "name": "Datadog, Inc.",
-      "wave": 2.0,
-      "to_pivot": null,
-      "ssl": "Strong Blue",
-      "cmf": 0.0413,
-      "mkt": "US",
-      "note": ""
     }
   ],
   "cup_handle": [
@@ -1130,193 +874,6 @@ window.__DATA__ = {
       "pivot": 597.8,
       "dist": 4.58,
       "note": "near pivot · 4.58% to rim"
-    },
-    {
-      "rank": 1,
-      "t": "OVV",
-      "name": "OVV",
-      "status": "breakout",
-      "last": 66.7,
-      "pivot": 66.43,
-      "dist": -0.41,
-      "mkt": "US",
-      "note": ""
-    },
-    {
-      "rank": 2,
-      "t": "BHP",
-      "name": "BHP",
-      "status": "near_pivot",
-      "last": 93.63,
-      "pivot": 93.83,
-      "dist": 0.21,
-      "mkt": "US",
-      "note": ""
-    },
-    {
-      "rank": 3,
-      "t": "BIIB",
-      "name": "Biogen Inc.",
-      "status": "near_pivot",
-      "last": 228.69,
-      "pivot": 229.19,
-      "dist": 0.22,
-      "mkt": "US",
-      "note": ""
-    },
-    {
-      "rank": 4,
-      "t": "A",
-      "name": "Agilent Technologies, Inc.",
-      "status": "near_pivot",
-      "last": 175.21,
-      "pivot": 174.77,
-      "dist": -0.25,
-      "mkt": "US",
-      "note": ""
-    },
-    {
-      "rank": 5,
-      "t": "NTAP",
-      "name": "NetApp, Inc.",
-      "status": "near_pivot",
-      "last": 204.41,
-      "pivot": 203.91,
-      "dist": -0.25,
-      "mkt": "US",
-      "note": ""
-    },
-    {
-      "rank": 6,
-      "t": "TECH",
-      "name": "Bio-Techne Corp",
-      "status": "near_pivot",
-      "last": 72.51,
-      "pivot": 72.69,
-      "dist": 0.25,
-      "mkt": "US",
-      "note": ""
-    },
-    {
-      "rank": 7,
-      "t": "EMR",
-      "name": "Emerson Electric Company",
-      "status": "near_pivot",
-      "last": 159.39,
-      "pivot": 159.87,
-      "dist": 0.3,
-      "mkt": "US",
-      "note": ""
-    },
-    {
-      "rank": 8,
-      "t": "EQNR",
-      "name": "EQNR",
-      "status": "near_pivot",
-      "last": 42.86,
-      "pivot": 42.62,
-      "dist": -0.56,
-      "mkt": "US",
-      "note": ""
-    },
-    {
-      "rank": 9,
-      "t": "TMO",
-      "name": "Thermo Fisher Scientific Inc",
-      "status": "near_pivot",
-      "last": 678.6,
-      "pivot": 682.98,
-      "dist": 0.64,
-      "mkt": "US",
-      "note": ""
-    },
-    {
-      "rank": 10,
-      "t": "NVDA",
-      "name": "NVIDIA Corporation",
-      "status": "emerging",
-      "last": 228.86,
-      "pivot": 229.98,
-      "dist": 0.49,
-      "mkt": "US",
-      "note": ""
-    },
-    {
-      "rank": 11,
-      "t": "GH",
-      "name": "Guardant Health, Inc.",
-      "status": "emerging",
-      "last": 177.33,
-      "pivot": 181.79,
-      "dist": 2.45,
-      "mkt": "US",
-      "note": ""
-    },
-    {
-      "rank": 12,
-      "t": "MSI",
-      "name": "Motorola Solutions, Inc.",
-      "status": "emerging",
-      "last": 452.08,
-      "pivot": 465.01,
-      "dist": 2.78,
-      "mkt": "US",
-      "note": ""
-    },
-    {
-      "rank": 13,
-      "t": "EMXC",
-      "name": "iShares MSCI Emerging Markets e",
-      "status": "emerging",
-      "last": 99.73,
-      "pivot": 102.72,
-      "dist": 2.91,
-      "mkt": "US",
-      "note": ""
-    },
-    {
-      "rank": 14,
-      "t": "ARKK",
-      "name": "ARK Innovation ETF",
-      "status": "emerging",
-      "last": 89.25,
-      "pivot": 92.2,
-      "dist": 3.2,
-      "mkt": "US",
-      "note": ""
-    },
-    {
-      "rank": 15,
-      "t": "ASX",
-      "name": "ASE Technology Holding Co., Ltd",
-      "status": "emerging",
-      "last": 43.79,
-      "pivot": 45.24,
-      "dist": 3.21,
-      "mkt": "US",
-      "note": ""
-    },
-    {
-      "rank": 16,
-      "t": "ANET",
-      "name": "Arista Networks, Inc.",
-      "status": "emerging",
-      "last": 204.92,
-      "pivot": 212.0,
-      "dist": 3.34,
-      "mkt": "US",
-      "note": ""
-    },
-    {
-      "rank": 17,
-      "t": "ETN",
-      "name": "Eaton Corporation, PLC",
-      "status": "emerging",
-      "last": 431.41,
-      "pivot": 447.33,
-      "dist": 3.56,
-      "mkt": "US",
-      "note": ""
     }
   ],
   "strong": [
@@ -1331,248 +888,56 @@ window.__DATA__ = {
       "tone": "amber",
       "dlt": null,
       "note": "Strong Blue CMF 0.27"
-    },
-    {
-      "rank": 1,
-      "t": "MRNA",
-      "name": "Moderna, Inc.",
-      "stage": "Stage 2",
-      "ssl": "Strong Blue",
-      "mkt": "US",
-      "act": "—",
-      "tone": "amber",
-      "dlt": null,
-      "note": "Accumulation"
-    },
-    {
-      "rank": 2,
-      "t": "ZBRA",
-      "name": "Zebra Technologies Corporation",
-      "stage": "Stage 2",
-      "ssl": "Strong Blue",
-      "mkt": "US",
-      "act": "—",
-      "tone": "amber",
-      "dlt": null,
-      "note": "Accumulation"
-    },
-    {
-      "rank": 3,
-      "t": "TWLO",
-      "name": "Twilio Inc.",
-      "stage": "Stage 2",
-      "ssl": "Strong Blue",
-      "mkt": "US",
-      "act": "—",
-      "tone": "amber",
-      "dlt": null,
-      "note": "Accumulation"
-    },
-    {
-      "rank": 4,
-      "t": "HPE",
-      "name": "Hewlett Packard Enterprise Comp",
-      "stage": "Stage 2",
-      "ssl": "Strong Blue",
-      "mkt": "US",
-      "act": "—",
-      "tone": "amber",
-      "dlt": null,
-      "note": "Accumulation"
-    },
-    {
-      "rank": 5,
-      "t": "RBRK",
-      "name": "Rubrik, Inc.",
-      "stage": "Stage 2",
-      "ssl": "Strong Blue",
-      "mkt": "US",
-      "act": "—",
-      "tone": "amber",
-      "dlt": null,
-      "note": "Neutral"
-    },
-    {
-      "rank": 6,
-      "t": "CRWD",
-      "name": "CrowdStrike Holdings, Inc.",
-      "stage": "Stage 2",
-      "ssl": "Strong Blue",
-      "mkt": "US",
-      "act": "—",
-      "tone": "amber",
-      "dlt": null,
-      "note": "Neutral"
-    },
-    {
-      "rank": 7,
-      "t": "RVTY",
-      "name": "Revvity, Inc.",
-      "stage": "Stage 2",
-      "ssl": "Strong Blue",
-      "mkt": "US",
-      "act": "—",
-      "tone": "amber",
-      "dlt": null,
-      "note": "Neutral"
-    },
-    {
-      "rank": 8,
-      "t": "NTAP",
-      "name": "NetApp, Inc.",
-      "stage": "Stage 2",
-      "ssl": "Strong Blue",
-      "mkt": "US",
-      "act": "NO ADD",
-      "tone": "amber",
-      "dlt": null,
-      "note": "Accumulation"
-    },
-    {
-      "rank": 9,
-      "t": "SWKS",
-      "name": "Skyworks Solutions, Inc.",
-      "stage": "Stage 2",
-      "ssl": "Strong Blue",
-      "mkt": "US",
-      "act": "—",
-      "tone": "amber",
-      "dlt": null,
-      "note": "Accumulation"
-    },
-    {
-      "rank": 10,
-      "t": "GRMN",
-      "name": "Garmin Ltd.",
-      "stage": "Stage 2",
-      "ssl": "Strong Blue",
-      "mkt": "US",
-      "act": "—",
-      "tone": "amber",
-      "dlt": null,
-      "note": "Distribution"
-    },
-    {
-      "rank": 11,
-      "t": "GILD",
-      "name": "Gilead Sciences, Inc.",
-      "stage": "Stage 2",
-      "ssl": "Strong Blue",
-      "mkt": "US",
-      "act": "—",
-      "tone": "amber",
-      "dlt": null,
-      "note": "Accumulation"
-    },
-    {
-      "rank": 12,
-      "t": "BBY",
-      "name": "Best Buy Co., Inc.",
-      "stage": "Stage 2",
-      "ssl": "Strong Blue",
-      "mkt": "US",
-      "act": "—",
-      "tone": "amber",
-      "dlt": null,
-      "note": "Accumulation"
     }
   ],
   "focus": [
     {
       "rank": 1,
       "mkt": "HK",
-      "t": "1088.HK",
-      "note": "SELL. Red SSL."
+      "t": "0992.HK",
+      "note": "Strong Blue, best Top 3 candidate"
     },
     {
       "rank": 2,
       "mkt": "HK",
-      "t": "0883.HK",
-      "note": "SELL. Red SSL."
+      "t": "2888.HK",
+      "note": "Prime Q96, half-size only"
     },
     {
       "rank": 3,
-      "mkt": "HK",
-      "t": "0700.HK",
-      "note": "SELL. Stage 4."
+      "mkt": "JP",
+      "t": "6752.T",
+      "note": "Strong Blue, MIXED JP, half-size"
     },
     {
       "rank": 4,
-      "mkt": "HK",
-      "t": "0388.HK",
-      "note": "SELL. Stage 4."
-    },
-    {
-      "rank": 5,
-      "mkt": "HK",
-      "t": "1347.HK",
-      "note": "SELL. Stage 4."
-    },
-    {
-      "rank": 6,
-      "mkt": "HK",
-      "t": "0005.HK",
-      "note": "SELL. Red SSL."
-    },
-    {
-      "rank": 7,
-      "mkt": "HK",
-      "t": "0992.HK",
-      "note": "NO ADD. HK UNFAVORABLE."
-    },
-    {
-      "rank": 8,
       "mkt": "JP",
       "t": "6857.T",
-      "note": "NO ADD. JP MIXED."
-    },
-    {
-      "rank": 1,
-      "mkt": "US",
-      "t": "CRWD",
-      "note": "Software RS. ALIGNED. Wait pause."
-    },
-    {
-      "rank": 2,
-      "mkt": "US",
-      "t": "TWLO",
-      "note": "Software RS +4%. No chase."
-    },
-    {
-      "rank": 3,
-      "mkt": "US",
-      "t": "PANW",
-      "note": "Software RS +4.6%. Wait."
-    },
-    {
-      "rank": 4,
-      "mkt": "US",
-      "t": "RBRK",
-      "note": "Software RS +3%. Wait volume."
+      "note": "Prime but tester; 10Y spike, no add"
     },
     {
       "rank": 5,
-      "mkt": "US",
-      "t": "MSFT",
-      "note": "Stage 1/3. Needs a high."
+      "mkt": "HK",
+      "t": "1088.HK",
+      "note": "Red SSL, SELL stays"
     },
     {
       "rank": 6,
-      "mkt": "US",
-      "t": "NTAP",
-      "note": "Strong. Near pivot. Watch."
+      "mkt": "HK",
+      "t": "0883.HK",
+      "note": "Red SSL, SELL stays"
     },
     {
       "rank": 7,
-      "mkt": "US",
-      "t": "MU",
-      "note": "TRIM. Earnings after close."
+      "mkt": "HK",
+      "t": "0388.HK",
+      "note": "Stage 4, SELL stays"
     },
     {
       "rank": 8,
-      "mkt": "US",
-      "t": "SNDK",
-      "note": "Must hold 20MA. DIV in."
+      "mkt": "HK",
+      "t": "0700.HK",
+      "note": "Stage 4, SELL stays"
     }
   ],
   "watch": [
@@ -1620,20 +985,9 @@ window.__DATA__ = {
       "mkt": "JP",
       "t": "543A.T",
       "note": "Bounce opportunity. Elevates Stage 2 Blue CMF>0 only."
-    },
-    {
-      "t": "ANET",
-      "mkt": "US",
-      "note": "CMF -0.1009; WATCH_UNCONFIRMED; ATR FLAT"
     }
   ],
   "risks": [
-    {
-      "sev": "HIGH",
-      "mkt": "JP",
-      "risk": "MU -2.61% ≤ −2% → 285A CUT",
-      "act": "CUT 285A / no-add"
-    },
     {
       "sev": "HIGH",
       "mkt": "BOTH",
@@ -1641,66 +995,51 @@ window.__DATA__ = {
       "act": "Half-size max all new entries"
     },
     {
-      "sev": "MED",
+      "sev": "HIGH",
       "mkt": "US",
-      "risk": "10Y +21 bp / 10 sessions",
-      "act": "cut growth and tester size."
+      "risk": "10Y SPIKE",
+      "act": "No new growth longs"
+    },
+    {
+      "sev": "HIGH",
+      "mkt": "US",
+      "risk": "⚠️ OIL LEADING WITH INFLOW",
+      "act": "Do not chase XLE/XBI"
+    },
+    {
+      "sev": "HIGH",
+      "mkt": "BOTH",
+      "risk": "Bounce Trap WARNING cluster 5706.T 6367.T 6976.T",
+      "act": "No new entries on those names"
     },
     {
       "sev": "MED",
-      "mkt": "US",
-      "risk": "Majors all down and MU −2.61%",
-      "act": "285A CUT/no-add, no dip-buy."
-    },
-    {
-      "sev": "MED",
-      "mkt": "US",
-      "risk": "XLE STRONG with inflow",
-      "act": "geopolitics tell, not a buy XLE."
-    },
-    {
-      "sev": "MED",
-      "mkt": "US",
-      "risk": "RSP still under 20MA",
-      "act": "easy tape is not here yet."
-    },
-    {
-      "sev": "MED",
-      "mkt": "US",
-      "risk": "MU earnings after the close",
-      "act": "no add into the print."
-    },
-    {
-      "sev": "MED",
-      "mkt": "US",
-      "risk": "Software one-day RS is not leadership",
-      "act": "wait MSFT high."
+      "mkt": "JP",
+      "risk": "Nikkei VI 27.51 > 25",
+      "act": "Half-size JP new entries"
     }
   ],
   "clock": [
     {
-      "t": "CRWD",
-      "task": "Wait pause. Do not chase +2.8%"
+      "t": "0992.HK",
+      "task": "Half-size, volume confirm"
     },
     {
-      "t": "TWLO",
-      "task": "Wait pause after +4%"
+      "t": "2888.HK",
+      "task": "Half-size, volume confirm"
     },
     {
-      "t": "PANW",
-      "task": "Wait pause after +4.6%"
+      "t": "6752.T",
+      "task": "Half-size, volume confirm"
     }
   ],
   "avoid": [
     "Do not chase XLE/XBI",
-    "Bounce Trap WARNING: 5706.T 6367.T 6976.T",
-    "Public board has no holdings"
+    "Bounce Trap WARNING: 5706.T 6367.T 6976.T"
   ],
   "rules": [
     "Public board has no holdings",
-    "HK/JP stops = whole lots",
-    "US stops = 95% of shares",
-    "US MIXED: highest RS only, confirm volume"
+    "HK/JP stops = whole lots"
   ],
   "portfolio": [],
   "cbbc": [],
@@ -1710,100 +1049,100 @@ window.__DATA__ = {
   "us_ovn": [
     {
       "t": "SPY",
-      "last": 765.61,
-      "day": -0.74,
-      "sb": 24.55,
-      "tag": "DIV↓in",
-      "note": "above MA50 +1.51%",
+      "last": 764.2,
+      "day": -0.18,
+      "sb": -28.24,
+      "tag": "ALIGNED↓",
+      "note": "above MA50 +0.69%",
       "mkt": "US"
     },
     {
       "t": "QQQ",
-      "last": 736.53,
-      "day": -1.07,
-      "sb": 100.05,
-      "tag": "DIV↓in",
-      "note": "above MA50 +4.57%",
+      "last": 737.93,
+      "day": 0.19,
+      "sb": 17.05,
+      "tag": "ALIGNED↑",
+      "note": "above MA50 +3.33%",
       "mkt": "US"
     },
     {
       "t": "DIA",
-      "last": 514.02,
-      "day": -0.67,
-      "sb": 3.88,
-      "tag": "DIV↓in",
-      "note": "above MA10 +0.04%",
+      "last": 512.88,
+      "day": -0.22,
+      "sb": -9.8,
+      "tag": "ALIGNED↓",
+      "note": "below MA5 -0.25%",
       "mkt": "US"
     },
     {
       "t": "IWM",
-      "last": 280.02,
-      "day": -0.69,
-      "sb": -84.53,
-      "tag": "ALIGNED↓",
-      "note": "below MA5 -0.60%",
+      "last": 279.01,
+      "day": -0.36,
+      "sb": 33.99,
+      "tag": "DIV↓in",
+      "note": "below MA5 -0.90%",
       "mkt": "US"
     },
     {
       "t": "SMH",
-      "last": 600.01,
-      "day": -1.08,
-      "sb": 5.0,
-      "tag": "DIV↓in",
-      "note": "above MA50 +7.19%",
+      "last": 606.9,
+      "day": 1.15,
+      "sb": 101.81,
+      "tag": "ALIGNED↑",
+      "note": "above MA50 +5.87%",
       "mkt": "US"
     },
     {
       "t": "MU",
-      "last": 1053.98,
-      "day": -2.61,
-      "sb": -87.47,
-      "tag": "ALIGNED↓",
+      "last": 1065.08,
+      "day": 1.05,
+      "sb": -56.94,
+      "tag": "DIV↑out",
       "note": "285A",
       "mkt": "US"
     },
     {
       "t": "SNDK",
-      "last": 1712.89,
-      "day": -3.65,
-      "sb": 22.51,
-      "tag": "DIV↓in",
+      "last": 1729.76,
+      "day": 0.98,
+      "sb": 7.32,
+      "tag": "ALIGNED↑",
       "note": "open-bias",
       "mkt": "US"
     },
     {
       "t": "LITE",
-      "last": 921.32,
-      "day": -2.16,
-      "sb": -16.59,
-      "tag": "ALIGNED↓",
+      "last": 973.49,
+      "day": 5.66,
+      "sb": -5.42,
+      "tag": "DIV↑out",
       "note": "5801/5803",
       "mkt": "US"
     },
     {
       "t": "LYTE",
-      "last": 23.82,
-      "day": -6.37,
-      "sb": -1.16,
-      "tag": "ALIGNED↓",
+      "last": 24.64,
+      "day": 3.44,
+      "sb": -0.25,
+      "tag": "DIV↑out",
       "note": "open-bias",
       "mkt": "US"
     },
     {
       "t": "COHR",
-      "last": 282.45,
-      "day": -4.52,
-      "sb": 4.72,
-      "tag": "DIV↓in",
+      "last": 292.21,
+      "day": 3.46,
+      "sb": -6.21,
+      "tag": "DIV↑out",
       "note": "5801/5803",
       "mkt": "US"
     },
     {
       "t": "GLW",
-      "last": 151.59,
-      "day": -3.29,
-      "sb": 2.14,
-      "tag": "DIV↓in",
+      "last": 158.71,
+      "day": 4.7,
+      "sb": -1.97,
+      "tag": "DIV↑out",
       "note": "5801/5803",
       "mkt": "US"
     }
@@ -1819,22 +1158,20 @@ window.__DATA__ = {
     "note": ""
   },
   "ovn_ma": {
-    "SPY": "above MA50 +1.51%",
-    "QQQ": "above MA50 +4.57%",
-    "DIA": "above MA10 +0.04%",
-    "IWM": "below MA5 -0.60%",
-    "SMH": "above MA50 +7.19%"
+    "SPY": "above MA50 +0.69%",
+    "QQQ": "above MA50 +3.33%",
+    "DIA": "below MA5 -0.25%",
+    "IWM": "below MA5 -0.90%",
+    "SMH": "above MA50 +5.87%"
   },
-  "spy_ma": "above MA50 +1.51%",
+  "spy_ma": "above MA50 +0.69%",
   "regime_reasons": {
-    "hk": "USD/HKD 7.8448 (watch) · VHSI 18.0 · Southbound −HK$6.55B",
-    "jp": "Nikkei VI 20.3 · USD/JPY 157.37 · JGB 10Y 3.07%",
-    "us": "Breadth 26.5% above MA40 · 1 new 52w highs · VIX 16.1"
+    "hk": "USD/HKD 7.8458 (watch) · VHSI 17.7 · Southbound +HK$0.01B",
+    "jp": "Nikkei VI 27.5 · USD/JPY 157.37 · JGB 10Y 3.08%"
   },
   "size_word": {
     "hk": "Half-size max · no entry",
-    "jp": "Selective only",
-    "us": "Selective only"
+    "jp": "Selective only"
   },
   "thursday_long_warn": ""
 };
@@ -1842,238 +1179,830 @@ window.__DATA__ = {
 <!-- END_DATA -->
 <script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
-<script>
-const { useState } = React, D = window.__DATA__ || {}, MK = ["ALL", "HK", "JP", "US"];
-function toneOf(word) {
-  const s = String(word || "").toUpperCase();
-  return s.indexOf("UNFAVORABLE") >= 0 ? "red" : s.indexOf("FAVORABLE") >= 0 ? "green" : (s.indexOf("MIXED") >= 0, "amber");
+<script src="https://unpkg.com/@babel/standalone@7.26.5/babel.min.js"></script>
+<script type="text/babel" data-presets="react">
+const {useState} = React;
+const D = window.__DATA__ || {};
+
+const pct = (n, d=2) => {
+  if (n == null || !Number.isFinite(+n)) return '—';
+  const v = +n;
+  return (v >= 0 ? '+' : '') + v.toFixed(d) + '%';
+};
+const num = (n, d=2) => {
+  if (n == null || !Number.isFinite(+n)) return '—';
+  return (+n).toLocaleString(undefined, {maximumFractionDigits: d});
+};
+const yen = (n) => {
+  if (n == null || !Number.isFinite(+n)) return '—';
+  const v = Math.round(+n);
+  return (v > 0 ? '+' : '') + '¥' + v.toLocaleString();
+};
+const cls = (n) => {
+  if (n == null || !Number.isFinite(+n)) return 'flat';
+  return +n > 0.05 ? 'pos' : +n < -0.05 ? 'neg' : 'flat';
+};
+const deltaCls = (n) => {
+  if (n == null || !Number.isFinite(+n)) return 'flat';
+  const a = Math.abs(+n);
+  if (a <= 1.5) return 'delta-g';
+  if (a <= 3) return 'delta-y';
+  return 'delta-r';
+};
+const tonePill = (t) => ({red:'pill-r', amber:'pill-y', orange:'pill-o', elevated:'pill-o', ELEVATED:'pill-o', green:'pill-g', blue:'pill-b', slate:'pill-s', CRITICAL:'pill-r', HIGH:'pill-r', MED:'pill-y'}[t] || 'pill-s');
+const flagPill = (f) => ({RED:'pill-r', WATCH:'pill-y', SAFE:'pill-g', NEAR:'pill-y', ELEVATED:'pill-o'}[f] || 'pill-s');
+const isElev = (s) => /elevated/i.test(String(s == null ? '' : s));
+function ElevText({text}) {
+  const s = String(text == null ? '' : text);
+  if (!isElev(s)) return s;
+  const parts = s.split(/(ELEVATED|elevated)/g);
+  return parts.map((p, i) => isElev(p) ? <span key={i} className="pill pill-o">ELEVATED</span> : p);
 }
-function txt(v) {
-  return v == null || v === "" ? "" : String(v);
+const sslPill = (s) => {
+  if (!s || s === '—') return 'pill-s';
+  if (/Red/i.test(s)) return 'pill-r';
+  if (/Blue/i.test(s)) return 'pill-b';
+  return 'pill-s';
+};
+const actCls = (a) => {
+  const u = (a || '').toUpperCase();
+  if (u.includes('SELL') || u.includes('WRITE-OFF') || u.includes('EXIT')) return 'act-sell';
+  if (u.includes('TRIM') || u.includes('MONITOR') || u.includes('WATCH') || u.includes('REDUCE')) return 'act-trim';
+  return 'act-hold';
+};
+const rowMkt = (row) => String((row && row.mkt) || '').toUpperCase();
+const rowsFor = (arr, k) => (arr || []).filter((r) => {
+  const rm = rowMkt(r);
+  return rm === k || rm === 'BOTH';
+});
+const viewMkts = (mkt, extra) => {
+  if (mkt === 'ALL') return extra || ['JP', 'HK', 'US'];
+  return [mkt];
+};
+function researchHead(k) {
+  if (k !== 'HK' && k !== 'JP') return null;
+  return <p className="text-xs text-amber-200/90 mb-1">Research list — not entries</p>;
 }
-function show(v) {
-  return txt(v) || "\u2014";
-}
-function inMk(row, m) {
-  return row ? m === "ALL" || row.mkt === m || row.mkt === "BOTH" && (m === "HK" || m === "JP") : !1;
-}
-function pct(v) {
-  if (v == null || v === "" || Number.isNaN(+v)) return "\u2014";
-  const n = +v;
-  return (n > 0 ? "+" : n < 0 ? "\u2212" : "") + Math.abs(n).toFixed(2) + "%";
-}
-function sgn(v) {
-  return v == null || v === "" ? "" : +v > 0 ? "up" : +v < 0 ? "down" : "";
-}
-function macroLine(mkt, label) {
-  const row = (D.macro && D.macro[mkt] || []).find((r) => Array.isArray(r) && r[0] === label);
-  return row ? [txt(row[1]), txt(row[2])].filter(Boolean).join(" \xB7 ") : "";
-}
-function actTone(a) {
-  return /SELL|CUT|TRIM|NO ADD|AVOID/i.test(String(a || "")) ? "tone-red" : /BUY|ADD/i.test(String(a || "")) ? "tone-green" : "tone-amber";
-}
-function actWord(a) {
-  const m = String(a || "").match(/^(SELL|CUT|TRIM|NO ADD|HOLD|WATCH|BUY|ADD)/i);
-  return m ? m[1].toUpperCase() : "";
-}
-function initialTab() {
-  try {
-    const h = String(location.hash || "").replace("#", "").toUpperCase();
-    if (MK.indexOf(h) >= 0) return h;
-    const s = localStorage.getItem("deskTab");
-    if (MK.indexOf(s) >= 0) return s;
-  } catch {
-  }
-  return "ALL";
-}
-function Tk({ row, all }) {
-  return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("span", { className: "tk" }, show(row.t || row.etf || row.name)), all && row.mkt ? /* @__PURE__ */ React.createElement("span", { className: "mk" }, row.mkt) : null);
-}
-function Sec({ id, title, rows, head, renderRow, note, sev }) {
-  const list = rows || [];
-  return list.length ? /* @__PURE__ */ React.createElement("section", { className: "block", id }, /* @__PURE__ */ React.createElement("div", { className: "sh" }, /* @__PURE__ */ React.createElement("h2", null, title), /* @__PURE__ */ React.createElement("span", { className: "cnt" }, list.length)), /* @__PURE__ */ React.createElement("div", { className: "box scroll" }, /* @__PURE__ */ React.createElement("table", { className: "tbl" + (sev ? " sev-list" : "") }, /* @__PURE__ */ React.createElement("thead", null, /* @__PURE__ */ React.createElement("tr", null, head)), /* @__PURE__ */ React.createElement("tbody", null, list.map((r, i) => renderRow(r, i))))), note ? /* @__PURE__ */ React.createElement("p", { className: "note" }, note) : null) : null;
-}
-function Today({ cur }) {
-  const regs = [
-    { m: "HK", r: D.hk_regime, why: D.regime_reasons?.hk, size: D.size_word?.hk },
-    { m: "JP", r: D.jp_regime, why: D.regime_reasons?.jp, size: D.size_word?.jp },
-    { m: "US", r: D.us_regime, why: D.regime_reasons?.us, size: D.size_word?.us }
-  ].filter((g) => (cur === "ALL" || g.m === cur) && txt(g.r)), y = (D.yields || [])[0] || null, nextEvents = D.next_events || "", sb = macroLine("hk", "Southbound");
-  return /* @__PURE__ */ React.createElement("div", { className: "today", id: "today" }, /* @__PURE__ */ React.createElement("p", { className: "eyebrow" }, "Today", D.weekday ? " \xB7 " + D.weekday : ""), txt(D.verdict) ? /* @__PURE__ */ React.createElement("p", { className: "verdict" }, D.verdict) : null, regs.length ? /* @__PURE__ */ React.createElement("div", { className: "regimes" }, regs.map((g) => /* @__PURE__ */ React.createElement("div", { className: "rg tone-" + toneOf(g.r), key: g.m }, /* @__PURE__ */ React.createElement("span", { className: "m" }, g.m), /* @__PURE__ */ React.createElement("span", { className: "pill" }, /* @__PURE__ */ React.createElement("span", { className: "dot" }), g.r), txt(g.size) ? /* @__PURE__ */ React.createElement("span", { className: "size" }, g.size) : /* @__PURE__ */ React.createElement("span", { className: "size" }), txt(g.why) ? /* @__PURE__ */ React.createElement("span", { className: "why" }, g.why) : null))) : null, /* @__PURE__ */ React.createElement("div", { className: "facts" }, cur !== "HK" && y && txt(y.last) ? /* @__PURE__ */ React.createElement("div", { className: "fact alert" }, /* @__PURE__ */ React.createElement("b", null, "Rates"), /* @__PURE__ */ React.createElement("span", null, "US 10Y ", /* @__PURE__ */ React.createElement("span", { className: "num" }, y.last), y.d10 != null ? /* @__PURE__ */ React.createElement(React.Fragment, null, " , ", /* @__PURE__ */ React.createElement("span", { className: "num" }, y.d10 > 0 ? "+" : "", y.d10, "bp"), " / 10d") : null)) : null, nextEvents ? /* @__PURE__ */ React.createElement("div", { className: "fact" }, /* @__PURE__ */ React.createElement("b", null, "Next events"), /* @__PURE__ */ React.createElement("span", null, nextEvents)) : null, cur === "JP" && txt(D.us_ovn_call) ? /* @__PURE__ */ React.createElement("div", { className: "fact" }, /* @__PURE__ */ React.createElement("b", null, "Overnight"), /* @__PURE__ */ React.createElement("span", null, D.us_ovn_call)) : null, cur === "HK" && sb ? /* @__PURE__ */ React.createElement("div", { className: "fact" }, /* @__PURE__ */ React.createElement("b", null, "Southbound"), /* @__PURE__ */ React.createElement("span", null, sb)) : null));
-}
-function App() {
-  const [cur, setCur] = useState(initialTab);
-  function pick(m) {
-    setCur(m);
-    try {
-      localStorage.setItem("deskTab", m), history.replaceState(null, "", "#" + m);
-    } catch {
-    }
-  }
-  const actions = (D.actionable || []).filter((r) => inMk(r, cur)), risks = (D.risks || []).filter((r) => inMk(r, cur)).slice().sort((a, b) => {
-    const order = { HIGH: 0, MED: 1, LOW: 2 };
-    return (order[a.sev] ?? 9) - (order[b.sev] ?? 9);
-  }), focus = (D.focus || []).filter((r) => inMk(r, cur)), qmap = {};
-  (D.elite || []).forEach((e) => {
-    e && e.t && (qmap[e.t] = e.q);
+function pinStrip() {
+  const rank = { JP: 0, HK: 1, US: 2 };
+  const rows = [];
+  (D.cup_handle || []).forEach((r) => {
+    if (String(r.status || '') !== 'breakout') return;
+    const dist = Number(r.dist);
+    const mag = Number.isFinite(dist) ? Math.abs(dist).toFixed(2) : '';
+    rows.push({
+      mkt: String(r.mkt || 'US').toUpperCase(),
+      t: r.t || '—',
+      why: mag ? ('breakout · ' + mag + '% through') : 'breakout',
+      pri: 0,
+    });
   });
-  const setups = [
-    ...(D.elite || []).filter((r) => inMk(r, cur)).map((r) => Object.assign({ kind: "Elite" }, r)),
-    ...(D.strong || []).filter((r) => inMk(r, cur) && qmap[r.t] == null).map((r) => Object.assign({ kind: "Strong" }, r))
-  ], ovn = cur === "HK" ? [] : (D.us_ovn || []).filter((r) => inMk(r, cur) || cur === "ALL" || cur === "US"), tape = [
-    ...(D.indices || []).filter((r) => inMk(r, cur)).map((r) => ({ t: r.name, mkt: r.mkt, last: r.last, ch: r.chg_pct, note: r.note })),
-    ...cur === "ALL" || cur === "US" ? (D.yields || []).map((y) => ({ t: y.name, mkt: "US", last: y.last, ch: null, note: [y.read, y.d10 != null ? (y.d10 > 0 ? "+" : "") + y.d10 + "bp 10d" : "", y.d30 != null ? (y.d30 > 0 ? "+" : "") + y.d30 + "bp 30d" : ""].filter(Boolean).join(" \xB7 ") })) : []
-  ], watch = (D.watch || []).filter((r) => inMk(r, cur)), spring = cur === "ALL" || cur === "US" ? D.spring || [] : [], dateBits = [txt(D.weekday).slice(0, 3), txt(D.date)].filter(Boolean).join(" "), asofShort = txt(D.asof).length > 11 ? txt(D.asof).slice(11) : txt(D.asof);
-  return /* @__PURE__ */ React.createElement("div", { className: "wrap" }, /* @__PURE__ */ React.createElement("header", { className: "top" }, /* @__PURE__ */ React.createElement("div", { className: "hrow" }, /* @__PURE__ */ React.createElement("h1", { className: "brand" }, "Desk ", dateBits ? /* @__PURE__ */ React.createElement("small", null, dateBits) : null), asofShort ? /* @__PURE__ */ React.createElement("span", { className: "asof" }, asofShort) : null), /* @__PURE__ */ React.createElement("div", { className: "tabs", role: "tablist" }, MK.map((m) => {
-    const word = m === "HK" ? D.hk_regime : m === "JP" ? D.jp_regime : m === "US" ? D.us_regime : "";
-    return /* @__PURE__ */ React.createElement("button", { key: m, type: "button", role: "tab", id: "tab-" + m, "aria-selected": cur === m, onClick: () => pick(m) }, m !== "ALL" && txt(word) ? /* @__PURE__ */ React.createElement("span", { className: "dot tone-" + toneOf(word) }) : null, m);
-  }))), /* @__PURE__ */ React.createElement(Today, { cur }), /* @__PURE__ */ React.createElement(
-    Sec,
-    {
-      id: "s-actions",
-      title: "Top 3 and actions",
-      rows: actions,
-      head: /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("th", null, "Ticker"), /* @__PURE__ */ React.createElement("th", null, "Action"), /* @__PURE__ */ React.createElement("th", null, "Conviction"), /* @__PURE__ */ React.createElement("th", null, "Entry"), /* @__PURE__ */ React.createElement("th", { className: "n" }, "Stop"), /* @__PURE__ */ React.createElement("th", { className: "n" }, "Target"), /* @__PURE__ */ React.createElement("th", null, "Why")),
-      renderRow: (r, i) => {
-        const entry = txt(r.entry), stop = txt(r.stop), target = txt(r.target), fold = stop || target || entry && entry !== txt(r.act), foldLine = [
-          entry ? "Entry " + entry : "",
-          stop ? "Stop " + stop : "",
-          target ? "Target " + target : ""
-        ].filter(Boolean).join(" \xB7 ");
-        return /* @__PURE__ */ React.createElement("tr", { key: i }, /* @__PURE__ */ React.createElement("td", { className: "a" }, /* @__PURE__ */ React.createElement(Tk, { row: r, all: cur === "ALL" })), /* @__PURE__ */ React.createElement("td", { className: "b" }, txt(r.act) ? /* @__PURE__ */ React.createElement("span", { className: "act " + actTone(r.act) }, actWord(r.act) || show(r.act)) : null), /* @__PURE__ */ React.createElement("td", { className: "wide" }, txt(r.conviction) || "\u2014"), /* @__PURE__ */ React.createElement("td", { className: "wide" }, entry || "\u2014"), /* @__PURE__ */ React.createElement("td", { className: "wide n" }, stop || "\u2014"), /* @__PURE__ */ React.createElement("td", { className: "wide n" }, target || "\u2014"), fold ? /* @__PURE__ */ React.createElement("td", { className: "full only-n" }, foldLine) : null, /* @__PURE__ */ React.createElement("td", { className: "full" }, show(r.why), txt(r.conviction) ? " \xB7 Conviction " + r.conviction : ""));
-      }
-    }
-  ), /* @__PURE__ */ React.createElement(
-    Sec,
-    {
-      id: "s-risks",
-      title: "Risks",
-      rows: risks,
-      sev: !0,
-      head: /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("th", null, "Sev"), /* @__PURE__ */ React.createElement("th", null, "Mkt"), /* @__PURE__ */ React.createElement("th", null, "Risk"), /* @__PURE__ */ React.createElement("th", null, "Action")),
-      renderRow: (r, i) => {
-        const t = r.sev === "HIGH" ? "tone-red" : r.sev === "MED" ? "tone-amber" : "tone-green";
-        return /* @__PURE__ */ React.createElement("tr", { className: t, key: i }, /* @__PURE__ */ React.createElement("td", { className: "a" }, /* @__PURE__ */ React.createElement("span", { className: "sev" }, show(r.sev)), cur === "ALL" && r.mkt ? /* @__PURE__ */ React.createElement("span", { className: "mk" }, r.mkt) : null), /* @__PURE__ */ React.createElement("td", { className: "wide" }, show(r.mkt)), /* @__PURE__ */ React.createElement("td", { className: "full risk" }, show(r.risk)), /* @__PURE__ */ React.createElement("td", { className: "full" }, show(r.act)));
-      }
-    }
-  ), /* @__PURE__ */ React.createElement(
-    Sec,
-    {
-      id: "s-focus",
-      title: "Focus list",
-      rows: focus,
-      head: /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("th", null, "Ticker"), /* @__PURE__ */ React.createElement("th", null, "Call"), /* @__PURE__ */ React.createElement("th", null, "Reason")),
-      renderRow: (r, i) => {
-        const w = actWord(r.note);
-        return /* @__PURE__ */ React.createElement("tr", { key: i }, /* @__PURE__ */ React.createElement("td", { className: "a" }, /* @__PURE__ */ React.createElement(Tk, { row: r, all: cur === "ALL" })), /* @__PURE__ */ React.createElement("td", { className: "b" }, /* @__PURE__ */ React.createElement("span", { className: "act " + actTone(w || r.note) }, w || "WATCH")), /* @__PURE__ */ React.createElement("td", { className: "full" }, show(r.note)));
-      }
-    }
-  ), /* @__PURE__ */ React.createElement(
-    Sec,
-    {
-      id: "s-setups",
-      title: "Setups",
-      rows: setups,
-      note: "Elite = prime quality score. Strong = Stage 2 with Strong Blue SSL.",
-      head: /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("th", null, "Ticker"), /* @__PURE__ */ React.createElement("th", null, "Tier"), /* @__PURE__ */ React.createElement("th", null, "Name"), /* @__PURE__ */ React.createElement("th", null, "Stage"), /* @__PURE__ */ React.createElement("th", { className: "n" }, "Quality"), /* @__PURE__ */ React.createElement("th", null, "Note")),
-      renderRow: (r, i) => /* @__PURE__ */ React.createElement("tr", { key: i }, /* @__PURE__ */ React.createElement("td", { className: "a" }, /* @__PURE__ */ React.createElement(Tk, { row: r, all: cur === "ALL" }), " ", /* @__PURE__ */ React.createElement("span", { className: "nm only-n" }, r.kind)), /* @__PURE__ */ React.createElement("td", { className: "wide" }, r.kind), /* @__PURE__ */ React.createElement("td", { className: "wide nm" }, txt(r.name) || "\u2014"), /* @__PURE__ */ React.createElement("td", { className: "wide" }, txt(r.stage) || "\u2014"), /* @__PURE__ */ React.createElement("td", { className: "b n" }, r.q != null ? /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("span", { className: "num" }, Number(r.q).toFixed(0)), /* @__PURE__ */ React.createElement("span", { className: "qbar" }, /* @__PURE__ */ React.createElement("i", { style: { width: Math.max(0, Math.min(100, Number(r.q))) + "%" } }))) : /* @__PURE__ */ React.createElement("span", { className: "act " + actTone(r.act) }, txt(r.act) || "WATCH")), /* @__PURE__ */ React.createElement("td", { className: "full" }, show(r.note)))
-    }
-  ), /* @__PURE__ */ React.createElement(
-    Sec,
-    {
-      id: "s-ovn",
-      title: cur === "JP" ? "US overnight" : "US overnight tape",
-      rows: ovn,
-      note: "Super flow: blue in, red out.",
-      head: /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("th", null, "Ticker"), /* @__PURE__ */ React.createElement("th", { className: "n" }, "Last"), /* @__PURE__ */ React.createElement("th", { className: "n" }, "Day"), /* @__PURE__ */ React.createElement("th", { className: "n" }, "Super"), /* @__PURE__ */ React.createElement("th", null, "Read")),
-      renderRow: (r, i) => /* @__PURE__ */ React.createElement("tr", { key: i }, /* @__PURE__ */ React.createElement("td", { className: "a" }, /* @__PURE__ */ React.createElement("span", { className: "tk" }, show(r.t)), " ", /* @__PURE__ */ React.createElement("span", { className: "num only-n " + sgn(r.day) }, pct(r.day))), /* @__PURE__ */ React.createElement("td", { className: "wide n" }, r.last == null ? "\u2014" : r.last), /* @__PURE__ */ React.createElement("td", { className: "wide n " + sgn(r.day) }, pct(r.day)), /* @__PURE__ */ React.createElement("td", { className: "b n " + (r.sb > 0 ? "fin" : r.sb < 0 ? "fout" : "") }, r.sb == null ? "\u2014" : (r.sb > 0 ? "+" : r.sb < 0 ? "\u2212" : "") + Math.abs(Number(r.sb)).toFixed(1)), /* @__PURE__ */ React.createElement("td", { className: "full" }, [txt(r.tag), txt(r.note)].filter(Boolean).join(" \xB7 ") || "\u2014"))
-    }
-  ), /* @__PURE__ */ React.createElement(
-    Sec,
-    {
-      id: "s-tape",
-      title: "Indices and rates",
-      rows: tape,
-      head: /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("th", null, "Name"), /* @__PURE__ */ React.createElement("th", { className: "n" }, "Last"), /* @__PURE__ */ React.createElement("th", { className: "n" }, "Day"), /* @__PURE__ */ React.createElement("th", null, "Note")),
-      renderRow: (r, i) => /* @__PURE__ */ React.createElement("tr", { key: i }, /* @__PURE__ */ React.createElement("td", { className: "a" }, /* @__PURE__ */ React.createElement("span", { className: "tk" }, show(r.t))), /* @__PURE__ */ React.createElement("td", { className: "b n" }, /* @__PURE__ */ React.createElement("span", { className: "num" }, show(r.last)), " ", r.ch != null ? /* @__PURE__ */ React.createElement("span", { className: "num only-n " + sgn(r.ch) }, pct(r.ch)) : null), /* @__PURE__ */ React.createElement("td", { className: "wide n " + sgn(r.ch) }, r.ch != null ? pct(r.ch) : ""), /* @__PURE__ */ React.createElement("td", { className: "full" }, show(r.note)))
-    }
-  ), /* @__PURE__ */ React.createElement(
-    Sec,
-    {
-      id: "s-watch",
-      title: "Watch and avoid",
-      rows: watch,
-      head: /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("th", null, "Ticker"), /* @__PURE__ */ React.createElement("th", null, "Flag"), /* @__PURE__ */ React.createElement("th", null, "Note")),
-      renderRow: (r, i) => {
-        const trap = /trap/i.test(String(r.note || ""));
-        return /* @__PURE__ */ React.createElement("tr", { key: i }, /* @__PURE__ */ React.createElement("td", { className: "a" }, /* @__PURE__ */ React.createElement(Tk, { row: r, all: cur === "ALL" })), /* @__PURE__ */ React.createElement("td", { className: "b" }, /* @__PURE__ */ React.createElement("span", { className: "act " + (trap ? "tone-red" : "tone-amber") }, trap ? "TRAP" : "WATCH")), /* @__PURE__ */ React.createElement("td", { className: "full" }, show(r.note)));
-      }
-    }
-  ), /* @__PURE__ */ React.createElement(
-    Sec,
-    {
-      id: "s-view",
-      title: "Desk view",
-      rows: spring,
-      head: /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("th", null, "Topic"), /* @__PURE__ */ React.createElement("th", null, "Read"), /* @__PURE__ */ React.createElement("th", null, "View")),
-      renderRow: (r, i) => /* @__PURE__ */ React.createElement("tr", { key: i }, /* @__PURE__ */ React.createElement("td", { className: "a" }, /* @__PURE__ */ React.createElement("span", { className: "tk" }, show(r.aspect))), /* @__PURE__ */ React.createElement("td", { className: "full" }, show(r.summary)), /* @__PURE__ */ React.createElement("td", { className: "full" }, show(r.view)))
-    }
-  ), /* @__PURE__ */ React.createElement("div", { className: "more" }, /* @__PURE__ */ React.createElement("details", null, /* @__PURE__ */ React.createElement("summary", null, "Cup-and-Handle"), /* @__PURE__ */ React.createElement(
-    Sec,
-    {
-      title: "Cup-and-Handle",
-      rows: (D.cup_handle || []).filter((r) => inMk(r, cur)),
-      head: /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("th", null, "Ticker"), /* @__PURE__ */ React.createElement("th", null, "Status"), /* @__PURE__ */ React.createElement("th", { className: "n" }, "Last"), /* @__PURE__ */ React.createElement("th", { className: "n" }, "Pivot"), /* @__PURE__ */ React.createElement("th", null, "Note")),
-      renderRow: (r, i) => /* @__PURE__ */ React.createElement("tr", { key: i }, /* @__PURE__ */ React.createElement("td", { className: "a" }, /* @__PURE__ */ React.createElement(Tk, { row: r, all: cur === "ALL" })), /* @__PURE__ */ React.createElement("td", { className: "b" }, show(r.status)), /* @__PURE__ */ React.createElement("td", { className: "wide n" }, show(r.last)), /* @__PURE__ */ React.createElement("td", { className: "wide n" }, show(r.pivot)), /* @__PURE__ */ React.createElement("td", { className: "full" }, show(r.note)))
-    }
-  )), /* @__PURE__ */ React.createElement("details", null, /* @__PURE__ */ React.createElement("summary", null, "Emerging"), /* @__PURE__ */ React.createElement(
-    Sec,
-    {
-      title: "Emerging",
-      rows: (D.emerging || []).filter((r) => inMk(r, cur)),
-      head: /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("th", null, "Ticker"), /* @__PURE__ */ React.createElement("th", null, "Wave"), /* @__PURE__ */ React.createElement("th", null, "SSL"), /* @__PURE__ */ React.createElement("th", null, "Note")),
-      renderRow: (r, i) => /* @__PURE__ */ React.createElement("tr", { key: i }, /* @__PURE__ */ React.createElement("td", { className: "a" }, /* @__PURE__ */ React.createElement(Tk, { row: r, all: cur === "ALL" })), /* @__PURE__ */ React.createElement("td", { className: "b" }, show(r.wave)), /* @__PURE__ */ React.createElement("td", { className: "wide" }, show(r.ssl)), /* @__PURE__ */ React.createElement("td", { className: "full" }, show(r.note)))
-    }
-  )), /* @__PURE__ */ React.createElement("details", null, /* @__PURE__ */ React.createElement("summary", null, "Sectors"), /* @__PURE__ */ React.createElement(
-    Sec,
-    {
-      title: "Sectors",
-      rows: (D.sectors || []).filter((r) => inMk(r, cur)),
-      head: /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("th", null, "ETF"), /* @__PURE__ */ React.createElement("th", null, "Sector"), /* @__PURE__ */ React.createElement("th", { className: "n" }, "RS"), /* @__PURE__ */ React.createElement("th", { className: "n" }, "CMF"), /* @__PURE__ */ React.createElement("th", null, "Note")),
-      renderRow: (r, i) => /* @__PURE__ */ React.createElement("tr", { key: i }, /* @__PURE__ */ React.createElement("td", { className: "a" }, /* @__PURE__ */ React.createElement("span", { className: "tk" }, show(r.etf))), /* @__PURE__ */ React.createElement("td", { className: "b" }, show(r.sector)), /* @__PURE__ */ React.createElement("td", { className: "wide n" }, show(r.rs)), /* @__PURE__ */ React.createElement("td", { className: "wide n" }, show(r.cmf)), /* @__PURE__ */ React.createElement("td", { className: "full" }, show(r.note)))
-    }
-  )), /* @__PURE__ */ React.createElement("details", null, /* @__PURE__ */ React.createElement("summary", null, "Spring"), txt(D.spring_answer) ? /* @__PURE__ */ React.createElement("p", { className: "note" }, D.spring_answer) : null, txt(D.spring_detail) ? /* @__PURE__ */ React.createElement("p", { className: "note" }, D.spring_detail) : null, /* @__PURE__ */ React.createElement(
-    Sec,
-    {
-      title: "Spring",
-      rows: (D.spring || []).filter(() => cur === "ALL" || cur === "US"),
-      head: /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("th", null, "Topic"), /* @__PURE__ */ React.createElement("th", null, "Read"), /* @__PURE__ */ React.createElement("th", null, "View")),
-      renderRow: (r, i) => /* @__PURE__ */ React.createElement("tr", { key: i }, /* @__PURE__ */ React.createElement("td", { className: "a" }, /* @__PURE__ */ React.createElement("span", { className: "tk" }, show(r.aspect))), /* @__PURE__ */ React.createElement("td", { className: "full" }, show(r.summary)), /* @__PURE__ */ React.createElement("td", { className: "full" }, show(r.view)))
-    }
-  )), /* @__PURE__ */ React.createElement("details", null, /* @__PURE__ */ React.createElement("summary", null, "Snapshot"), /* @__PURE__ */ React.createElement(
-    Sec,
-    {
-      title: "Snapshot",
-      rows: (D.snapshot || []).filter((r) => inMk(r, cur)),
-      head: /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("th", null, "Ticker"), /* @__PURE__ */ React.createElement("th", { className: "n" }, "Live"), /* @__PURE__ */ React.createElement("th", { className: "n" }, "Day"), /* @__PURE__ */ React.createElement("th", null, "Note")),
-      renderRow: (r, i) => /* @__PURE__ */ React.createElement("tr", { key: i }, /* @__PURE__ */ React.createElement("td", { className: "a" }, /* @__PURE__ */ React.createElement(Tk, { row: r, all: cur === "ALL" })), /* @__PURE__ */ React.createElement("td", { className: "b n" }, show(r.live)), /* @__PURE__ */ React.createElement("td", { className: "wide n " + sgn(r.day) }, pct(r.day)), /* @__PURE__ */ React.createElement("td", { className: "full" }, show(r.note)))
-    }
-  )), /* @__PURE__ */ React.createElement("details", null, /* @__PURE__ */ React.createElement("summary", null, "Source"), /* @__PURE__ */ React.createElement("p", { className: "foot" }, [txt(D.disclaimer), txt(D.source)].filter(Boolean).join(" \xB7 ") || "\u2014"))));
+  (D.watch || []).forEach((r) => {
+    if (!/WARNING/i.test(String(r.note || ''))) return;
+    rows.push({
+      mkt: String(r.mkt || '').toUpperCase() || '—',
+      t: r.t || '—',
+      why: 'Bounce trap WARNING · No new entries',
+      pri: 1,
+    });
+  });
+  rows.sort((a, b) => ((rank[a.mkt] ?? 3) - (rank[b.mkt] ?? 3)) || (a.pri - b.pri));
+  if (D.thursday_long_warn || '') {
+    rows.push({ mkt: 'ALL', t: 'Thu', why: D.thursday_long_warn || '', pri: 2 });
+  }
+  return rows.slice(0, 3);
 }
-class Boundary extends React.Component {
-  constructor(p) {
-    super(p), this.state = { err: null };
+
+function MktSplit({mkt, rows, render, empty, extra, keys}) {
+  const ks = keys || viewMkts(mkt);
+  const showLabel = ks.length > 1;
+  return (
+    <div className="space-y-3">
+      {ks.map((k) => {
+        let part = rowsFor(rows, k);
+        if (extra) part = extra(part, k);
+        return (
+          <div key={k}>
+            {showLabel ? (
+              <div className="mkt-label">{k}<span className="mkt-count">{part.length}</span></div>
+            ) : null}
+            {part.length === 0 ? (
+              empty ? empty(k) : <div className="card p-3 text-xs text-slate-500">No {k} rows.</div>
+            ) : render(part, k)}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function asiaFill(v) {
+  if (v > 0) return '#f87171';
+  if (v < 0) return '#4ade80';
+  return '#64748b';
+}
+
+function FlowBarChart({rows, field, title, unit, sortAbs, fmt}) {
+  const data = (rows || []).filter((r) => r && Number.isFinite(+r[field]));
+  if (!data.length) {
+    return (
+      <div className="flow-card">
+        <div className="flow-title">{title}</div>
+        <p className="text-xs text-slate-500 px-2 pb-2">No {field}.</p>
+      </div>
+    );
   }
-  static getDerivedStateFromError(err) {
-    return { err };
-  }
+  const sorted = data.slice().sort((a, b) => (
+    sortAbs ? (Math.abs(+b[field]) - Math.abs(+a[field])) : (+b[field] - +a[field])
+  ));
+  const maxAbs = Math.max(0.01, ...sorted.map((r) => Math.abs(+r[field])));
+  const W = 480;
+  const labelW = 52;
+  const rightPad = 62;
+  const barH = 22;
+  const top = 6;
+  const plotW = W - labelW - rightPad;
+  const H = top + sorted.length * barH + 22;
+  const xOf = (v) => labelW + ((v + maxAbs) / (2 * maxAbs)) * plotW;
+  const zero = xOf(0);
+  const lab = (t) => {
+    const s = String(t == null ? '' : t);
+    return /^\d{5}$/.test(s) ? s.slice(1) : s;
+  };
+  return (
+    <div className="flow-card">
+      <div className="flow-title">{title}</div>
+      <svg viewBox={'0 0 ' + W + ' ' + H} width="100%" height={H} role="img" aria-label={title}>
+        <line x1={zero} y1={top} x2={zero} y2={top + sorted.length * barH} stroke="#334155" strokeWidth="1"/>
+        {sorted.map((r, i) => {
+          const v = +r[field];
+          const y = top + i * barH + 4;
+          const x = xOf(v);
+          const xBar = Math.min(x, zero);
+          const w = Math.max(1, Math.abs(x - zero));
+          let labelX = v >= 0 ? x + 4 : x - 4;
+          let anchor = v >= 0 ? 'start' : 'end';
+          if (v < 0 && labelX < labelW + 2) {
+            labelX = xBar + 6;
+            anchor = 'start';
+          }
+          if (v >= 0 && labelX > W - 10) {
+            labelX = x - 4;
+            anchor = 'end';
+          }
+          return (
+            <g key={(r.t || i) + '-' + field}>
+              <text x={labelW - 8} y={y + 11} textAnchor="end" fill="#94a3b8" fontSize="11" fontFamily="Inter,system-ui,sans-serif">{lab(r.t)}</text>
+              <rect x={xBar} y={y} width={w} height={14} rx="3" fill={asiaFill(v)}/>
+              <text x={labelX} y={y + 11} textAnchor={anchor} fill="#e2e8f0" fontSize="10" fontFamily="Inter,system-ui,sans-serif">{fmt(v)}</text>
+            </g>
+          );
+        })}
+        <text x={zero} y={H - 6} textAnchor="middle" fill="#64748b" fontSize="10">0</text>
+      </svg>
+    </div>
+  );
+}
+
+class DashboardErrorBoundary extends React.Component {
+  constructor(props) { super(props); this.state = {error: null}; }
+  static getDerivedStateFromError(error) { return {error}; }
+  componentDidCatch(error, info) { try { console.error('Dashboard render error:', error, info); } catch (_) {} }
   render() {
-    return this.state.err ? /* @__PURE__ */ React.createElement("p", { className: "note" }, "Board failed to render.") : this.props.children;
+    if (this.state.error) {
+      const err = this.state.error;
+      const msg = (err && err.message) ? String(err.message) : String(err);
+      const stack = (err && err.stack) ? String(err.stack) : '';
+      return (
+        <div style={{minHeight:'100vh', background:'#020617', color:'#fecaca', padding:'1.5rem', fontFamily:'ui-monospace, SFMono-Regular, Menlo, monospace'}}>
+          <div style={{maxWidth:'48rem', margin:'0 auto', border:'1px solid #7f1d1d', borderRadius:'1rem', background:'linear-gradient(180deg,#450a0a,#1c0a0a)', padding:'1.25rem 1.5rem', boxShadow:'0 10px 30px rgba(0,0,0,.45)'}}>
+            <div style={{fontSize:'0.7rem', letterSpacing:'0.08em', textTransform:'uppercase', color:'#fca5a5', fontWeight:700, marginBottom:'0.5rem'}}>Dashboard render error</div>
+            <div style={{fontSize:'1.1rem', fontWeight:700, color:'#fee2e2', marginBottom:'0.75rem'}}>{msg}</div>
+            {stack ? <pre style={{whiteSpace:'pre-wrap', wordBreak:'break-word', fontSize:'0.7rem', color:'#fca5a5', opacity:0.9, background:'#0c0a09', padding:'0.75rem', borderRadius:'0.5rem', border:'1px solid #3f1f1f', maxHeight:'50vh', overflow:'auto'}}>{stack}</pre> : null}
+            <p style={{marginTop:'1rem', fontSize:'0.75rem', color:'#94a3b8'}}>This page crashed while rendering. Usually a missing key on window.__DATA__ (e.g. D.watch.map when watch was omitted). Fix DATA or re-generate the dashboard.</p>
+          </div>
+        </div>
+      );
+    }
+    return this.props.children;
   }
 }
-ReactDOM.createRoot(document.getElementById("root")).render(
-  /* @__PURE__ */ React.createElement(Boundary, null, /* @__PURE__ */ React.createElement(App, null))
+
+function Section({title, icon, children, defaultOpen}) {
+  const [open, setOpen] = useState(defaultOpen !== false);
+  return (
+    <section className="mb-5">
+      <button type="button" onClick={() => setOpen((o) => !o)} className="w-full flex items-center justify-between text-left mb-2">
+        <h2 className="font-display text-lg font-semibold flex items-center gap-2">
+          <i className={`fa-solid ${icon} text-sky-400 text-sm`}></i>{title}
+        </h2>
+        <i className={`fa-solid fa-chevron-${open ? 'up' : 'down'} text-slate-500 text-xs`}></i>
+      </button>
+      {open && children}
+    </section>
+  );
+}
+
+function App() {
+  const [tab, setTab] = useState('overview');
+  const _hashMkt = (window.location.hash||'').replace('#','').toUpperCase();
+  const [mkt, setMkt] = useState(['HK','JP','US','ALL'].includes(_hashMkt) ? _hashMkt : 'ALL');
+  const [snapOpen, setSnapOpen] = useState(true);
+  const [snapTs, setSnapTs] = useState(D.asof || '—');
+  const connected = !!D.opend_connected;
+  const showHk = mkt === 'ALL' || mkt === 'HK';
+  const showJp = mkt === 'ALL' || mkt === 'JP';
+  const showUs = mkt === 'ALL' || mkt === 'US';
+  const macroKeys = mkt === 'ALL' ? ['jp', 'hk', 'us'] : [mkt.toLowerCase()];
+  const macroGrid = {1: '', 2: 'sm:grid-cols-2', 3: 'sm:grid-cols-3'}[macroKeys.length] || '';
+
+  const tabs = [
+    ['overview', 'Overview'],
+    ['setups', 'Elite / Strong'],
+    ['risks', 'Risks']
+  ];
+
+  const refreshLive = () => {
+    setSnapTs((D.asof || '') + ' · refreshed (static pack, no live socket)');
+  };
+  const pins = pinStrip();
+
+  return (
+    <div className="board-wrap max-w-6xl mx-auto px-3 sm:px-5 py-4 pb-16">
+      <header className="mb-4">
+        <p className="text-xs font-semibold text-violet-300 tracking-wide mb-1">JP 08:00 {D.session_jp || '—'} · HK 09:30 {D.session_hk || '—'} · US 21:30 {D.session_us || '—'} · HKT</p>
+        <h1 className="font-display text-xl sm:text-2xl font-bold text-white tracking-tight">{D.title} · {(D.weekday || '')}{(D.weekday || '') && ' · '}{D.date}</h1>
+        {(D.thursday_long_warn || '') ? <p className="mt-2 text-sm font-semibold text-amber-200">{D.thursday_long_warn || ''}</p> : null}
+        <p className="mt-2 text-sm text-slate-200 leading-relaxed">{D.verdict}</p>
+        {pins.length ? (
+          <ul className="mt-3 space-y-1">
+            {pins.map((p, i) => (
+              <li key={p.mkt + p.t + i} className="text-base text-slate-100">
+                <span className="text-violet-300">{p.mkt}</span>{' '}
+                <span className="code">{p.t}</span>
+                <span className="text-slate-300"> — {p.why}</span>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+      </header>
+
+      <div className="flex flex-wrap gap-2 mb-3 items-center">
+        <span className="text-xs text-slate-500">Market</span>
+        {[['JP','JP'],['HK','HK'],['US','US'],['ALL','All']].map(([k,l]) => (
+          <button key={k} type="button" className={`nav-chip ${mkt===k?'active':''}`} onClick={() => { setMkt(k); try { history.replaceState(null,'','#'+k); } catch(_){} }}>{l}</button>
+        ))}
+        <span className="text-[11px] text-slate-500">HK / JP / US stay in separate lists. Plug data.json — JSX stays frozen.</span>
+      </div>
+
+      <nav className="section-nav flex flex-wrap gap-2 mb-4 sticky top-0 z-10 py-2 bg-[#020617]/95">
+        {tabs.map(([id, lab]) => (
+          <button key={id} type="button" className={`nav-chip ${tab===id?'active':''}`} onClick={() => setTab(id)}>{lab}</button>
+        ))}
+      </nav>
+
+      {tab === 'overview' && (
+        <div className="space-y-4">
+          <Section title="US 10Y / 30Y Treasury" icon="fa-chart-line">
+            <div className="card overflow-hidden">
+              <div className="scroll-x"><table>
+                <thead><tr><th></th><th className="num">Last</th><th className="cover-hide">Session</th><th className="num">10d Δ</th><th className="num cover-hide">30d Δ</th><th>Read</th></tr></thead>
+                <tbody>
+                  {(D.yields || []).map((y) => (
+                    <tr key={y.name}>
+                      <td className="code">{y.name}</td>
+                      <td className="num">{y.last}</td>
+                      <td className="text-xs text-slate-400 cover-hide">{y.sess}</td>
+                      <td className={`num ${cls(y.d10)}`}>{(y.d10>=0?'+':'') + Number(y.d10).toFixed(1)} bps</td>
+                      <td className={`num ${cls(y.d30)} cover-hide`}>{(y.d30>=0?'+':'') + Number(y.d30).toFixed(1)} bps</td>
+                      <td className="text-xs text-slate-400">{y.read}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table></div>
+            </div>
+            <p className="text-xs text-amber-200/90 p-2">{D.yields_line}</p>
+          </Section>
+          <Section title="Oil + Biotech" icon="fa-gas-pump">
+            <div className="card p-3 mb-2 border-rose-900/50 bg-rose-950/20 text-sm text-rose-100 font-semibold">{D.oil_biotech_warn}</div>
+            <div className="card overflow-hidden">
+              <div className="scroll-x"><table>
+                <thead><tr><th className="cover-hide">Sleeve</th><th>ETF</th><th className="num cover-hide">Last</th><th className="num">Day%</th><th className="num cover-hide">RS5</th><th className="num cover-hide">RS21</th><th className="cover-hide">vs MA50</th><th className="num cover-hide">CMF</th><th className="num cover-hide">Super $M</th><th>Tag</th></tr></thead>
+                <tbody>
+                  {(D.oil_biotech || []).map((r) => (
+                    <tr key={r.etf}>
+                      <td className="cover-hide">{r.sleeve}</td>
+                      <td className="code">{r.etf}</td>
+                      <td className="num cover-hide">{num(r.last)}</td>
+                      <td className={`num ${cls(r.day)}`}>{pct(r.day)}</td>
+                      <td className="num cover-hide">{r.rs5}</td>
+                      <td className="num cover-hide">{r.rs21}</td>
+                      <td className="text-xs cover-hide">{r.ma50}</td>
+                      <td className={`num ${cls(r.cmf)} cover-hide`}>{r.cmf != null ? Number(r.cmf).toFixed(3) : '—'}</td>
+                      <td className={`num ${cls(r.super)} cover-hide`}>{r.super != null ? ((r.super>=0?'+':'')+Number(r.super).toFixed(1)) : '—'}</td>
+                      <td className="text-xs">{r.tag}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table></div>
+            </div>
+          </Section>
+          {showUs && !(D.spring_skip) && (D.spring || []).length > 0 && (
+            <Section title="Spring (US)" icon="fa-newspaper">
+              <div className="p-3 rounded-xl bg-rose-950/40 border border-rose-800/60 mb-3">
+                <div className="text-[0.65rem] uppercase tracking-wider text-rose-300 font-bold">Verdict</div>
+                <div className="text-sm font-semibold text-rose-100 mt-1">{D.spring_answer}</div>
+                <p className="text-xs text-rose-200/80 mt-1">{D.spring_detail}</p>
+              </div>
+              <div className="card overflow-hidden">
+                <div className="scroll-x"><table>
+                  <thead><tr><th>Aspect</th><th>Summary</th><th>View</th></tr></thead>
+                  <tbody>
+                    {(D.spring || []).map((s, i) => (
+                      <tr key={i}>
+                        <td className="code">{s.aspect}</td>
+                        <td className="text-xs text-slate-300">{s.summary}</td>
+                        <td className="text-xs text-slate-400">{s.view}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table></div>
+              </div>
+            </Section>
+          )}
+          {showUs && (D.sectors || []).length > 0 && (
+            <Section title="US sector RS21" icon="fa-layer-group">
+              <p className="text-xs text-slate-500 mb-2">{D.sector_takeaway}</p>
+              <div className="card overflow-hidden">
+                <div className="scroll-x"><table>
+                  <thead><tr><th className="cover-hide">#</th><th>ETF</th><th className="cover-hide">Sector</th><th className="num">RS21</th><th className="num">CMF</th><th className="cover-hide">MA50</th><th className="cover-hide">Note</th></tr></thead>
+                  <tbody>
+                    {(D.sectors || []).map((s) => (
+                      <tr key={s.etf}>
+                        <td className="cover-hide">{s.rank}</td>
+                        <td className="code">{s.etf}</td>
+                        <td className="text-xs cover-hide">{s.sector}</td>
+                        <td className="num">{s.rs}</td>
+                        <td className={`num ${cls(s.cmf)}`}>{s.cmf != null ? Number(s.cmf).toFixed(3) : '—'}</td>
+                        <td className="text-xs cover-hide">{s.ma50}</td>
+                        <td className="text-xs text-slate-400 cover-hide">{s.note}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table></div>
+              </div>
+            </Section>
+          )}
+          <Section title="US overnight / EOD gate" icon="fa-flag-usa">
+            <div className={`card p-3 mb-2 text-sm font-semibold ${D.us_ovn_tone==='red' ? 'border-rose-900/50 bg-rose-950/20 text-rose-100' : 'border-amber-900/40 bg-amber-950/20 text-amber-100'}`}>{D.us_ovn_banner}</div>
+            <div className="card overflow-hidden">
+              <div className="scroll-x">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>US</th><th className="num cover-hide">Last</th><th className="num">vs prior</th>
+                      <th className="num cover-hide">Super+Big $M</th><th>Tag</th><th className="cover-hide">JP/HK implication</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {(D.us_ovn || []).map((r) => (
+                      <tr key={r.t} className={Math.abs(r.day||0)>3?'hi-red':''}>
+                        <td className="code">{r.t}</td>
+                        <td className="num cover-hide">{num(r.last)}</td>
+                        <td className={`num ${cls(r.day)}`}>{pct(r.day)}</td>
+                        <td className={`num ${cls(r.sb)} cover-hide`}>{r.sb != null ? ((r.sb>=0?'+':'')+Number(r.sb).toFixed(1)) : '—'}</td>
+                        <td className="text-xs">{r.tag}</td>
+                        <td className="text-xs text-slate-400 cover-hide">{r.note}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <p className="text-xs text-amber-200/90 p-2">{D.us_ovn_call}</p>
+          </Section>
+          <Section title="Core Super / Day%" icon="fa-chart-bar">
+            <p className="text-xs text-slate-500 mb-2">Bars are Asia tape: red = IN / up · green = OUT / down. Super in 亿. HK and JP never mix. Table Day% below stays Western (green=up).</p>
+            {mkt === 'US' ? (
+              <div className="card p-3 text-xs text-slate-500">US Super is on the overnight card ($M), not 亿 cores.</div>
+            ) : (
+              <MktSplit
+                mkt={mkt}
+                rows={D.flow_cores || []}
+                keys={mkt === 'ALL' ? ['JP', 'HK'] : [mkt]}
+                empty={(k) => <div className="card p-3 text-xs text-slate-500">No {k} core flow.</div>}
+                render={(part, k) => (
+                  <div className="flow-grid">
+                    <FlowBarChart
+                      rows={part}
+                      field="super"
+                      title={k + ' cores Super 亿 · red=IN · green=OUT'}
+                      unit="亿"
+                      sortAbs={true}
+                      fmt={(v) => (v >= 0 ? '+' : '') + Number(v).toFixed(2)}
+                    />
+                    <FlowBarChart
+                      rows={part}
+                      field="day"
+                      title={k + ' cores Day% · red=up · green=down'}
+                      unit="%"
+                      sortAbs={false}
+                      fmt={(v) => (v >= 0 ? '+' : '') + Number(v).toFixed(2) + '%'}
+                    />
+                  </div>
+                )}
+              />
+            )}
+          </Section>
+          <Section title="Mid-day snapshot" icon="fa-satellite-dish">
+            <div className="card p-3 mb-2 flex flex-wrap items-center justify-between gap-2">
+              <button type="button" className="nav-chip" onClick={() => setSnapOpen((o) => !o)}>{snapOpen ? 'Collapse' : 'Expand'} snapshot</button>
+              <button type="button" className="nav-chip" onClick={refreshLive}><i className="fa-solid fa-rotate"/> Refresh Live</button>
+              <span className="text-xs text-slate-500">{snapTs}</span>
+            </div>
+            {!connected && (
+              <div className="card p-4 mb-3 border border-rose-900 text-rose-300 text-sm">OpenD not connected</div>
+            )}
+            {snapOpen && connected && (
+              <>
+                <MktSplit
+                  mkt={mkt}
+                  rows={D.indices || []}
+                  keys={mkt === 'ALL' ? ['JP', 'HK', 'US'] : [mkt]}
+                  empty={(k) => <div className="card p-3 text-xs text-slate-500">No {k} indices.</div>}
+                  render={(part) => (
+                    <div className="card overflow-hidden">
+                      <div className="scroll-x">
+                        <table>
+                          <thead><tr><th>Index</th><th className="cover-hide">Mkt</th><th className="num cover-hide">Last</th><th className="num">Day%</th><th className="cover-hide">Note</th></tr></thead>
+                          <tbody>
+                            {part.map((r) => (
+                              <tr key={r.name}>
+                                <td className="code">{r.name}</td>
+                                <td className="text-xs text-slate-500 cover-hide">{r.mkt}</td>
+                                <td className="num cover-hide">{num(r.last, 2)}</td>
+                                <td className={`num ${cls(r.chg_pct)}`}>{pct(r.chg_pct)}</td>
+                                <td className="text-xs text-slate-400 cover-hide"><ElevText text={r.note}/></td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  )}
+                />
+                <div className="mt-3">
+                  <MktSplit
+                    mkt={mkt}
+                    rows={D.snapshot || []}
+                    render={(part) => (
+                      <div className="card overflow-hidden">
+                        <div className="scroll-x">
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>T</th><th className="cover-hide">Name</th><th className="num cover-hide">Scan</th><th className="num cover-hide">Live</th>
+                                <th className="num">Day% / mark</th><th className="num cover-hide">vs Scan Δ</th><th className="cover-hide">Note</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {part.map((r) => (
+                                <tr key={r.t} className={/285A|9903|5801|9984|5101/.test(r.t)?'hi-red':r.t==='01729'?'hi-amb':''}>
+                                  <td className="code">{r.t}</td>
+                                  <td className="cover-hide">{r.name}</td>
+                                  <td className="num cover-hide">{num(r.scan)}</td>
+                                  <td className="num cover-hide">{num(r.live, r.t==='53249'?3:2)}</td>
+                                  <td className={`num ${cls(r.day)}`}>{pct(r.day)}</td>
+                                  <td className={`num ${deltaCls(r.dlt)} cover-hide`}>{pct(r.dlt)}</td>
+                                  <td className="text-xs text-slate-400 cover-hide"><ElevText text={r.note}/></td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    )}
+                  />
+                  <p className="text-xs text-slate-500 p-2">{D.snapshot_note} Δ vs Scan: green ≤1.5% · yellow 1.5–3% · red &gt;3%.</p>
+                </div>
+              </>
+            )}
+          </Section>
+
+
+
+          <Section title="Regime gate" icon="fa-gauge-high">
+            <div className={`grid gap-3 ${[showHk,showJp,showUs].filter(Boolean).length>1 ? 'sm:grid-cols-2 lg:grid-cols-3' : ''}`}>
+              {showJp && (
+                <div className="card p-4">
+                  <div className="text-xs uppercase text-slate-500 mb-1">JP</div>
+                  <div className="mb-2"><span className={`pill ${tonePill(D.jp_regime_tone || "slate")}`}>{D.jp_regime}</span> <span className="text-xs text-slate-500 ml-2">{D.session_jp}</span></div>
+                  <ul className="text-sm text-slate-300 space-y-1">{(D.overview_jp || []).map((x,i)=>(<li key={i}>· <ElevText text={x}/></li>))}</ul>
+                </div>
+              )}
+              {showHk && (
+                <div className="card p-4">
+                  <div className="text-xs uppercase text-slate-500 mb-1">HK</div>
+                  <div className="mb-2"><span className="pill pill-y">{D.hk_regime}</span> <span className="text-xs text-slate-500 ml-2">{D.session_hk}</span></div>
+                  <ul className="text-sm text-slate-300 space-y-1">{(D.overview_hk || []).map((x,i)=>(<li key={i}>· <ElevText text={x}/></li>))}</ul>
+                </div>
+              )}
+              {showUs && (
+                <div className="card p-4">
+                  <div className="text-xs uppercase text-slate-500 mb-1">US</div>
+                  <div className="mb-2"><span className={`pill ${tonePill(D.us_regime_tone || "amber")}`}>{D.us_regime}</span> <span className="text-xs text-slate-500 ml-2">{D.session_us}</span></div>
+                  <ul className="text-sm text-slate-300 space-y-1">{(D.overview_us || []).map((x,i)=>(<li key={i}>· <ElevText text={x}/></li>))}</ul>
+                  {D.half_size ? <p className="text-xs text-amber-200/90 mt-2">{D.half_size}</p> : null}
+                </div>
+              )}
+            </div>
+            {(D.cross_market || "") ? (
+              <div className="mt-2 text-xs text-slate-400 border border-slate-800 rounded-lg px-3 py-2">{D.cross_market}</div>
+            ) : null}
+          </Section>
+
+          <Section title="Macro header" icon="fa-globe">
+            <div className="card p-4">
+              <div className={`grid gap-3 text-sm ${macroGrid}`}>
+                {macroKeys.map((k) => (
+                  <div key={k}>
+                    <div className="text-xs uppercase text-slate-500 mb-1">{k.toUpperCase()}</div>
+                    <ul className="space-y-1">{((D.macro && D.macro[k]) || []).map((row,i) => (
+                      <li key={i} className="flex justify-between gap-2 border-b border-slate-800/80 py-1">
+                        <span className="text-slate-400">{row[0]}</span>
+                        <span className="text-right"><span className="font-medium">{row[1]}</span> {isElev(row[2]) ? <span className="pill pill-o">ELEVATED</span> : <span className="text-xs text-slate-500">{row[2]}</span>}</span>
+                      </li>
+                    ))}</ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Section>
+
+          <Section title="Actionable (ranked)" icon="fa-bullseye">
+            <MktSplit
+              mkt={mkt}
+              rows={D.actionable || []}
+              render={(part) => (
+                <div className="grid gap-2 sm:grid-cols-2">
+                  {part.map((a) => (
+                    <div key={a.rank + a.t} className="card p-3">
+                      <div className="flex gap-2 items-center mb-1">
+                        <span className="pill pill-b">#{a.rank}</span>
+                        <span className="pill pill-s">{a.mkt}</span>
+                      </div>
+                      <div className="text-lg font-bold text-sky-300">{a.t}</div>
+                      <div className="text-sm text-amber-100 mt-1">{a.act}</div>
+                      <div className="text-xs text-slate-400 mt-1">{a.why}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            />
+          </Section>
+          <p className="text-xs text-slate-500">{D.bank_note}</p>
+        </div>
+      )}
+
+      {tab === 'setups' && (
+        <>
+          <Section title="Elite / Prime VCP (Q ≥ 75 + CMF > 0)" icon="fa-crown">
+            <MktSplit
+              mkt={mkt}
+              rows={D.elite || []}
+              empty={(k) => (
+                <div className="card p-4 text-sm text-amber-200">
+                  <span className="pill pill-y mr-2">EMPTY</span>
+                  {k === 'HK' ? (D.elite_note || 'No Elite names.') : 'No Elite names.'}
+                </div>
+              )}
+              render={(part) => (
+                <div className="card overflow-hidden">
+                  <div className="scroll-x"><table>
+                    <thead><tr><th className="cover-hide">#</th><th>T</th><th className="num cover-hide">Q</th><th>Note</th><th className="num cover-hide">vs Scan Δ</th></tr></thead>
+                    <tbody>{part.map((e) => (
+                      <tr key={e.t} className="hi-elite">
+                        <td className="cover-hide">{e.rank}</td>
+                        <td className="code">{e.t}</td>
+                        <td className="num cover-hide">{e.q}</td>
+                        <td className="text-xs text-slate-400">{e.note}</td>
+                        <td className={`num ${deltaCls(e.dlt)} cover-hide`}>{pct(e.dlt)}</td>
+                      </tr>
+                    ))}</tbody>
+                  </table></div>
+                </div>
+              )}
+            />
+          </Section>
+
+          <Section title="Emerging VCP (Top 8)" icon="fa-seedling">
+            <MktSplit
+              mkt={mkt}
+              rows={D.emerging || []}
+              empty={(k) => (
+                <div>
+                  {researchHead(k)}
+                  <div className="card p-4 text-sm text-slate-400">
+                    <span className="pill pill-s mr-2">EMPTY</span>
+                    No Emerging VCP for {k} today.
+                  </div>
+                </div>
+              )}
+              render={(part, k) => (
+                <div>
+                  {researchHead(k)}
+                  <div className="card overflow-hidden">
+                  <div className="scroll-x"><table>
+                    <thead><tr><th className="cover-hide">#</th><th>T</th><th className="cover-hide">Name</th><th className="num cover-hide">Wave</th><th className="num cover-hide">To Pivot %</th><th>SSL</th><th className="num">CMF</th><th className="cover-hide">Comment</th></tr></thead>
+                    <tbody>{part.map((e) => (
+                      <tr key={e.t}>
+                        <td className="cover-hide">{e.rank}</td>
+                        <td className="code">{e.t}</td>
+                        <td className="text-xs cover-hide">{e.name}</td>
+                        <td className="num cover-hide">{e.wave}</td>
+                        <td className="num cover-hide">{e.to_pivot}</td>
+                        <td><span className={`pill ${sslPill(e.ssl)}`}>{e.ssl}</span></td>
+                        <td className={`num ${cls(e.cmf)}`}>{e.cmf}</td>
+                        <td className="text-xs text-slate-400 cover-hide">{e.note}</td>
+                      </tr>
+                    ))}</tbody>
+                  </table></div>
+                  </div>
+                </div>
+              )}
+            />
+          </Section>
+
+
+          <Section title="Cup-and-Handle" icon="fa-mug-hot">
+            <MktSplit
+              mkt={mkt}
+              rows={D.cup_handle || []}
+              empty={(k) => (
+                <div>
+                  {researchHead(k)}
+                  <div className="card p-4 text-sm text-slate-400">
+                    <span className="pill pill-s mr-2">EMPTY</span>
+                    No C&H for {k} today.
+                  </div>
+                </div>
+              )}
+              render={(part, k) => (
+                <div>
+                  {researchHead(k)}
+                  <div className="card overflow-hidden">
+                  <div className="scroll-x"><table>
+                    <thead><tr><th className="cover-hide">#</th><th>T</th><th className="cover-hide">Name</th><th>Status</th><th className="num cover-hide">Last</th><th className="num cover-hide">Pivot</th><th className="num">Dist%</th><th className="cover-hide">Comment</th></tr></thead>
+                    <tbody>{part.map((e) => (
+                      <tr key={e.status + e.t}>
+                        <td className="cover-hide">{e.rank}</td>
+                        <td className="code">{e.t}</td>
+                        <td className="text-xs cover-hide">{e.name}</td>
+                        <td><span className={`pill ${e.status==='breakout'?'pill-r':e.status==='near_pivot'?'pill-y':'pill-s'}`}>{e.status}</span></td>
+                        <td className="num cover-hide">{num(e.last)}</td>
+                        <td className="num cover-hide">{num(e.pivot)}</td>
+                        <td className={`num ${cls(e.dist)}`}>{e.dist != null ? Number(e.dist).toFixed(2) : '—'}</td>
+                        <td className="text-xs text-slate-400 cover-hide">{e.note}</td>
+                      </tr>
+                    ))}</tbody>
+                  </table></div>
+                  </div>
+                </div>
+              )}
+            />
+          </Section>
+
+          <Section title="Strong / constructive setups" icon="fa-bolt">
+            <div className="mb-2 flex flex-wrap gap-2">
+            </div>
+            <MktSplit
+              mkt={mkt}
+              rows={D.strong || []}
+              render={(part) => (
+                <div className="card overflow-hidden">
+                  <div className="scroll-x">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th className="cover-hide">#</th><th className="cover-hide">Mkt</th><th>T</th><th className="cover-hide">Name</th><th className="cover-hide">Stage</th><th>SSL</th>
+                          <th>Action</th><th className="num cover-hide">vs Scan Δ</th><th className="cover-hide">Note</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {part.map((s) => (
+                          <tr key={s.mkt + s.t} className={s.tone==='red'?'hi-red':s.tone==='amber'?'hi-amb':''}>
+                            <td className="cover-hide">{s.rank}</td>
+                            <td className="text-xs text-slate-500 cover-hide">{s.mkt}</td>
+                            <td className="code">{s.t}</td>
+                            <td className="cover-hide">{s.name}</td>
+                            <td className="text-xs cover-hide">{s.stage}</td>
+                            <td><span className={`pill ${sslPill(s.ssl)}`}>{s.ssl}</span></td>
+                            <td><span className={`pill ${tonePill(s.tone)}`}>{s.act}</span></td>
+                            <td className={`num ${deltaCls(s.dlt)} cover-hide`}>{pct(s.dlt)}</td>
+                            <td className="text-xs text-slate-400 cover-hide">{s.note}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
+            />
+            <div className="card p-3 mt-3">
+              <div className="text-xs uppercase text-slate-500 mb-1">Avoid / caution for new risk</div>
+              <ul className="text-sm text-slate-300 space-y-1">
+                {(D.avoid || []).map((x, i) => <li key={i}>• {x}</li>)}
+              </ul>
+            </div>
+          </Section>
+
+          <Section title="Focus list" icon="fa-list-ol" defaultOpen={false}>
+            <MktSplit
+              mkt={mkt}
+              rows={D.focus || []}
+              render={(part) => (
+                <div className="card p-3 space-y-2">
+                  {part.map((f) => (
+                    <div key={f.rank + f.t} className="flex gap-2 text-sm border-b border-slate-800 pb-2">
+                      <span className="pill pill-b">{f.rank}</span>
+                      <span className="pill pill-s">{f.mkt}</span>
+                      <div><span className="code">{f.t}</span><div className="text-xs text-slate-400">{f.note}</div></div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            />
+          </Section>
+        </>
+      )}
+
+
+
+      {tab === 'risks' && (
+        <>
+          <Section title="Risks" icon="fa-shield-halved">
+            <MktSplit
+              mkt={mkt}
+              rows={D.risks || []}
+              render={(part) => (
+                <div className="card p-3 space-y-2">
+                  {part.map((r, i) => (
+                    <div key={i} className="flex gap-2 items-start border-b border-slate-800 pb-2">
+                      <span className={`pill ${tonePill(r.sev)}`}>{r.sev}</span>
+                      <span className="pill pill-s">{r.mkt}</span>
+                      <div>
+                        <div className="text-sm font-medium text-slate-200"><ElevText text={r.risk}/></div>
+                        <div className="text-xs text-slate-400">{r.act}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            />
+          </Section>
+          <Section title="Watch key" icon="fa-eye">
+            <MktSplit
+              mkt={mkt}
+              rows={D.watch || []}
+              render={(part) => (
+                <div className="card p-3 space-y-2">
+                  {part.map((w, i) => (
+                    <div key={i} className="flex gap-2 text-sm">
+                      <span className="pill pill-s">{w.mkt}</span>
+                      <span className="code">{w.t}</span>
+                      <span className="text-slate-400"><ElevText text={w.note}/></span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            />
+          </Section>
+          <Section title="Session clock" icon="fa-clock">
+            <div className="card p-3 space-y-2">
+              {(D.clock || []).map((c, i) => (
+                <div key={i} className="flex gap-2 text-sm">
+                  <span className="pill pill-s shrink-0">{c.t}</span>
+                  <span className="text-slate-300">{c.task}</span>
+                </div>
+              ))}
+            </div>
+          </Section>
+        </>
+      )}
+
+      <footer className="mt-8 text-xs text-slate-500 border-t border-slate-800 pt-4 leading-relaxed">
+        {D.disclaimer} · {D.source}
+      </footer>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <DashboardErrorBoundary>
+    <App />
+  </DashboardErrorBoundary>
 );
+
 </script>
 </body>
 </html>
